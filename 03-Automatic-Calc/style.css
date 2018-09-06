@@ -28,7 +28,7 @@ body{
   width:110px;
 }
 
-#btn{
+#button{
   cursor:pointer;
   display: inline-block;
   box-sizing: border-box;
