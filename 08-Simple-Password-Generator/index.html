@@ -6,7 +6,6 @@
     <title>Simple Password Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="script.js"></script>
 </head>
 <body>
     <div class="container">
@@ -15,10 +14,12 @@
         <div id="btn">Generate Password</div>
         <fieldset>
             <legend>Options</legend>
-            <p>Length : <input type="range"></p><!--Add slider-->
+            <p>Length (<span id="label">8</span>) : <input type="range" id="slider" value="8" min="4" max="20"></p>
+            <!--▲ Add slider - value=default-->
             <p>Numbers? : <input type="checkbox"></p>
             <p>Symbols? : <input type="checkbox"></p>
         </fieldset>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
