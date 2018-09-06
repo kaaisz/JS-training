@@ -8,6 +8,19 @@
   var result = document.getElementById('result');
   var reset = document.getElementById('reset');
 
+  function checkInput(){
+    //use regular expressions
+    //if you want to see from the first input to last input, wrap them by ^ and $.
+    ///if you want to add[1-9], -> ^[1-9]$
+    ///if you want to add[0-9] for many times, -> ^[0-9]*$ (* - for many times)
+    // if input hasn't been as null
+    if (price.value.match(/^[1-9][0-9]*$/) !== null && num.value.match(/^[1-9][0-9]*$/) !== null){
+      btn.classList.remove('disabled');//remove class="disabled"
+    } else {
+      btn.classList.add('disabled');
+    }
+  }
+
   btn.addEventListener('click', function() {
     console.log('pushed btn');
     var payLess;
@@ -15,6 +28,11 @@
     var payMore;
     var over;
     var str;//to show result
+
+    //1 - Nothing will return if this button class has been containing 'disabled'
+    if (this.classList.contains('disabled') === true){
+      return;
+    }
 
     //case A(不足) : paid 300JPY/Person (payLess)- 100JPY short(short)
     // payLess = 1000 / 3; //333.333...
@@ -40,4 +58,7 @@
     //show the result
     result.textContent = str;
   });
+  //2 - When input has been there, add keyup event to check whether that input has been correct
+  price.addEventListener('keyup', checkInput);//checking for price
+  num.addEventListener('keyup', checkInput);//checking for num
 })();
