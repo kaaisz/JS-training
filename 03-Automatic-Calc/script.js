@@ -57,6 +57,8 @@
 
     //show the result
     result.textContent = str;
+    //remove reset class when calculate has finished
+    reset.classList.remove('hidden');
   });
   //2 - When input has been there, add keyup event to check whether that input has been correct
   price.addEventListener('keyup', checkInput);//checking for price
