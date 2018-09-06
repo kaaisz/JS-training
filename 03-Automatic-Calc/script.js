@@ -63,4 +63,15 @@
   //2 - When input has been there, add keyup event to check whether that input has been correct
   price.addEventListener('keyup', checkInput);//checking for price
   num.addEventListener('keyup', checkInput);//checking for num
+
+  //3 - when reset button has been clicked, activate function below:
+  reset.addEventListener('click', function(){
+    //reset the condition to same with the first loading
+    result.textContent = 'Result will appear here';
+    price.value = '';
+    num.value = '';
+    unit.value = 100;
+    btn.classList.add('disabled');
+    this.classList.add('hidden');//add reset class to 'hidden'
+  });
 })();
