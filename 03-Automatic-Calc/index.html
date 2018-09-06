@@ -15,14 +15,15 @@
           <option value="100" selected>100yen</option>
           <option value="1000">1000yen</option>
         </select>
-        <div id="btn" onclick="btn">Calc</div>
+        <!-- add class "disabled" to protect from pushing btn if input was blank -->
+        <button id="button" class="disabled">Calc</button>
       </div>
       <div class="result-area">
         <p id="result">Result will appear here</p>
-        <div id="reset">Calc again?</div>
+        <div id="reset" class="hidden">Calc again?</div>
       </div>
       </div>
     </div>
-    <script type="text/javasctipt" src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
