@@ -26,9 +26,16 @@
     payMore = Math.ceil(price.value / num.value / unit.value) * unit.value; //400
     over = price.value - (payMore * num.value); //-200
 
-    //set results for each case
-    str = 'If the price was ¥' + payLess + ' / person, paybill will short ¥' + short + ', ' +
-      'If the price was ¥' + payMore + ' / person, paybill will over ¥' + over + '.';
+    //in case of divisible
+    if(over === 0 && short === 0){
+      //set in case of divisible
+      str = 'Just ¥' + (price.value / num.value) + ' / per person.';
+    }else{
+      //set in case of indivisible
+      //set results for each case
+      str = 'If the price was ¥' + payLess + ' / person, paybill will short ¥' + short + ', ' +
+        'If the price was ¥' + payMore + ' / person, paybill will over ¥' + over + '.';
+    }
 
     //show the result
     result.textContent = str;
