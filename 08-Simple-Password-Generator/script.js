@@ -4,11 +4,28 @@
     var label = document.getElementById('label');
     var btn = document.getElementById('btn');
     var result = document.getElementById('result');
+    var numbers = document.getElementById('numbers');
+    var symbols = document.getElementById('symbols');
 
     function getPassword(){
-        var seed = 'abcdefghijklmnopqrstuvwxyz';//default setting
+        var seed_letters = 'abcdefghijklmnopqrstuvwxyz';//default setting
+        var seed_numbers = '0123456789';
+        var seed_symbols = '!#$%&()';
         var length = slider.value;//how many numbers are required to password
         var password = '';
+
+        var seed = seed_letters + seed_letters.toUpperCase();//lowercase + uppercase
+
+        //for options
+        //numbers
+        if (numbers.checked === true){//if numbers was checked
+            seed += seed_numbers;
+        }
+
+        if (symbols.checked === true) {//if numbers was checked
+            seed += seed_symbols;
+        }
+
 
         //generate password randomly until numbers of slider.value ends
         // for(var i = 0; i < length; i++){
