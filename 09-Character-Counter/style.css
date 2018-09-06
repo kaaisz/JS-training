@@ -7,7 +7,7 @@ body{
 }
 
 .container{
-    width:400px;
+    width:480px;
     margin:30px auto;
 }
 
@@ -19,6 +19,8 @@ textarea{
     font-size: 16px;
     border:none;
     border-radius:5px;
+    margin-bottom:14px;
+    line-height: 1.5;
 }
 
 textarea:focus{
@@ -28,6 +30,7 @@ textarea:focus{
 p{
     color:#333;
     font-size:14px;
+    margin:0;
 }
 
 #label{
@@ -43,5 +46,6 @@ p{
     border-radius:5px;
     text-align: center;
     cursor:pointer;
-    box-shadow:0 4px 0 #0088cc
+    box-shadow:0 4px 0 #0088cc;
+    float:right;/*to make it center*/
 }
