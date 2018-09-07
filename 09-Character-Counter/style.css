@@ -49,3 +49,7 @@ p{
     box-shadow:0 4px 0 #0088cc;
     float:right;/*to make it center*/
 }
+
+.warning{
+    color:red;
+}
