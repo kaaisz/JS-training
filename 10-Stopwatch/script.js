@@ -9,6 +9,7 @@
     var elapsedTime = 0;//time passed. initialise as 0
     var timerId;//to pass the id for clearTimeout
     var timeToAdd = 0;
+    var isRunning = false;
 
     function updateTimerText(){
         //eg : 132.5 sec -> 135200msec -> 02:15.200 elapsed
@@ -47,12 +48,20 @@
     //To make a function for countup, it should subtract from current time to which start button has pushed.
     //(カウントアップをするには、一定時間ごとに現在時刻から Start を押したときの時刻を引けばよい)
     start.addEventListener('click', function(){
+        if (isRunning === true){//if stopwatch has already started 
+            return;//return nothing
+        }
+        isRunning = true;
         //Substitute Date.now() to startTime.(Date.now() is for showing current time)
         startTime = Date.now();
         countUp();//see the function above
     });
 
     stop.addEventListener('click', function () {
+        if (isRunning === false) {//if stopwatch has already stopped 
+            return;//return nothing
+        }
+        isRunning = false;
         clearTimeout(timerId);
         //Needs to add time which timer has been working until just before to the condition above
         //(上記の式に対して過去にタイマーが動いていた時間を足し上げる必要がある)
@@ -61,6 +70,9 @@
 
     //when push the reset button, timer goes back to 0
     reset.addEventListener('click', function () {
+        if (isRunning === true) {//if stopwatch has already started
+            return;//return nothing - reset button won't work while timer works
+        }
         elapsedTime = 0;
         timeToAdd = 0;//timeToAdd will also reset
         updateTimerText();//to show the output on HTML again
