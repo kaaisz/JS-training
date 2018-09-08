@@ -50,6 +50,14 @@
     stop.className = 'btn inactive';
     reset.className = 'btn inactive';
 
+    function updateBtnState(startBtnState, stopBtnState, resetBtnState){
+        start.className = startBtnState ? 'btn' : 'btn inactive';
+        //if the startBtn has clicked(true),add class'btn',else,add 'btn inactive'
+        stop.className = stopBtnState ? 'btn' : 'btn inactive';
+        reset.className = resetBtnState ? 'btn' : 'btn inactive';
+    }
+
+    updateBtnState(true, false, false);//only start btn can be clicked
 
     //To make a function for countup, it should subtract from current time to which start button has pushed.
     //(カウントアップをするには、一定時間ごとに現在時刻から Start を押したときの時刻を引けばよい)
@@ -59,6 +67,7 @@
         }
         isRunning = true;
         //condition for button - start: false, stop:true, reset:false
+        updateBtnState(false, true, false);
         startTime = Date.now();
         countUp();//see the function above
     });
@@ -69,6 +78,7 @@
         }
         isRunning = false;
         //condition for button - start: true, stop:false, reset:true
+        updateBtnState(true, false, true);
         clearTimeout(timerId);
         timeToAdd += Date.now() - startTime;
     });
@@ -79,6 +89,7 @@
             return;//return nothing - reset button won't work while timer works
         }
         //condition for button - start: true, stop:false, reset:false
+        updateBtnState(true, false, false);
         elapsedTime = 0;
         timeToAdd = 0;//timeToAdd will also reset
         updateTimerText();//to show the output on HTML again
