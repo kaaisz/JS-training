@@ -45,6 +45,12 @@
         }, 10);//to activate after 10 sec -> this function will be active per 10 min while the start button is active
     }
 
+    //add class for each btn to styling on css files
+    start.className = 'btn';
+    stop.className = 'btn inactive';
+    reset.className = 'btn inactive';
+
+
     //To make a function for countup, it should subtract from current time to which start button has pushed.
     //(カウントアップをするには、一定時間ごとに現在時刻から Start を押したときの時刻を引けばよい)
     start.addEventListener('click', function(){
@@ -52,7 +58,7 @@
             return;//return nothing
         }
         isRunning = true;
-        //Substitute Date.now() to startTime.(Date.now() is for showing current time)
+        //condition for button - start: false, stop:true, reset:false
         startTime = Date.now();
         countUp();//see the function above
     });
@@ -62,9 +68,8 @@
             return;//return nothing
         }
         isRunning = false;
+        //condition for button - start: true, stop:false, reset:true
         clearTimeout(timerId);
-        //Needs to add time which timer has been working until just before to the condition above
-        //(上記の式に対して過去にタイマーが動いていた時間を足し上げる必要がある)
         timeToAdd += Date.now() - startTime;
     });
 
@@ -73,6 +78,7 @@
         if (isRunning === true) {//if stopwatch has already started
             return;//return nothing - reset button won't work while timer works
         }
+        //condition for button - start: true, stop:false, reset:false
         elapsedTime = 0;
         timeToAdd = 0;//timeToAdd will also reset
         updateTimerText();//to show the output on HTML again
