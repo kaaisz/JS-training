@@ -1,1 +1,17 @@
 @charset 'UTF-8';
+
+body{
+    font-size:14px;
+    font-family: sans-serif;
+}
+
+#open, #close{
+    cursor:pointer;
+    width:200px;
+    color:#fff;
+    background: rgb(76, 148, 255);
+    border-radius:25px;
+    text-align: center;
+    line-height: 40px;
+    margin:15px auto 0;
+}
