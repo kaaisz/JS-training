@@ -8,6 +8,7 @@
     var startTime;
     var elapsedTime = 0;//time passed. initialise as 0
     var timerId;//to pass the id for clearTimeout
+    var timeToAdd = 0;
 
     function updateTimerText(){
         //eg : 132.5 sec -> 135200msec -> 02:15.200 elapsed
@@ -35,7 +36,7 @@
 
     function countUp(){
         timerId = setTimeout(function(){//timerId will be the return value of setTimeout
-            elapsedTime = Date.now() - startTime;
+            elapsedTime = Date.now() - startTime + timeToAdd;
             //debug
             // console.log(elapsedTime);
             updateTimerText();//to show the output on HTML
@@ -53,11 +54,15 @@
 
     stop.addEventListener('click', function () {
         clearTimeout(timerId);
+        //Needs to add time which timer has been working until just before to the condition above
+        //(上記の式に対して過去にタイマーが動いていた時間を足し上げる必要がある)
+        timeToAdd += Date.now() - startTime;
     });
 
     //when push the reset button, timer goes back to 0
     reset.addEventListener('click', function () {
         elapsedTime = 0;
+        timeToAdd = 0;//timeToAdd will also reset
         updateTimerText();//to show the output on HTML again
     });
 })();
