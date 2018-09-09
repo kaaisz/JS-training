@@ -23,6 +23,7 @@ body{
     bottom:0;
     left:0;
     right:0;
+    z-index:1;
 }
 
 #mask.hidden{
@@ -30,10 +31,12 @@ body{
 }
 
 #modal.hidden{
-    transform: translate(0, -500px);
+    opacity: 0;/*to add fade animation*/
+    /* transform: translate(0, -500px); */
 }
 
 #modal{
+    opacity: 1;
     background: #fff;
     width:350px;
     padding: 20px;
@@ -43,6 +46,10 @@ body{
     left:0;
     right:0;
     margin:0 auto;
+    /*add animation when modal view opens*/
+    /*to add fade animation*/
+    transition: opacity .3s ease;
+    z-index:2;
 }
 
 #modal p{
