@@ -25,6 +25,14 @@ body{
     right:0;
 }
 
+#mask.hidden{
+    display: none;
+}
+
+#modal.hidden{
+    transform: translate(0, -500px);
+}
+
 #modal{
     background: #fff;
     width:350px;
