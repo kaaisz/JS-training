@@ -7,12 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
+    <style>
+        body{
+            font-family: sans-serif;
+            width:100vw;
+            height:100vh;
+            margin:0;
+            padding: 0;
+            background: rgb(2,0,36);
+            background: linear-gradient(25deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            text-align: center;
+        }
+        .container{
+            margin:40vh auto;
+        }
+        h1{
+            color:#fff;
+            opacity: .6;
+        }
+        #box{
+            background: #fff;
+            border:1px solid #fff;
+            box-shadow: 0 10px 10px #999;
+            display:none;
+            padding: 10px;
+            /* position: relative; */
+            text-align: center;
+            width:300px;
+        }
+        #box > #close{
+            background: #eee;
+            color:#333;
+            cursor:pointer;
+            height:30px;
+            line-height:30px;
+            margin:0;
+            position: absolute;
+            right:1px;
+            top:1px;
+            width:30px;
+        }
+
+        #box > #close:hover{
+            background: #f9f9f9;
+            color:#999;
+        }
+    </style>
 </head>
 <body>
-    <input type="button" id="btn" value="Push me" />
-    <div id="box">
-        <p id="close">×</p>
-        <h2>Hello. This is the popup.</h2>
-    </div>
+    <div class="container">
+        <h1>Super Simple Popup Window</h1>
+        <input type="button" id="btn" value="Push me" />
+        <div id="box">
+            <p id="close">×</p>
+            <h2>Hello. This is the popup.</h2>
+        </div>
+    </div>  
 </body>
 </html>
