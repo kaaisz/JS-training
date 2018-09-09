@@ -104,6 +104,13 @@
             }
         }
 
+        //define "get_random_values" function - to call random integer from 1 to 100
+        function get_random_values(){
+            var current_value = parseInt(num.innerHTML);
+            var next_value = Math.floor(Math.random() * 100);//add math floor to make it double to Integer
+            return (current_value === next_value) ? get_random_values() : next_value;
+        }
+
         lower.onclick = function(){
             start("lower");
         };
