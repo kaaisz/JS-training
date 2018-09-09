@@ -78,6 +78,19 @@
         var end = document.getElementById("end");
         var gameover = false;
 
+        //define "start" function
+        function start(choice){
+            if(gameover === false){
+                if(check(choice)===true){
+                    score.innerHTML = parseInt(score.innerHTML) + 1;
+                    //the number got from innerHTML is String = need to change Integer by using parseInt.
+                }else{
+                    end.innerHTML = "GAME OVER";
+                    gameover = true;
+                }
+            }
+        }
+
         lower.onclick = function(){
             start("lower");
         };
