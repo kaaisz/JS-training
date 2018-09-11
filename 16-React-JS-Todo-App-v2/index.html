@@ -25,14 +25,26 @@
                 {id:2, title:'Task 2', isDone: true}
             ];
 
+            function TodoItem(props){
+            /*define TodoItem*/
+                return(
+                    <li key = {props.todo.id}>
+                        {props.todo.title}
+                    </li>
+                );
+            }
+
             function TodoList(props){
             /*Use function - because this doesn't have state.*/
             /*TodoList is passed by props above*/ 
                 const todos = props.todos.map(todo => {
                 /*loop the array by using the data passed by props - 渡されてきたpropsのデータをmapを使いループさせることで表示*/ 
                     return(
-                        <li key={todo.id}>{todo.title}</li>
-                        {/*eg : key=0, Task 0*/}
+                        <TodoItem
+                        /*Add TodoItem component - <li></li> of TodoItem is inside*/
+                         key = {todo.id}
+                         todo = {todo}
+                        />
                     );
                 });
                 return(
