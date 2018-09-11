@@ -31,12 +31,9 @@
             line-height: 1.5;
         }
         .container input[type="checkbox"]{
-            /*Solve the problem of no space between input and letters due to the characteristic of jsx
-             - jsxの特性によるinputと文字の間が詰まってしまう問題を解消する*/
             margin-right:5px;
         }
         .done{
-            /* to make them disappear */
             text-decoration: line-through;
             color:#ccc;
         }
@@ -45,35 +42,23 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        //declaration (using ES6)
         (() => {
-            /*define todos as const to add a array data 
-            - constでtodoを定義し、配列でそれぞれのデータを用意*/
             const todos = [
                 {id:0, title:'Task 0', isDone: false},
-                /*each data is making as an object with manage condition of isDone by true or false
-                - 各データはオブジェクトにし、それぞれisDoneのtrue/falseで完了しているかどうかを管理 */
                 {id:1, title:'Task 1', isDone: false},
                 {id:2, title:'Task 2', isDone: true}
             ];
 
             function TodoItem(props){
-            /*define TodoItem*/
                 return(
                     <li key = {props.todo.id}>
                         <label>
                             <input type="checkbox"
                                 checked={props.todo.isDone}
-                                /*Status above can check by true/false of isDone*/
                                 onChange={() => props.checkTodo(props.todo)}
-                                /*You have to set either 'onChange' or 'readOnly' in this case*/
-                                /*You can change the state on App component by setting onChange and pass the data
-                                 - onChangeを設定しデータを渡すことでAppコンポーネントが持つstateを変更できる*/
                             />
                             <span className={props.todo.isDone ? 'done' : ''}>
-                            {/*if isDone was true, add '.done', if false, add ''(nothing).*/} 
                                 {props.todo.title}
-                                {/*this is the title of todos*/}
                             </span>
                         </label>
                     </li>
@@ -81,95 +66,62 @@
             }
 
             function TodoList(props){
-            /*Use function - because this doesn't have state.*/
-            /*TodoList is passed by props above*/ 
                 const todos = props.todos.map(todo => {
-                /*loop the array by using the data passed by props - 渡されてきたpropsのデータをmapを使いループさせることで表示*/ 
                     return(
                         <TodoItem
-                        /*Add TodoItem component - <li></li> of TodoItem is inside*/
                          key = {todo.id}
                          todo = {todo}
                          checkTodo = {props.checkTodo}
-                         /*pass from 'todos of props' to 'checkTodo of props' - propsのtodoをpropsのcheckTodoに渡す*/
-                         /*so, need to make checkTodo on TodoItem before pass it to App component*/
                         />
                     );
                 });
                 return(
                     <ul>
                         {todos}
-                        {/*todos is defining above by const*/} 
                     </ul>
                 );
-                /*return this list*/
             }
 
             class App extends React.Component{
-            /* declare App as class because want to have state only for this App component
-            - この App コンポーネントにだけ state を持たせてデータを管理していきたいので、class で宣言する*/
                 constructor(){
-                /*Set to state*/
                     super();
-                    /* Always constructor needs to have this super(); above*/
                     this.state = {
                         todos: todos
                     };
-                    /*Set todos' value by todos to this.state*/
                     this.checkTodo = this.checkTodo.bind(this);
-                    /* Do bind() on this in constructor */
                 }
 
                 checkTodo(todo){
-                /*Set todo as a parameter*/
                     const todos = this.state.todos.map(todo => {
-                        return{id: todo.id, title: todo.title, isDone: this.isDone};
-                        /*each value has to have 'todo' ahead to make the copies of all props
-                         - 全ての値の前にtodoをつけることで、全てのpropsの値を持つコピーを作る*/
+                        return{id: todo.id, title: todo.title, isDone: todo.isDone};
                     });
-                    /*Add copy of todos because of value in state cannot change directly
-                    - stateの値はここでは直接変更できないので、一旦todosのコピーを作る。
-                    objectのコピーについてはmapを使って補う*/
+
                     const pos = this.state.todos.map(todo => {
                         return todo.id
-                        /*make array of state.todos(including only id property) by map
-                         - state.todosのidプロパティ値のみの配列をmap()で作成する*/
                     }).indexOf(todo.id);
-                    /*find the same number with todo.id passed by indexOf()
-                     - indexOf()で渡されてきたtodo.idと同じものが何番目にあるかを調べる*/
 
                     todos[pos].isDone = !todos[pos].isDone;
-                    /*Flip isDone at the 'pos'th of todos - todosのpos番目にあるisDoneを反転させる*/
                     this.setState({
-                    /*setState by the todos(copied one) - 新しく作ったtodos(above)でsetStateする*/
                         todos: todos
-                        /*define as 'todos is new todos what you made' - このtodoは新しく作ったtodosとして定義*/
                     });
                     
                 }
 
                 render(){
-                    /*to show the output - render(){}の中に表示させたい内容のhtmlを書いていく*/
                     return(
                         <div className="container">
-                        {/*Wrap by <div> if you want add some element here - 複数要素を表示したい場合、divで囲う必要がある*/}
-                        <h1>My Todos</h1>
-                        <TodoList
-                         todos = {this.state.todos}
-                         checkTodo = {this.checkTodo}
-                         /*Add checkTodo here by {this.checkTodo} - state can use inside of App component*/
-                        />
-                        {/*Add TodoList component, then pass the data of {this.state.todos} as todos*/}
+                            <h1>My Todos</h1>
+                            <TodoList
+                            todos = {this.state.todos}
+                            checkTodo = {this.checkTodo}
+                            />
                         </div>
                     );
                 }
             }
             ReactDOM.render(
-            /*to render component by using React - Reactを使ってコンポーネントを描画する、という宣言文*/
                 <App />,
-                /*component name - App component*/
-                document.getElementById('root')/*unnecessary ";" in the end*/
-                /*invoke <div id="root"> above - 上の<div id="root">を引っ張ってくる*/
+                document.getElementById('root')
             );
         })();
     </script>
