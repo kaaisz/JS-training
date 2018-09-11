@@ -25,6 +25,25 @@
                 {id:2, title:'Task 2', isDone: true}
             ];
 
+            function TodoList(props){
+            /*Use function - because this doesn't have state.*/
+            /*TodoList is passed by props above*/ 
+                const todos = props.todos.map(todo => {
+                /*loop the array by using the data passed by props - 渡されてきたpropsのデータをmapを使いループさせることで表示*/ 
+                    return(
+                        <li key={todo.id}>{todo.title}</li>
+                        {/*eg : key=0, Task 0*/}
+                    );
+                });
+                return(
+                    <ul>
+                        {todos}
+                        {/*todos is defining above by const*/} 
+                    </ul>
+                );
+                /*return this list*/
+            }
+
             class App extends React.Component{
             /* declare App as class because want to have state only for this App component
             - この App コンポーネントにだけ state を持たせてデータを管理していきたいので、class で宣言する*/
