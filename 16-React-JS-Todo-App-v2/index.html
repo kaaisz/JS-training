@@ -13,8 +13,21 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        //declareation (using ES6)
-        (()=>{
+        //declaration (using ES6)
+        (() => {
+            class App extends React.Component{
+            /* declare App as class because want to have state only for this App component
+            - この App コンポーネントにだけ state を持たせてデータを管理していきたいので、class で宣言する*/
+                render(){
+                    /*to show the output - render(){}の中に表示させたい内容のhtmlを書いていく*/
+                    return(
+                        <div>
+                        {/*Wrap by <div> if you want add some element here - 複数要素を表示したい場合、divで囲う必要がある*/}
+                        <h1>My Todos</h1>
+                        </div>
+                    );
+                }
+            }
             ReactDOM.render(
             /*to render component by using React - Reactを使ってコンポーネントを描画する、という宣言文*/
                 <App />,
