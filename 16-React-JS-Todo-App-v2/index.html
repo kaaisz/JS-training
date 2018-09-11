@@ -96,11 +96,13 @@
                 );
             }
 
-            function TodoForm(){
-            /*make function to return form as a component*/
+            function TodoForm(props){
+            /*2 - make function to return form as a component*/
                 return(
                     <form>
-                        <input type="text"/>
+                        <input type="text" value={props.item}/>
+                        {/*5 - you can directly insert (4) below to input type="text" = define value={props.item}
+                         (4)をそのまま input type="text" に反映させてあげれば OK*/}
                         <input type="submit" value="Add"/>
                     </form>
                 );
@@ -110,24 +112,25 @@
                 constructor(){
                     super();
                     this.state = {
-                        todos: todos
+                        todos: todos,
+                        item:''
+                        /*3 - Keep the data of this App as item in this state
+                        (you have to manage all the data in this state)
+                        ''(empty) is fine for the first time.
+                        - アプリのデータはstateで一元管理する必要があるので、このstateにitemという名前で保持する*/
                     };
                     this.checkTodo = this.checkTodo.bind(this);
                     this.deleteTodo = this.deleteTodo.bind(this);
                 }
 
                 deleteTodo(todo){
-                    //add confirm alert
                     if(!confirm('Are you sure?')){
                         return;
                     }
-                    /*if confirm was false, return nothing then do nothing from then*/
 
                     const todos = this.state.todos.slice();
-                    /*Add a copy - you can use slice() due to not necessary to edit property this time.*/
                     const pos = this.state.todos.indexOf(todo);
                     /*find the same number with todo.id passed by indexOf()
-
                     todos.splice(pos, 1);
                     /*delete element(1st one from 'pos') by using splice()*/
                     this.setState({
@@ -160,8 +163,13 @@
                             checkTodo = {this.checkTodo}
                             deleteTodo = {this.deleteTodo}
                             />
-                            <TodoForm/>
-                            {/*1 - Add todoform component*/} 
+                            <TodoForm
+                            /*1 - Add todoform component*/
+                                item = {this.state.item}
+                                /*4 - pass the data above(3) to here
+                                value is passed by props parameter above
+                                - item 属性で渡された(3)の値は function TodoForm() の props 引数で渡される*/
+                            />
                         </div>
                     );
                 }
