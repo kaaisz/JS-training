@@ -33,6 +33,12 @@
         .container input[type="checkbox"]{
             margin-right:5px;
         }
+        .cmd{
+            font-size:12px;
+            cursor:pointer;
+            color:#08c;
+            margin-left:5px;
+        }
         .done{
             text-decoration: line-through;
             color:#ccc;
@@ -60,6 +66,10 @@
                             <span className={props.todo.isDone ? 'done' : ''}>
                                 {props.todo.title}
                             </span>
+                            <span className = "cmd"
+                                 onclick={() => props.deleteTodo(props.todo)}>[×]</span>
+                            {/*1 - Add an event to delete - Add onclick then pass todo data like checkTodo
+                             - props.deleteTodo()とし、checkTodoと同様にtodoのデータを親に渡してゆく*/}
                         </label>
                     </li>
                 );
@@ -72,6 +82,8 @@
                          key = {todo.id}
                          todo = {todo}
                          checkTodo = {props.checkTodo}
+                         deleteTodo = {props.deleteTodo}
+                         /*2 - Add deleteTodo for TodoItem*/
                         />
                     );
                 });
@@ -89,6 +101,8 @@
                         todos: todos
                     };
                     this.checkTodo = this.checkTodo.bind(this);
+                    this.deleteTodo = this.deleteTodo.bind(this);
+                    /*3 - bind 'this.deleteTodo'*/
                 }
 
                 checkTodo(todo){
@@ -114,6 +128,8 @@
                             <TodoList
                             todos = {this.state.todos}
                             checkTodo = {this.checkTodo}
+                            deleteTodo = {this.deleteTodo}
+                            /*4 - implement deleteTodo() method by adding deleteTodo method*/
                             />
                         </div>
                     );
