@@ -9,6 +9,38 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        body{
+            font-size:16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .container{
+            width:300px;
+            margin:auto;
+        }
+        .container h1{
+            font-size: 20px;
+            border-bottom:1px solid #ddd;
+            padding: 16px 0;
+        }
+        .container ul{
+            padding: 0;
+            list-style: none;
+        }
+        .container li{
+            line-height: 1.5;
+        }
+        .container input[type="checkbox"]{
+            /*Solve the problem of no space between input and letters due to the characteristic of jsx
+             - jsxの特性によるinputと文字の間が詰まってしまう問題を解消する*/
+            margin-right:5px;
+        }
+        .done{
+            /* to make them disappear */
+            text-decoration: line-through;
+            color:#ccc;
+        }
+    </style>
 </head>
 <body>
     <div id="root"></div>
@@ -38,7 +70,11 @@
                                 /*You can change the state on App component by setting onChange and pass the data
                                  - onChangeを設定しデータを渡すことでAppコンポーネントが持つstateを変更できる*/
                             />
-                            {props.todo.title}
+                            <span className={props.todo.isDone ? 'done' : ''}>
+                            {/*if isDone was true, add '.done', if false, add ''(nothing).*/} 
+                                {props.todo.title}
+                                {/*this is the title of todos*/}
+                            </span>
                         </label>
                     </li>
                 );
@@ -115,7 +151,7 @@
                 render(){
                     /*to show the output - render(){}の中に表示させたい内容のhtmlを書いていく*/
                     return(
-                        <div>
+                        <div className="container">
                         {/*Wrap by <div> if you want add some element here - 複数要素を表示したい場合、divで囲う必要がある*/}
                         <h1>My Todos</h1>
                         <TodoList
