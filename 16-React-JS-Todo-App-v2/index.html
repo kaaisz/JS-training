@@ -29,7 +29,14 @@
             /*define TodoItem*/
                 return(
                     <li key = {props.todo.id}>
-                        {props.todo.title}
+                        <label>
+                            <input type="checkbox"
+                                checked={props.todo.isDone}
+                                /*Status above can check by true/false of isDone*/
+                                /*You have to set either 'onChange' or 'readOnly' in this case*/
+                            />
+                            {props.todo.title}
+                        </label>
                     </li>
                 );
             }
