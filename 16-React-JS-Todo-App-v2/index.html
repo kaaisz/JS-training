@@ -15,15 +15,37 @@
     <script type="text/babel">
         //declaration (using ES6)
         (() => {
+            /*define todos as const to add a array data 
+            - constでtodoを定義し、配列でそれぞれのデータを用意*/
+            const todos = [
+                {id:0, title:'Task 0', isDone: false},
+                /*each data is making as an object with manage condition of isDone by true or false
+                - 各データはオブジェクトにし、それぞれisDoneのtrue/falseで完了しているかどうかを管理 */
+                {id:1, title:'Task 1', isDone: false},
+                {id:2, title:'Task 2', isDone: true}
+            ];
+
             class App extends React.Component{
             /* declare App as class because want to have state only for this App component
             - この App コンポーネントにだけ state を持たせてデータを管理していきたいので、class で宣言する*/
+                constructor(){
+                /*Set to state*/
+                    super();
+                    /* Always constructor needs to have this super(); above*/
+                    this.state = {
+                        todos: todos
+                    };
+                    /*Set todos' value by todos to this.state*/
+                }
+
                 render(){
                     /*to show the output - render(){}の中に表示させたい内容のhtmlを書いていく*/
                     return(
                         <div>
                         {/*Wrap by <div> if you want add some element here - 複数要素を表示したい場合、divで囲う必要がある*/}
                         <h1>My Todos</h1>
+                        <TodoList todos = {this.state.todos}/>
+                        {/*Add TodoList component, then pass the data of {this.state.todos} as todos*/}
                         </div>
                     );
                 }
