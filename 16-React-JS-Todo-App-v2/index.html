@@ -33,7 +33,10 @@
                             <input type="checkbox"
                                 checked={props.todo.isDone}
                                 /*Status above can check by true/false of isDone*/
+                                onChange={() => props.checkTodo(props.todo)}
                                 /*You have to set either 'onChange' or 'readOnly' in this case*/
+                                /*You can change the state on App component by setting onChange and pass the data
+                                 - onChangeを設定しデータを渡すことでAppコンポーネントが持つstateを変更できる*/
                             />
                             {props.todo.title}
                         </label>
@@ -51,6 +54,9 @@
                         /*Add TodoItem component - <li></li> of TodoItem is inside*/
                          key = {todo.id}
                          todo = {todo}
+                         checkTodo = {props.checkTodo}
+                         /*pass from 'todos of props' to 'checkTodo of props' - propsのtodoをpropsのcheckTodoに渡す*/
+                         /*so, need to make checkTodo on TodoItem before pass it to App component*/
                         />
                     );
                 });
@@ -82,7 +88,11 @@
                         <div>
                         {/*Wrap by <div> if you want add some element here - 複数要素を表示したい場合、divで囲う必要がある*/}
                         <h1>My Todos</h1>
-                        <TodoList todos = {this.state.todos}/>
+                        <TodoList
+                         todos = {this.state.todos}
+                         checkTodo = {this.checkTodo}
+                         /*Add checkTodo here by {this.checkTodo} - state can use inside of App component*/
+                        />
                         {/*Add TodoList component, then pass the data of {this.state.todos} as todos*/}
                         </div>
                     );
