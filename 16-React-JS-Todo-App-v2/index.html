@@ -2,10 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Todo App by React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -33,11 +31,17 @@
         .container input[type="checkbox"]{
             margin-right:5px;
         }
+        /* cancel button */
         .cmd{
             font-size:12px;
             cursor:pointer;
             color:#08c;
             margin-left:5px;
+        }
+        .container input[type="text"]{
+            padding: 2px;
+            margin-right:5px;
+            border:1px solid #ddd;
         }
         .done{
             text-decoration: line-through;
@@ -70,8 +74,6 @@
                         <span className = "cmd"
                                  onClick={() => props.deleteTodo(props.todo)}>[×]
                         </span>
-                        {/*1 - Add an event to delete - Add onClick then pass todo data like checkTodo
-                            - props.deleteTodo()とし、checkTodoと同様にtodoのデータを親に渡してゆく*/}
                     </li>
                 );
             }
@@ -84,15 +86,23 @@
                          todo = {todo}
                          checkTodo = {props.checkTodo}
                          deleteTodo = {props.deleteTodo}
-                         /*2 - Add deleteTodo for TodoItem*/
                         />
                     );
                 });
                 return(
                     <ul>
                         {props.todos.length ? todos : <li>Nothing to Do!</li>}
-                        {/*Protecting from nothing is shown - 何も表示されないのを防ぐ*/}
                     </ul>
+                );
+            }
+
+            function TodoForm(){
+            /*make function to return form as a component*/
+                return(
+                    <form>
+                        <input type="text"/>
+                        <input type="submit" value="Add"/>
+                    </form>
                 );
             }
 
@@ -104,7 +114,6 @@
                     };
                     this.checkTodo = this.checkTodo.bind(this);
                     this.deleteTodo = this.deleteTodo.bind(this);
-                    /*3 - bind 'this.deleteTodo'*/
                 }
 
                 deleteTodo(todo){
@@ -115,20 +124,15 @@
                     /*if confirm was false, return nothing then do nothing from then*/
 
                     const todos = this.state.todos.slice();
-                    /*Add a copy - you can use slice() due to not necessary to edit property this time.
-                     - オブジェクトのプロパティまでは触らないので、今回はslice()を使用*/
+                    /*Add a copy - you can use slice() due to not necessary to edit property this time.*/
                     const pos = this.state.todos.indexOf(todo);
                     /*find the same number with todo.id passed by indexOf()
-                    - 何番目の要素を削除したか知りたいので、pos(position)とし、
-                    this.state.todos.indexOf(todo)で一致するtodoを探す*/
 
                     todos.splice(pos, 1);
                     /*delete element(1st one from 'pos') by using splice()*/
                     this.setState({
                         todos: todos
                     });
-                    /*define as 'todos is new todos what you made' - このtodosは新しく作ったtodosとして定義*/
-
                 }
 
                 checkTodo(todo){
@@ -155,8 +159,9 @@
                             todos = {this.state.todos}
                             checkTodo = {this.checkTodo}
                             deleteTodo = {this.deleteTodo}
-                            /*4 - implement deleteTodo() by adding deleteTodo method*/
                             />
+                            <TodoForm/>
+                            {/*1 - Add todoform component*/} 
                         </div>
                     );
                 }
