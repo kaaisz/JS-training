@@ -80,6 +80,36 @@
                         todos: todos
                     };
                     /*Set todos' value by todos to this.state*/
+                    this.checkTodo = this.checkTodo.bind(this);
+                    /* Do bind() on this in constructor */
+                }
+
+                checkTodo(todo){
+                /*Set todo as a parameter*/
+                    const todos = this.state.todos.map(todo => {
+                        return{id: todo.id, title: todo.title, isDone: this.isDone};
+                        /*each value has to have 'todo' ahead to make the copies of all props
+                         - 全ての値の前にtodoをつけることで、全てのpropsの値を持つコピーを作る*/
+                    });
+                    /*Add copy of todos because of value in state cannot change directly
+                    - stateの値はここでは直接変更できないので、一旦todosのコピーを作る。
+                    objectのコピーについてはmapを使って補う*/
+                    const pos = this.state.todos.map(todo => {
+                        return todo.id
+                        /*make array of state.todos(including only id property) by map
+                         - state.todosのidプロパティ値のみの配列をmap()で作成する*/
+                    }).indexOf(todo.id);
+                    /*find the same number with todo.id passed by indexOf()
+                     - indexOf()で渡されてきたtodo.idと同じものが何番目にあるかを調べる*/
+
+                    todos[pos].isDone = !todos[pos].isDone;
+                    /*Flip isDone at the 'pos'th of todos - todosのpos番目にあるisDoneを反転させる*/
+                    this.setState({
+                    /*setState by the todos(copied one) - 新しく作ったtodos(above)でsetStateする*/
+                        todos: todos
+                        /*define as 'todos is new todos what you made' - このtodoは新しく作ったtodosとして定義*/
+                    });
+                    
                 }
 
                 render(){
