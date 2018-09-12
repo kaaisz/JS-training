@@ -113,6 +113,12 @@
                 );
             }
 
+            function getUniqueId(){
+                return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
+                /*Suppose to be generate random numbered id if add 36digits number + datetime.
+                 - 適当に時刻と乱数を 36 進数にしてつなげてあげれば、それっぽい文字列でかぶらない id が生成されるはず*/
+            }
+
             class App extends React.Component{
                 constructor(){
                     super();
@@ -138,8 +144,14 @@
                     /*14 - Add e.preventDefault() to protect from moving to other page
                      - 画面が遷移しないようにしたいので上でイベントオブジェクトを渡す + preventDefault()する*/
                     
-                    const item = {};
-                    /*15 - Add empty object*/
+                    const item = {
+                        id: getUniqueId(),
+                        /*Add function to have an unique ID for each todo(basically Unique ID is required in this kind of app)
+                         - 各todoには状態管理のためのUnique IDが必要なので今回はfunctionで定義*/
+                        title: this.state.item, 
+                        isDone: false
+                    };
+                    /*15 - Add object*/
 
                     const todos = this.state.todos.slice();
                     /*16 - Add copy of 'todos' to update state, to add item (which defined above) on todos
