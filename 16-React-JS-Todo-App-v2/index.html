@@ -100,9 +100,12 @@
             /*2 - make function to return form as a component*/
                 return(
                     <form>
-                        <input type="text" value={props.item}/>
+                        <input type="text" value={props.item} onChange={props.updateItem}/>
                         {/*5 - you can directly insert (4) below to input type="text" = define value={props.item}
                          (4)をそのまま input type="text" に反映させてあげれば OK*/}
+                        {/*6 - Set onChange={props.updateItem} to pass for TodoForm on App component with updateItem
+                           - props.updateItem としつつ、 App コンポーネントの中で TodoForm に対して updateItem 属性を付ける
+                        */}
                         <input type="submit" value="Add"/>
                     </form>
                 );
@@ -121,6 +124,8 @@
                     };
                     this.checkTodo = this.checkTodo.bind(this);
                     this.deleteTodo = this.deleteTodo.bind(this);
+                    this.updateItem = this.updateItem.bind(this);
+                    /*7 - bind updateTodo*/ 
                 }
 
                 deleteTodo(todo){
@@ -154,6 +159,19 @@
                     
                 }
 
+                updateItem(e){
+                /*8 - Add updateItem() method
+                - Assign 'e' as an parameter - eを引数とする*/
+                    this.setState({
+                        item:e.target.value
+                    });
+                    /* ↑ it means : item inside of state = target.value in form
+                    It makes UI be able to show the actual input Thanks to this notation
+                     - stateの中のitemはformのtarget.valueだよ、という意味
+                     formの値はイベントオブジェクトから取得できるので、(e)を引数にしている
+                     こうすることでformに入力された値がUIに反映される*/
+                }
+
                 render(){
                     return(
                         <div className="container">
@@ -169,6 +187,9 @@
                                 /*4 - pass the data above(3) to here
                                 value is passed by props parameter above
                                 - item 属性で渡された(3)の値は function TodoForm() の props 引数で渡される*/
+                                updateItem = {this.updateItem}
+                                /*9 - implement 'this.updateItem' which is passed from updateItem on (6)
+                                - (5)から渡されたupdateItemを'this.updateItem'としてここに実装する*/
                             />
                         </div>
                     );
