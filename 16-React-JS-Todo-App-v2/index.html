@@ -135,7 +135,7 @@
 
                     const item = {
                         id: getUniqueId(),
-                        title: this.state.item, 
+                        title: this.state.item,
                         isDone: false
                     };
 
@@ -155,6 +155,8 @@
 
                     const todos = this.state.todos.slice();
                     const pos = this.state.todos.indexOf(todo);
+                    
+                    todos.splice(pos, 1);
                     this.setState({
                         todos: todos
                     });
