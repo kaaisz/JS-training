@@ -99,7 +99,9 @@
             function TodoForm(props){
             /*2 - make function to return form as a component*/
                 return(
-                    <form>
+                    <form onSubmit={props.addTodo}>
+                    {/*10 - Add onSubmit on form. Pass the props.addTodo to process in App component
+                      - 処理自体はAppコンポーネント内で行いたいのでprops.addTodoとする*/}
                         <input type="text" value={props.item} onChange={props.updateItem}/>
                         {/*5 - you can directly insert (4) below to input type="text" = define value={props.item}
                          (4)をそのまま input type="text" に反映させてあげれば OK*/}
@@ -125,7 +127,29 @@
                     this.checkTodo = this.checkTodo.bind(this);
                     this.deleteTodo = this.deleteTodo.bind(this);
                     this.updateItem = this.updateItem.bind(this);
-                    /*7 - bind updateTodo*/ 
+                    /*7 - bind updateTodo*/
+                    this.addTodo = this.addTodo.bind(this);
+                    /*12 - bind addTodo*/ 
+                }
+
+                addTodo(e){
+                /*13 - Add addTodo() method*/
+                    e.preventDefault();
+                    /*14 - Add e.preventDefault() to protect from moving to other page
+                     - 画面が遷移しないようにしたいので上でイベントオブジェクトを渡す + preventDefault()する*/
+                    
+                    const item = {};
+                    /*15 - Add empty object*/
+
+                    const todos = this.state.todos.slice();
+                    /*16 - Add copy of 'todos' to update state, to add item (which defined above) on todos
+                     - 上記のitemを既存のtodosに追加する前提で、stateのupdateを行うためにtodosのコピーを作成する*/
+                    todos.push(item);
+                    /*17 - push item to todos which sliced above - slice()したtodosに対しitemをpushする*/
+                    this.setState({
+                        todos: todos
+                    });
+                    /*18 - Set new todos to todos*/
                 }
 
                 deleteTodo(todo){
@@ -189,7 +213,10 @@
                                 - item 属性で渡された(3)の値は function TodoForm() の props 引数で渡される*/
                                 updateItem = {this.updateItem}
                                 /*9 - implement 'this.updateItem' which is passed from updateItem on (6)
-                                - (5)から渡されたupdateItemを'this.updateItem'としてここに実装する*/
+                                - (6)から渡されたupdateItemを'this.updateItem'としてここに実装する*/
+                                addTodo = {this.addTodo}
+                                /*11 - Add addTodo which passed from {props.addTodo} on (10)
+                                - (10)から渡されたaddTodoを'this.addTodo'としてここに実装する*/
                             />
                         </div>
                     );
