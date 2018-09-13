@@ -67,11 +67,20 @@
             ];
 
             function TodoHeader(props){
-            /*define TodoHeader component - with props as a parameter*/
+            /*2 - define TodoHeader component - with props as a parameter*/
+                const remaining = props.todos.filter(todo => {
+                /*3 - define 'remaining' to get a filtered todo
+                 - 未完了のtodoを取得する 'remaining' を定義*/
+                    return !todo.isDone;
+                    /*return todo which isDone is false - todoのうち、isDoneがfalseのものだけを返す*/
+                });
+                
                 return(
                     <h1>
                         My Todos
-                        <span>(1/3)</span>{/*dummy*/}
+                        <span>({remaining.length}/{props.todos.length})</span>
+                        {/*4 - Add this : todos unfinished / all the quantity of todos
+                            data of todos unfinished is defined on (3)*/}
                     </h1>
                 );
             }
