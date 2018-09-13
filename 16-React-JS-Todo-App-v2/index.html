@@ -226,6 +226,21 @@
                     });
                 }
 
+                componentDidUpdate(){
+                /*Add method to make local storage - to keep the data even you've reload the page*/
+                    localStorage.setItem('todos', JSON.stringify(this.state.todos));
+                    /*set the key as todos. then set JSON to keep the value of state*/
+                }
+
+                componentDidMount(){
+                /*Add method to read the data - load the data to local storage when component has been mounted*/
+                    this.setState({
+                    /*to make details of todos to be equal to local storage*/
+                        todos: JSON.parse(localStorage.getItem('todos'))||[]
+                        /*make array to empty if localStorage didn't work properly*/
+                    });
+                }
+
                 render(){
                     return(
                         <div className="container">
