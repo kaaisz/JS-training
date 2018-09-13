@@ -78,7 +78,6 @@
                 return(
                     <h1>
                         <button onClick={props.purge}>Purge</button>
-                        {/*1 - Set the click event here*/}
                         My Todos
                         <span>({remaining.length}/{props.todos.length})</span>
                     </h1>
@@ -147,25 +146,18 @@
                     this.updateItem = this.updateItem.bind(this);
                     this.addTodo = this.addTodo.bind(this);
                     this.purge = this.purge.bind(this);
-                    /*3 - bind purge with purge attribute*/
                 }
 
                 purge(){
-                /*4 - add purge processing*/ 
                     if(!confirm('Are you sure? it will erase all')){
-                    /*Add confirm to show the alert before erased all
-                    return nothing if CANCEL BUTTON has been pushed - confirm has NOT accepted*/
                         return;
                     }
 
                     const todos = this.state.todos.filter(todo => {
-                    /*Add filter() for collecting todos to do setState() - まだチェックしていないtodosのみを集めてsetState()する*/
                         return !todo.isDone;
-                        /*collect only false of todo.isDone*/
                     });
                     this.setState({
                         todos: todos
-                        /* - Set new todos to todos*/
                     });
                 }
 
@@ -227,17 +219,12 @@
                 }
 
                 componentDidUpdate(){
-                /*Add method to make local storage - to keep the data even you've reload the page*/
                     localStorage.setItem('todos', JSON.stringify(this.state.todos));
-                    /*set the key as todos. then set JSON to keep the value of state*/
                 }
 
                 componentDidMount(){
-                /*Add method to read the data - load the data to local storage when component has been mounted*/
                     this.setState({
-                    /*to make details of todos to be equal to local storage*/
                         todos: JSON.parse(localStorage.getItem('todos'))||[]
-                        /*make array to empty if localStorage didn't work properly*/
                     });
                 }
 
@@ -247,7 +234,6 @@
                             <TodoHeader
                                 todos={this.state.todos}
                                 purge={this.purge}
-                                /*2 - Apply purge attribute here which set on (1) - (1)で設定したイベントをここにpurge属性をつけて追加*/
                             />
                             <TodoList
                             todos = {this.state.todos}
