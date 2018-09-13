@@ -4,6 +4,7 @@ https://reactjs.org/docs/getting-started.html#try-react
 
 ## Tutorial
 show these links below to see codes:
+*not necessary to add style.css file in this time.
 
 ### 1 - Preparation
 
