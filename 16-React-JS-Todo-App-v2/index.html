@@ -54,6 +54,10 @@
             font-weight: normal;
             margin-left:5px;
         }
+
+        h1 > button{
+            float:right;
+        }
     </style>
 </head>
 <body>
@@ -67,20 +71,15 @@
             ];
 
             function TodoHeader(props){
-            /*2 - define TodoHeader component - with props as a parameter*/
                 const remaining = props.todos.filter(todo => {
-                /*3 - define 'remaining' to get a filtered todo
-                 - 未完了のtodoを取得する 'remaining' を定義*/
                     return !todo.isDone;
-                    /*return todo which isDone is false - todoのうち、isDoneがfalseのものだけを返す*/
                 });
                 
                 return(
                     <h1>
+                        <button>Purge</button>
                         My Todos
                         <span>({remaining.length}/{props.todos.length})</span>
-                        {/*4 - Add this : todos unfinished / all the quantity of todos
-                            data of todos unfinished is defined on (3)*/}
                     </h1>
                 );
             }
@@ -133,8 +132,6 @@
 
             function getUniqueId(){
                 return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
-                /*Suppose to be generate random numbered id if add 36digits number + datetime.
-                 - 適当に時刻と乱数を 36 進数にしてつなげてあげれば、それっぽい文字列でかぶらない id が生成されるはず*/
             }
 
             class App extends React.Component{
@@ -154,8 +151,6 @@
                     e.preventDefault();
                     
                     if(this.state.item.trim()===''){
-                    /*if item was empty when it trimmed, nothing will do then
-                     - addTodoでitemをtrimした時にそれが空文字だったら、それ以降の処理をしない*/
                         return;
                     }
 
@@ -170,7 +165,6 @@
                     this.setState({
                         todos: todos,
                         item: ''
-                        /*input will be blank when the task added - タスクが追加された時にformの中身が空になる*/
                     });
                 }
 
@@ -214,9 +208,7 @@
                     return(
                         <div className="container">
                             <TodoHeader
-                            /*1 - Add TodoHeader component*/
                                 todos={this.state.todos}
-                                /*pass as 'todos' to show the numbers of todos - Todoの数を表示したいので、todo属性でデータを渡す*/
                             />
                             <TodoList
                             todos = {this.state.todos}
