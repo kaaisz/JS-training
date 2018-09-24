@@ -20,15 +20,21 @@ jQuery has some of way to declare itself
         /*you can choose the way of writing code below
         1 - using Javascript
 
-            var elem = document.getElementById("hello");
-            elem.style.backgroundColor="#9f9";
+            var hello = document.getElementById("hello");
+            hello.style.backgroundColor="#9f9";
 
         2 - using jQuery
 
             (see the code below)
-            
+
         */
-        var elem = $("#hello");
-        elem.css("backgroundColor", "#9f9");
+        var hello = $("#hello");
+        hello.css("backgroundColor", "#9f9");
+
+        //as you did last paragraph, you can also choose class like using "getElementsByClassName"
+        var elem = $(".elems");
+        elem.each(function(){
+            $(this).css("backgroundColor", "#0bf")
+        })
     });
 })(jQuery);
