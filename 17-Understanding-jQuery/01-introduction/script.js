@@ -17,6 +17,18 @@ jQuery has some of way to declare itself
 (function($){
     //when entire page has loaded, excuse function
     $(document).ready(function(){
-        //add action here
+        /*you can choose the way of writing code below
+        1 - using Javascript
+
+            var elem = document.getElementById("hello");
+            elem.style.backgroundColor="#9f9";
+
+        2 - using jQuery
+
+            (see the code below)
+            
+        */
+        var elem = $("#hello");
+        elem.css("backgroundColor", "#9f9");
     });
 })(jQuery);
