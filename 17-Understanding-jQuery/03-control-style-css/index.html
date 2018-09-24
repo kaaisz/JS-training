@@ -11,7 +11,8 @@
             -webkit-display: flex;
             display: flex;
         }
-        #element1, #element2, #element3, #element4, #element5, #element6, #element7, #element8{
+        #element1, #element2, #element3, #element4, #element5, 
+        #element6, #element7, #element8, #element9, #element10{
             color:#fff;
             height:150px;
             width:200px;
@@ -27,6 +28,9 @@
         }
         #element6, #element7, #element8{
             background-color:#080;
+        }
+        #element9, #element10{
+            background:#000;
         }
     </style>
 </head>
@@ -89,6 +93,32 @@
         <div class="box element">
             <h4>After - #030</h4>
             <div id="element8">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
+    </div>
+    <h3>Pt.7 - Change some styles of CSS at once</h3>
+    <p>In jQuery, pass parameter to css by using associative array.</p>
+    <div class="box element__wrap">
+        <div class="box element">
+            <h4>Before</h4>
+            <dd>
+                height:150px;<br>
+                width:200px;<br>
+                background:#000;
+            </dd>
+            <div id="element9">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
+        <div class="box element">
+            <h4>After</h4>
+            <dd>
+                height:250px;<br>
+                width:400px;<br>
+                background:#666;
+            </dd>
+            <div id="element10">
                 <p>The element of the id name "element"</p>
             </div>
         </div>

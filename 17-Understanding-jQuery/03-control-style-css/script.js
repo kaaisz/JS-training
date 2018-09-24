@@ -21,5 +21,14 @@
 
         //Pt.6 - Understanding how to change background of element
         $("#element8").css("background-color", "#030");
+        
+        //Pt.7 - Understanding how to change some styles of CSS at once
+        //In jQuery, pass parameter to css by using associative array.
+        var params = {
+            "background-color":"#666",
+            "height":"250px",
+            "width":"400px"
+        }
+        $("#element10").css(params);
     });
 })(jQuery);
