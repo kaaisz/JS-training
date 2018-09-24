@@ -18,5 +18,8 @@
         //Pt.5 - Understanding how to get background of element
         var result6 = $("#element6").css("background-color");
         $("#result6").html(result6);
+
+        //Pt.6 - Understanding how to change background of element
+        $("#element8").css("background-color", "#030");
     });
 })(jQuery);

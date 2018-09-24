@@ -11,7 +11,7 @@
             -webkit-display: flex;
             display: flex;
         }
-        #element1, #element2, #element3, #element4, #element5, #element6{
+        #element1, #element2, #element3, #element4, #element5, #element6, #element7, #element8{
             color:#fff;
             height:150px;
             width:200px;
@@ -25,7 +25,7 @@
         #element3, #element4, #element5{
             background:#800;
         }
-        #element6{
+        #element6, #element7, #element8{
             background-color:#080;
         }
     </style>
@@ -77,6 +77,21 @@
     <div id="element6">
         <p>The element of the id name "element"</p>
         <p>Background color is <span id="result6"></span></p>
+    </div>
+    <h3>Pt.6 - Change background-color of element</h3>
+    <div class="box element__wrap">
+        <div class="box element">
+            <h4>Before - #080</h4>
+            <div id="element7">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
+        <div class="box element">
+            <h4>After - #030</h4>
+            <div id="element8">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
