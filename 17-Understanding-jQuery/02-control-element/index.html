@@ -5,20 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Understanding jQuery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
 </head>
-<body>
+<body style="font-family: sans-serif;">
     <h1>Understanding jQuery</h1>
-    <h2>Pt.1 - Add or edit attribute on id</h2>
+    <h2>Understanding how to edit / control element</h2>
+    <h3>Pt.1 - Add or edit attribute on id</h3>
     <p id="hello">Hello</p>
     <p id="world">World</p>
     <p>The first id name of p element is "<span id="result"></span>".</p>
     
-    <h2>Pt.2 - Add or edit attribute on div</h2>
+    <h3>Pt.2 - Add or edit attribute on div</h3>
     <div><p id="hello">Hello</p></div>
     <div><p id="world">World</p></div><span style="font-size:12px;">*▲ this is replaced by jQuery function</span>
     <div><p id="world">World</p></div>
-    
+
+    <h3>Pt.3 - How to count the number of elements</h3>
+    <p class="count">this is an element of class name "count"</p>
+    <p class="count">this is an element of class name "count"</p>
+    <p>this is NOT an element of class name "count"</p>
+    <p class="count">this is an element of class name "count"</p>
+    <p>The number of class name "count" is "<span id="result2"></span>".</p>
+
+    <h3></h3>
+
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
 </body>
