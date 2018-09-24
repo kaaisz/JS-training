@@ -18,5 +18,10 @@
         $("#btn-toggle").click(function(){
             $("#elem-toggle").toggle();
         });
+
+        //Pt.4 - fadeout specified elements
+        $("#btn-fadeOut").click(function(){
+            $("#elem-fadeOut").fadeOut();
+        });
     });
 })(jQuery);
