@@ -36,5 +36,11 @@ jQuery has some of way to declare itself
         elem.each(function(){
             $(this).css("backgroundColor", "#0bf")
         })
+
+        //also you can choose tag like using "getElementsByTagName"
+        var elem2 = $("span");
+        elem2.each(function(){
+            $(this).css("backgroundColor", "#F80")
+        });
     });
 })(jQuery);
