@@ -30,10 +30,14 @@
 
         //Pt.5
         //Add "on" class on p element to add background color
-        var contents2 = $("div:first").html();
         $("#hello-pt5-1").addClass("on");
         $("#hello-pt5-2").addClass("on");
         //Remove "on" class
         $("#hello-pt5-2").removeClass("on");
+
+        //Pt.6
+        //Add toggle class on p element to switch condition of background
+        $("#hello-pt6-1").toggleClass("on");//remove class "on"
+        $("#hello-pt6-2").toggleClass("on");//add class "on"
     });
 })(jQuery);
