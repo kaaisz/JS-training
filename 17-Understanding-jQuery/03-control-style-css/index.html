@@ -11,17 +11,18 @@
             -webkit-display: flex;
             display: flex;
         }
-        #element1, #element2, #element3{
+        #element1, #element2, #element3, #element4, #element5{
             color:#fff;
             height:150px;
             width:200px;
             margin-right:2rem;
+            padding-bottom:2rem;
         }
 
         #element1, #element2{
             background:#003;
         }
-        #element3, #element4{
+        #element3, #element4, #element5{
             background:#800;
         }
     </style>
@@ -53,6 +54,21 @@
     <div id="element3">
         <p>The element of the id name "element"</p>
         <p>The height of element is <span id="result3"></span></p>
+    </div>
+    <h3>Pt.4 - Change width of element</h3>
+    <div class="box element__wrap">
+        <div class="box element">
+            <h4>Before - width:200px;</h4>
+            <div id="element4">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
+        <div class="box element">
+            <h4>After - width:100px;</h4>
+            <div id="element5">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
