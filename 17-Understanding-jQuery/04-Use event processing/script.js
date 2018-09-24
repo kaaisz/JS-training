@@ -12,5 +12,11 @@
             //count numbers of time of it hovered
             $("#result-hover").html(parseInt($("#result-hover").html()) + 1);
         });
+
+        //Pt.3 - Start processing when mouse was on the element
+        $("#elem-mouseover").hover(function () {
+            //count numbers of time of when it mouseovered
+            $("#result-mouseover").html(parseInt($("#result-mouseover").html()) + 1);
+        });
     });
 })(jQuery);
