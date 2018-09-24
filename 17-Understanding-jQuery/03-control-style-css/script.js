@@ -28,7 +28,7 @@
             "background-color":"#666",
             "height":"250px",
             "width":"400px"
-        }
+        };
         $("#element10").css(params);
     });
 })(jQuery);
