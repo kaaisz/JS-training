@@ -7,5 +7,9 @@
 
         //Pt.2 - Understanding how to change the style of element
         $("#element2").height("100px");
+
+        //Pt.3 - Understanding how to Get width of element
+        var result3 = $("#element3").width();//define variable result as "height of #element"
+        $("#result3").html(result3);
     });
 })(jQuery);

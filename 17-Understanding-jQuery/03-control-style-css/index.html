@@ -11,12 +11,18 @@
             -webkit-display: flex;
             display: flex;
         }
-        #element1, #element2{
-            background:#003;
+        #element1, #element2, #element3{
             color:#fff;
             height:150px;
             width:200px;
             margin-right:2rem;
+        }
+
+        #element1, #element2{
+            background:#003;
+        }
+        #element3, #element4{
+            background:#800;
         }
     </style>
 </head>
@@ -26,7 +32,7 @@
     <h3>Pt.1 - Get height of element</h3>
     <div id="element1">
         <p>The element of the id name "element"</p>
-        <p>The height of element is <span class="result1"></span></p>
+        <p>The height of element is <span id="result1"></span></p>
     </div>
     <h3>Pt.2 - Change height of element</h3>
     <div class="box element__wrap">
@@ -42,6 +48,11 @@
                 <p>The element of the id name "element"</p>
             </div>
         </div>
+    </div>
+    <h3>Pt.3 - Get width of element</h3>
+    <div id="element3">
+        <p>The element of the id name "element"</p>
+        <p>The height of element is <span id="result3"></span></p>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
