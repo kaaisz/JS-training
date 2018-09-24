@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding jQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h4{background:#e9e;margin:0;}
+    </style>
+</head>
+<body style="font-family: sans-serif;">
+    <h1>Understanding jQuery</h1>
+    <h2>Understanding how to use event</h2>
+    <h3>Pt.1 - Start processing when it has been clicked</h3>
+    <input type="button" id="elem-click" value="This is the element of id name : elem-click">
+    <p>Number of times the event has been executed : <span id="result-click">0</span></p>
+
+    <h3>Pt.2 - Start processing when it has been hovered</h3>
+    <h4 id="elem-hover">This is the element of id name : elem-hover</h4>
+    <p>Number of times the event has been executed : <span id="result-hover">0</span></p>
+
+    <h3>Pt.3 - Start processing when it has been mouseovered</h3>
+    <h4 id="elem-mouseover">This is the element of id name : elem-mouseover</h4>
+    <p>Number of times the event has been executed : <span id="result-mouseover">0</span></p>
+
+    <h3>Pt.4 - Start processing when it has been focused</h3>
+    <p><input type="text" id="elem-focus">← This is the element of id name : elem-focus</h4>
+    <p>Number of times the event has been executed : <span id="result-focus">0</span></p>
+
+    <h3>Pt.5 - Start processing when it has been typed</h3>
+    <p><input type="text" id="elem-keypress">← This is the element of id name : elem-keypress</h4>
+    <p>Number of times the event has been executed : <span id="result-keypress">0</span></p>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
