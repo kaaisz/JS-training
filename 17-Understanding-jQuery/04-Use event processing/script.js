@@ -18,5 +18,11 @@
             //count numbers of time of when it mouseovered
             $("#result-mouseover").html(parseInt($("#result-mouseover").html()) + 1);
         });
+
+        //Pt.4 - Start processing when it has been focused
+        $("#elem-focus").focus(function () {
+            //count numbers of time of when it has been focused
+            $("#result-focus").html(parseInt($("#result-focus").html()) + 1);
+        });
     });
 })(jQuery);
