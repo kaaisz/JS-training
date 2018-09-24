@@ -25,7 +25,7 @@
         });
 
         //Pt.5 - fadein specified elements
-        $("#elem-fadeIn").hide();
+        $("#elem-fadeIn").hide();//hide firstly to show properly when it has been clicked
         $("#btn-fadeIn").click(function(){
             $("#elem-fadeIn").fadeIn();
         });
@@ -35,6 +35,10 @@
             $("#elem-slideUp").slideUp();
         });
 
-        
+        //Pt.7 - slide down specified elements
+        $("#elem-slideDown").hide();//hide firstly to show properly when it has been clicked
+        $("#btn-slideDown").click(function () {
+            $("#elem-slideDown").slideDown();
+        });
     });
 })(jQuery);
