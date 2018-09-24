@@ -6,11 +6,17 @@
     <title>Understanding jQuery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        #element1{
+        .box{box-sizing:border-box;}
+        .element__wrap{
+            -webkit-display: flex;
+            display: flex;
+        }
+        #element1, #element2{
             background:#003;
             color:#fff;
             height:150px;
             width:200px;
+            margin-right:2rem;
         }
     </style>
 </head>
@@ -20,7 +26,22 @@
     <h3>Pt.1 - Get height of element</h3>
     <div id="element1">
         <p>The element of the id name "element"</p>
-        <p>The height of element is <span id="result1"></span></p>
+        <p>The height of element is <span class="result1"></span></p>
+    </div>
+    <h3>Pt.2 - Change height of element</h3>
+    <div class="box element__wrap">
+        <div class="box element">
+            <h4>Before - height:150px;</h4>
+            <div id="element1">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
+        <div class="box element">
+            <h4>After - height:100px;</h4>
+            <div id="element2">
+                <p>The element of the id name "element"</p>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
