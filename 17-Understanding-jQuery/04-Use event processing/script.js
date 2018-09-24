@@ -24,5 +24,11 @@
             //count numbers of time of when it has been focused
             $("#result-focus").html(parseInt($("#result-focus").html()) + 1);
         });
+
+        //Pt.5 - Start processing when something has been typed
+        $("#elem-keypress").keypress(function () {
+            //count numbers of time of when it has been typed
+            $("#result-keypress").html(parseInt($("#result-keypress").html()) + 1);
+        });
     });
 })(jQuery);
