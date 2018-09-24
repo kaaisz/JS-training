@@ -23,5 +23,11 @@
         $("#btn-fadeOut").click(function(){
             $("#elem-fadeOut").fadeOut();
         });
+
+        //Pt.5 - fadein specified elements
+        $("#elem-fadeIn").hide();
+        $("#btn-fadeIn").click(function(){
+            $("#elem-fadeIn").fadeIn();
+        });
     });
 })(jQuery);
