@@ -15,5 +15,8 @@ jQuery has some of way to declare itself
 */
 
 (function($){
-    //write code here
+    //when entire page has loaded, excuse function
+    $(document).ready(function(){
+        //add action here
+    });
 })(jQuery);
