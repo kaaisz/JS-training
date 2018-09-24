@@ -1,8 +1,10 @@
 # Todo App by React.js (version 2)
+
 This is a super simple todo app developed by React.js, building by using HTML code from the official document page.
 https://reactjs.org/docs/getting-started.html#try-react
 
 ## Tutorial
+
 show these links below to see codes:
 *not necessary to add style.css file in this time.
 
@@ -26,8 +28,11 @@ show these links below to see codes:
 
 #### - checkTodo Component
 
-8. [Add checkTodo - Pt.1(preparation)](https://github.com/suzydp/JS-training/commit/b4af9cc3eac91633d4778e0b6ad2eb73e3771ba6)
-9.  [Add checkTodo - Pt.2(implementation)](https://github.com/suzydp/JS-training/commit/78db46b22b205206c0a5f8345174335e66688eeb)
+8. [Add checkTodo - Pt.1(preparation)]
+
+(https://github.com/suzydp/JS-training/commit/b4af9cc3eac91633d4778e0b6ad2eb73e3771ba6)
+
+9. [Add checkTodo - Pt.2(implementation)](https://github.com/suzydp/JS-training/commit/78db46b22b205206c0a5f8345174335e66688eeb)
 
 #### - Adjust CSS
 
