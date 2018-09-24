@@ -11,7 +11,7 @@
             -webkit-display: flex;
             display: flex;
         }
-        #element1, #element2, #element3, #element4, #element5{
+        #element1, #element2, #element3, #element4, #element5, #element6{
             color:#fff;
             height:150px;
             width:200px;
@@ -20,10 +20,13 @@
         }
 
         #element1, #element2{
-            background:#003;
+            background:#008;
         }
         #element3, #element4, #element5{
             background:#800;
+        }
+        #element6{
+            background-color:#080;
         }
     </style>
 </head>
@@ -53,7 +56,7 @@
     <h3>Pt.3 - Get width of element</h3>
     <div id="element3">
         <p>The element of the id name "element"</p>
-        <p>The height of element is <span id="result3"></span></p>
+        <p>The width of element is <span id="result3"></span></p>
     </div>
     <h3>Pt.4 - Change width of element</h3>
     <div class="box element__wrap">
@@ -69,6 +72,11 @@
                 <p>The element of the id name "element"</p>
             </div>
         </div>
+    </div>
+    <h3>Pt.5 - Get background-color of element</h3>
+    <div id="element6">
+        <p>The element of the id name "element"</p>
+        <p>Background color is <span id="result6"></span></p>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>

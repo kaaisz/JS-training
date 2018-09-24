@@ -14,5 +14,9 @@
 
         //Pt.4 - Understanding how to change the style of element
         $("#element5").width("100px");
+
+        //Pt.5 - Understanding how to get background of element
+        var result6 = $("#element6").css("background-color");
+        $("#result6").html(result6);
     });
 })(jQuery);
