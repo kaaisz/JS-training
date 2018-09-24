@@ -12,5 +12,11 @@
             //add action for when it has been clicked(when it has disappeared)
             $(".elem-hide").show();
         });
+
+        //Pt.3 - toggle - switch hide/show specified elements
+        $("#elem-toggle").hide();//hide firstly to show properly when it has been clicked
+        $("#btn-toggle").click(function(){
+            $("#elem-toggle").toggle();
+        });
     });
 })(jQuery);
