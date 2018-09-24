@@ -27,5 +27,13 @@
             $(this).html("Hello World");
             //only ".replace" will change from "This is p element" to "Hello World"
         });
+
+        //Pt.5
+        //Add "on" class on p element to add background color
+        var contents2 = $("div:first").html();
+        $("#hello-pt5-1").addClass("on");
+        $("#hello-pt5-2").addClass("on");
+        //Remove "on" class
+        $("#hello-pt5-2").removeClass("on");
     });
 })(jQuery);
