@@ -29,5 +29,12 @@
         $("#btn-fadeIn").click(function(){
             $("#elem-fadeIn").fadeIn();
         });
+
+        //Pt.6 - slide up specified elements
+        $("#btn-slideUp").click(function () {
+            $("#elem-slideUp").slideUp();
+        });
+
+        
     });
 })(jQuery);
