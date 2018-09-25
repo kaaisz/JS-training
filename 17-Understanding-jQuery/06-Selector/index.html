@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding Selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> 
+</head>
+<body>
+    <h1>Understanding jQuery</h1>
+    <h2>Introduction of event</h2>
+    <h3>Pt.1 - Get element by id / class / tag name</h3>
+    <p>To get element by id, see the code below</p>
+    <pre>
+        <code class="prettyprint">
+            //Pt1 - Get element by id
+            let $selectedId = [];
+            
+            //write selector here
+            $selectedId = $("#one");
+            
+            //Add css to element which matched as ".bingo-id"(color will change to red)
+            $selectedId.each(function(index){
+            $(this).addClass("bingo-id");
+            });
+            $(".count-id").text($selectedId.length);
+        </code>
+    </pre>
+    <p>To get element by class name, see the code below</p>
+    <pre>
+        <code class="prettyprint">
+            //Pt2 - Get element by class name
+            let $selectedClass = [];
+            
+            //write selector here
+            $selectedClass = $(".two");
+            
+            //Add css to element which matched as ".bingo-class"(color will change to pink)
+            $selectedClass.each(function (index) {
+            $(this).addClass("bingo-class");
+            });
+            $(".count-class").text($selectedClass.length);
+        </code>
+    </pre>
+    <p>To get element by tag name, see the code below</p>
+    <pre>
+        <code class="prettyprint">
+            //Pt3 - Get element by tag name
+            let $selectedTag = [];
+            
+            //write selector here
+            $selectedTag = $("a");
+            
+            //Add css to element which matched as ".bingo-class"(color will change to purple)
+            $selectedTag.each(function (index) {
+            $(this).addClass("bingo-tag");
+            });
+            $(".count-tag").text($selectedTag.length);
+        </code>
+    </pre>
+    <h4>Result</h4>
+    <p>Numbers of <strong>id</strong> which has been selected : <span class="count-id"></span></p>
+    <p>Numbers of <strong>class</strong> which has been selected : <span class="count-class"></span></p>
+    <p>Numbers of <strong>tag</strong> which has been selected : <span class="count-tag"></span></p>
+    <div>1. </div>
+    <div class="two">2. class=two</div>
+    <div id="one">3. id=one</div>
+    <div class="two">4. class=two</div>
+    <div><a href="#">5.</a></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
