@@ -13,17 +13,22 @@ pre{
     border-radius:5px;
 }
 
+p{
+    margin:5px 0;
+}
+
+li{
+    line-height: 1.5;
+    margin:.65rem;
+}
+
 div{
     padding:5px 20px;
-    background: #fef58B;
+    background: rgb(255, 245, 132);
 }
 
 div:not(:last-child){
     margin-bottom:5px;
-}
-
-p{
-    margin:5px 0;
 }
 
 label > span{
@@ -31,28 +36,44 @@ label > span{
 }
 
 .parent{
-    background: #fed28f;
+    background: #FDA550;
 }
 
 .bingo-id{
-    background:#ef476f;
+    background:#FC5A44;
     color:#fff;
-    outline:3px solid #ef476f;
+    outline:3px solid #FC5A44;
     transition:background-color, outline, color 0.5s;
 }
 
 .bingo-class{
-    background:#ff83a0;
+    background:#FCB4B8;
     color:#fff;
-    outline:3px solid #ff83a0;
+    outline:3px solid #FCB4B8;
     transition:background-color, outline, color 0.5s;
 }
 
 .bingo-tag{
-    background:#b941ff;
+    background:#01A661;
     color:#fff;
-    outline:3px solid #b941ff;
+    outline:3px solid #01A661;
     transition:background-color, outline, color 0.5s; 
+}
+
+.bingo-1stChildTag{
+    background: rgb(46, 196, 255);
+    outline:3px solid rgb(46, 196, 255);
+    transition:background-color, outline, color 0.5s;
+}
+.bingo-2ndChildTag{
+    background: rgb(12, 164, 224);
+    outline:3px solid rgb(12, 164, 224);
+    transition:background-color, outline, color 0.5s;
+}
+.bingo-lastChildTag{
+    background: rgb(0, 124, 173);
+    outline:3px solid rgb(0, 124, 173);
+    transition:background-color, outline, color 0.5s;
 }
 
 .container{
