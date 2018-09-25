@@ -6,6 +6,7 @@
     <title>Understanding jQuery</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css"/>
+    <link rel="shortcut icon" href="../../logo-black.png">
 </head>
 <body style="font-family: sans-serif;">
     <h1>Understanding jQuery</h1>
@@ -118,6 +119,30 @@
     <h4>Result :</h4>
     <button id="btn-active" class="btn">Click me</button>
     <ul id="log-active" class="log"></ul>
+
+    <h3>Pt.6 - Activate event on jQuery</h3>
+    <p>Use <code>.trigger</code> method to activate event on jQuery.</p>
+    <p>You can also activate to element which matched with selector. <br/>(*This is not allowed for all event.)</p>
+    <pre>
+        <code>
+            $(function () {
+                function logEvent (event){
+                    $("#log-active").prepend($("< li / >").text(event.type + ' has happened'));
+                }
+            $(document).on('click', '#btn-active:not(.active)', function(event){
+                logEvent(event);
+                $(event.target).addClass('active');
+            });
+            $(document).on('click', '#btn-active.active', function(event){
+                logEvent(event);
+                $(event.target).removeClass('active');
+                });
+            });
+        </code>
+    </pre>
+    <h4>Result :</h4>
+    <button id="btn-trigger" class="btn">Click me</button>
+    <ul id="log-trigger" class="log"></ul>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>

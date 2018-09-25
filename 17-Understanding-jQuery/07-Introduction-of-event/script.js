@@ -70,4 +70,14 @@
             $(event.target).removeClass('active');
         });
     });
+
+    //Pt.6 - Activate event on jQuery
+    $(function(){
+        $("#btn-trigger").on('click', function(){
+            alert("Button has been clicked!")
+        });
+        //This is the point for how to activate event on jQuery
+        //*This code will immediately load when this page has loaded.
+        $("#btn-trigger").trigger('click');
+    });
 })(jQuery);
