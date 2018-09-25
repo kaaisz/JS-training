@@ -8,11 +8,11 @@ body{
     padding:0;
 }
 
-#log{
+.log{
     padding:0;
 }
 
-#log li{
+.log li{
     list-style: none;
     padding: 5px 20px;
     background: #fef58b;
