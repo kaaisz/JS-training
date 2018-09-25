@@ -1,0 +1,16 @@
+@charset 'utf-8';
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:20px;
+    padding: 0;
+}
+
+pre{
+    font-family: 'Apple Braille', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background:#ddd;
+    border-radius:5px;
+}
+
