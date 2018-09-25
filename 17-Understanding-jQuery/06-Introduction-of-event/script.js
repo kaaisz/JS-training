@@ -21,7 +21,7 @@
 
     //Pt.2 - Understanding how to declare event
     function logEvent(log){
-        $("#log1").append($("<li />").text(log + "has happened."));
+        $("#log-event").append($("<li />").text(log + "has happened."));
     }
     
     $(function(){
@@ -32,5 +32,20 @@
     });
     $().ready(function(){
         logEvent('$().ready(function(){...})');
+    });
+
+    //Pt.3 - Understanding the structure of event
+    $(function(){
+        function log(text){
+            $("#log-structure").append("<li/>").text(text);
+        }
+        $("#btn-structure").on('click', function(event){
+            $("#log-structure").empty();
+            log('currentTarget = ' + event.currentTarget);//currentTarget - element which is clicked
+            log('target        = ' + event.target);//target - element which specified for event handler
+            log('pageX         = ' + event.pageX);//pageX - X coordinate which clicked of the entire page
+            log('pageY         = ' + event.pageY);//pageY - Y coordinate which clicked of the entire page
+            log('altKey        = ' + event.altKey);//altKey - for checking condition whether altkey has pushed when clicked button
+        });
     });
 })(jQuery);
