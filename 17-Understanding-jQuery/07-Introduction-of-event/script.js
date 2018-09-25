@@ -55,4 +55,19 @@
             alert("Button has been clicked!");
         });
     });
+
+    //Pt.5 - Set event to selector itself
+    $(function () {
+        function logEvent (event){
+            $("#log-active").prepend($("<li/>").text(event.type + ' has happened'));
+        }
+        $(document).on('click', '#btn-active:not(.active)', function(event){
+            logEvent(event);
+            $(event.target).addClass('active');
+        });
+        $(document).on('click', '#btn-active.active', function(event){
+            logEvent(event);
+            $(event.target).removeClass('active');
+        });
+    });
 })(jQuery);

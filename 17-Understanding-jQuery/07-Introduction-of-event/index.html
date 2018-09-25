@@ -11,24 +11,113 @@
     <h1>Understanding jQuery</h1>
     <h2>Introduction of event</h2>
     <h3>Pt.1 - Try event</h3>
+    <p>the event of jQuery should write code as below</p>
+    <dt>$(Selector).on(Event name, Event handler)</dt>
+        <dd>- Event name must specify event name what you want to use by string type.</dd>
+        <dd>- Event handler must have function you want to execute when the event has been activated.</dd>
+    <p>also, you can use like this when add ready event</p>
+        <dd>$(function () { ... });</dd>
+        <dd>$(document).ready(function () { ... });</dd>
+        <dd>$().ready(function () { ... });</dd>
+    </p>
+    <pre>
+        <code>
+            $(function(){
+                $("#btn").on('click', function(){
+                    alert("Event has happened!");
+                });
+            });
+        </code>
+    </pre>
+    <h4>Result : </h4>
     <p>Popup will be appear when the button has been clicked.</p>
     <button id="btn" class="btn">Click me</button>
 
     <h3>Pt.2 - Understanding How to declare event</h3>
     <p>There are 3 ways of how to write click event which happens when preparation for accessing DOM is ready.<br>
         these below will have same action.</p>
+    <pre>
+        <code>
+            function logEvent(log){
+                $("#log-event").append($(" < li />").text(log + "has happened."));
+            }
+            
+            $(function(){
+                logEvent("$(function(){...})");
+            });
+            $(document).ready(function(){
+                logEvent("$(document).ready(function(){...})");
+            });
+            $().ready(function(){
+                logEvent('$().ready(function(){...})');
+            });
+        </code>
+    </pre>
+    <h4>Result : </h4>
     <ul id="log-event" class="log"></ul>
 
     <h3>Pt.3 - Understanding the structure of event</h3>
     <p>Event handler has event object as a parameter which expressing information of event.</p>
+    <pre>
+        <code>
+            $(function(){
+                function log(text){
+                    $("#log-structure").append(" < li />").text(text);
+                }
+                $("#btn-structure").on('click', function(event){
+                    $("#log-structure").empty();
+                    log('currentTarget = ' + event.currentTarget);//currentTarget - element which is clicked
+                    log('target = ' + event.target);//target - element which specified for event handler
+                    log('pageX = ' + event.pageX);//pageX - X coordinate which clicked of the entire page
+                    log('pageY = ' + event.pageY);//pageY - Y coordinate which clicked of the entire page
+                    log('altKey = ' + event.altKey);//altKey - for checking condition whether altkey has pushed when clicked button
+                });
+            });
+        </code>
+    </pre>
+    <h4>Result : </h4>
     <p>Log of this clicked-button event will appear when button has been clicked.</p>
     <button id="btn-structure" class="btn">Click me</button>
     <ul id="log-structure" class="log"></ul>
 
     <h3>Pt.4 - Set event handler which activates only once</h3>
     <p>If you want to invoke event handler only once, we use <strong>.one</strong> method instead of .on() method.</p>
+    <pre>
+        <code>
+            $(function(){
+                $("#btn-one").one('click', function(){
+                    alert("Button has been clicked!");
+                });
+            });
+        </code>
+    </pre>
+    <h4>Result : </h4>
     <p>Popup will appear when button has been clicked.</p>
     <button id="btn-one" class="btn">Click me</button>
+
+    <h3>Pt.5 - Set event to selector</h3>
+    <p>Event of jQuery can set to not only element which get from selector but also selector itself.</p>
+    <p>If you'd like to do that, <code>$(document).on(*event name*, *selector name*, *event handler name*)</code>.</p>
+    <pre>
+        <code>
+            $(function () {
+                function logEvent (event){
+                    $("#log-active").prepend($("< li / >").text(event.type + ' has happened'));
+                }
+            $(document).on('click', '#btn-active:not(.active)', function(event){
+                logEvent(event);
+                $(event.target).addClass('active');
+            });
+            $(document).on('click', '#btn-active.active', function(event){
+                logEvent(event);
+                $(event.target).removeClass('active');
+                });
+            });
+        </code>
+    </pre>
+    <h4>Result :</h4>
+    <button id="btn-active" class="btn">Click me</button>
+    <ul id="log-active" class="log"></ul>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="script.js"></script>
