@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding jQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body style="font-family: sans-serif;">
+    <h1>Understanding jQuery</h1>
+    <h2>Introduction of event</h2>
+    <h3>Pt.1 - Try event</h3>
+    <p>Popup will be appear when the button has been clicked.</p>
+    <button id="btn" class="btn">Click me</button>
+
+    <h3>Pt.2 - Understanding How to declare event</h3>
+    <p>There are 3 ways of how to write click event which happens when preparation for accessing DOM is ready.<br>
+        these below will have same action.</p>
+    <ul id="log-event" class="log"></ul>
+
+    <h3>Pt.3 - Understanding the structure of event</h3>
+    <p>Event handler has event object as a parameter which expressing information of event.</p>
+    <p>Log of this clicked-button event will appear when button has been clicked.</p>
+    <button id="btn-structure" class="btn">Click me</button>
+    <ul id="log-structure" class="log"></ul>
+
+    <h3>Pt.4 - Set event handler which activates only once</h3>
+    <p>If you want to invoke event handler only once, we use <strong>.one</strong> method instead of .on() method.</p>
+    <p>Popup will appear when button has been clicked.</p>
+    <button id="btn-one" class="btn">Click me</button>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
