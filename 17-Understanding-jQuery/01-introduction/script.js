@@ -44,13 +44,13 @@ jQuery has some of way to declare itself
         });
 
         //So, if you want to choose first, last or some other numbers of child class of the tag, do like this
-        var elem3 = $("li:first");//equals li:first-child
+        var elem3 = $(".content__wrap li:first");//equals li:first-child
         elem3.css("backgroundColor", "#f0f");
 
-        var elem4 = $("li:eq(1)");//equals li:nth-child(2) *numbers of eq starts from "0(0, 1, 2)".
+        var elem4 = $(".content__wrap li:eq(1)");//equals li:nth-child(2) *numbers of eq starts from "0(0, 1, 2)".
         elem4.css("backgroundColor", "#e8e");
 
-        var elem5 = $("li:last");//equals li:last-child
+        var elem5 = $(".content__wrap li:last");//equals li:last-child
         elem5.css("backgroundColor", "#b5d");
     });
 })(jQuery);
