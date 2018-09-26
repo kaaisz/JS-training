@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding Selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+
+<body>
+    <h1>Understanding jQuery</h1>
+    <h2>Use multiple selector</h2>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <p>This is the common HTML + CSS.</p>
+    <div class="parent">
+        Parent
+        <div class="child">Child</div>
+        <div class="child">
+            Child
+            <div class="child">Child</div>
+        </div>
+        <div class="child">Child</div>
+    </div>
+    <div class="child">
+        Child
+        <div class="child">Child</div>
+    </div>
+    <div class="parent">Parent</div>
+
+    <h3>Pt.1 - Specify descendant element</h3>
+    <p>Combine each selector <strong>by using space</strong> to specify descendant element.</p>
+    <code>$selected = $(".parent .child");</code>
+    <p data-height="450" data-theme-id="0" data-slug-hash="qMebWz" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="qMebWz" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/qMebWz/">qMebWz</a> by
+        suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.2 - Specify child element</h3>
+    <p>Combine each selector by using <strong>></strong> to specify child element.</p>
+    <code>$selected = $(".parent > .child");</code>
+    <p data-height="450" data-theme-id="0" data-slug-hash="WgVrMy" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<Understanding jQuery>Specify child selector" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/WgVrMy/">&lt;Understanding
+            jQuery&rt;Specify child selector</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.3 - Specify adjacent element</h3>
+    <p>Combine each selector by using <strong>+</strong> to specify adjacent element.</p>
+    <code>$selected = $(".parent + .child");</code>
+    <p data-height="450" data-theme-id="0" data-slug-hash="EeqPLY" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<Understanding jQuery>Specify adjacent selector" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/EeqPLY/">&lt;Understanding
+            jQuery&rt;Specify adjacent selector</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+    
+    <h3>Pt.4 - Specify sibiling element</h3>
+    <p>Combine each selector by using <strong>~</strong> to specify sibiling element.</p>
+    <code>$selected = $(".parent ~ .child");</code>
+    <p data-height="450" data-theme-id="0" data-slug-hash="XPvXYv" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<Understanding jQuery>Specify sibiling selector" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/XPvXYv/">&lt;Understanding
+            jQuery&rt;Specify sibiling selector</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

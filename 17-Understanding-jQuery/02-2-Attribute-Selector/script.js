@@ -68,10 +68,8 @@
         ////Pt6 - Specify multiple attribute to get element
         let $selectedAttrKeyWord = [];
 
-        //write selector here
         $selectedAttrKeyWord = $("[data-city='Vancouver'][Province='BC']");
 
-        //Add css to element which matched as ".bingo-id"(color will change to red)
         $selectedAttrKeyWord.each(function (index) {
             $(this).addClass("bingo-SpecifiedAttrName");
         });
