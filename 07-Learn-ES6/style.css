@@ -1,0 +1,14 @@
+@charset 'UTF-8';
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family:sans-serif;
+}
+li{
+    line-height: 1.5;
+}
+pre{
+    background:#ededed;
+    border-radius:5px;
+}
