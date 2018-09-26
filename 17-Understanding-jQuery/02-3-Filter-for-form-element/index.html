@@ -11,12 +11,68 @@
 <body>
     <h1>Understanding jQuery</h1>
     <h2>Filters for form element</h2>
+    <h3>Pt.1 - Get all of form element</h3>
     <p>Use <strong>:input</strong> to get all of form element</p>
     <p>*You can target by using selector to get specific element. :input specifies ALL of form control.<br>
        *:input targets any elements (even hidden element)</p>
-    <p data-height="265" data-theme-id="0" data-slug-hash="WgVvMV" data-default-tab="html,result" data-user="suzydp"
+    <p data-height="300" data-theme-id="0" data-slug-hash="WgVvMV" data-default-tab="js,result" data-user="suzydp"
         data-pen-title="<understanding jQuery> Get all form element" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/WgVvMV/">&lt;understanding
             jQuery&rt; Get all form element</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.2 - Get specified form element</h3>
+    <p>Use <strong>:text, :checkbox, :radio, :button</strong> to get specified form element</p>
+    <p>*:text targets only < input type="text" ><br>
+        *Need to use Attribute selector if you'll use element added from HTML5</p>
+
+    <h4>:text</h4>
+    <p data-height="300" data-theme-id="0" data-slug-hash="jvgbYB" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<understanding jQuery> Get text element" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/jvgbYB/">&lt;understanding
+            jQuery&rt; Get text element</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h4>:checkbox</h4>
+    <p data-height="300" data-theme-id="0" data-slug-hash="VGovxJ" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<understanding jQuery> Get specified form element - text" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/VGovxJ/">&lt;understanding
+            jQuery&rt; Get specified form element - text</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on
+        <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h4>:radio</h4>
+    <p data-height="300" data-theme-id="0" data-slug-hash="rZXOrv" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<understanding jQuery> Get specified form element - radio" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/rZXOrv/">&lt;understanding
+            jQuery&rt; Get specified form element - radio</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>)
+        on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h4>:button</h4>
+    <p>*It targets not only < button >< /button > but also < input type="button" > </p>
+    <p data-height="300" data-theme-id="0" data-slug-hash="VGovVo" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<understanding jQuery> Get button element" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/VGovVo/">&lt;understanding
+            jQuery&rt; Get button element</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.3 - Get checked form element</h3>
+    <p>Use <strong>:checked</strong> to get checked form element</p>
+    <p>*:checked targets <strong>both checked and selected.</strong></p>
+    <p data-height="300" data-theme-id="0" data-slug-hash="qMeOvw" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="<understanding jQuery> Get checked element" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/qMeOvw/">&lt;understanding
+            jQuery&rt; Get checked element</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+    
+    <h3>Pt.4 - Get selected form element</h3>
+    <p>Use <strong>:selected</strong> to get selected form element</p>
+    <p>*:selected targets <strong>only selected elements(not including checked element).</strong></p>
+    <p data-height="300" data-theme-id="0" data-slug-hash="BOXoXp" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="BOXoXp" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/BOXoXp/">BOXoXp</a> by
+        suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.5 - Get disabled form element</h3>
+    <p>Use <strong>:disabled</strong> to get disabled form element</p>
+    <p data-height="300" data-theme-id="0" data-slug-hash="qMebWz" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="qMebWz" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/qMebWz/">qMebWz</a> by
+        suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
     <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
