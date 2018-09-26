@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    margin:20px;
+    padding:0;
+}
+
+pre{
+    background:#ddd;
+    border-radius:5px;
+}
+
+p{
+    margin:5px 0;
+}
+
+li{
+    line-height: 1.5;
+    margin:.65rem;
+}
+
+div{
+    padding:5px 20px;
+    background: rgb(255, 245, 132);
+}
+
+div:not(:last-child){
+    margin-bottom:5px;
+}
+
+label > span{
+    display: block;
+}
+
+.parent{
+    background: #FDA550;
+}
+
+.bingo-id, .bingo-AttrName, .bingo-SpecifiedAttrName{
+    background:#FC5A44;
+    color:#fff;
+    outline:3px solid #FC5A44;
+    transition:background-color, outline, color 0.5s;
+}
+
+.bingo-class{
+    background:#FCB4B8;
+    color:#fff;
+    outline:3px solid #FCB4B8;
+    transition:background-color, outline, color 0.5s;
+}
+
+.bingo-tag{
+    background:#01A661;
+    color:#fff;
+    outline:3px solid #01A661;
+    transition:background-color, outline, color 0.5s; 
+}
+
+.bingo-1stChildTag{
+    background: rgb(46, 196, 255);
+    outline:3px solid rgb(46, 196, 255);
+    transition:background-color, outline, color 0.5s;
+}
+.bingo-2ndChildTag{
+    background: rgb(12, 164, 224);
+    outline:3px solid rgb(12, 164, 224);
+    transition:background-color, outline, color 0.5s;
+}
+.bingo-lastChildTag{
+    background: rgb(0, 124, 173);
+    outline:3px solid rgb(0, 124, 173);
+    transition:background-color, outline, color 0.5s;
+}
+
+.container{
+    display: flex;
+    flex-wrap:nowrap;
+}
+
+.none{
+    display:none;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.opacity{
+    opacity:0;
+}
