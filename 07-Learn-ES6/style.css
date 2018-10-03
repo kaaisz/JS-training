@@ -4,11 +4,29 @@
 }
 body{
     font-family:sans-serif;
+    margin:0;
+    padding:0;
+}
+main{
+    margin:2rem;
 }
 li{
     line-height: 1.5;
 }
+a{
+    color:white;
+}
 pre{
     background:#ededed;
     border-radius:5px;
+}
+
+footer{
+    padding: 2rem 2rem 1rem;
+    background:#333;
+    color:#fff;
+}
+
+.copyright{
+    text-align: center;
 }
