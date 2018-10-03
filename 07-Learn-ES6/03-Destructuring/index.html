@@ -42,6 +42,24 @@
             60
         </code>
     </pre>
+    <h3>Pt.2 - If you'd like to use different name when destructuring</h3>
+    <p>take a data named "fuel" from car object, then assign it to myFuel variable.</p>
+    <div>
+        <p>When you'd like to assign to another variable in destructuring, set variable name to assign after <strong>:</strong> .</p>
+    </div>
+    <h4>input</h4>
+    <pre>
+        <code>
+            'use strict';
+            const car = {
+            fuel : 60
+            };
+
+            //assign to another variable by using ":".
+            const{fuel : myFuel} = car;
+            console.log("myFuel => ", myFuel)
+        </code>
+    </pre>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <script>
         ///Pt.1
@@ -54,6 +72,8 @@
         console.log(fuel);
 
         ///Pt.2
+        const{fuel : myFuel} = car;
+        console.log("myFuel => ", myFuel)
     </script>
 </body>
 </html>
