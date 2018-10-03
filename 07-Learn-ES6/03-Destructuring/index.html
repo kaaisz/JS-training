@@ -48,7 +48,7 @@
         <p>When you'd like to assign to another variable in destructuring, set variable name to assign after <strong>:</strong> .</p>
     </div>
     <h4>input</h4>
-    <pre>
+    <pre class="prettyprint">
         <code>
             'use strict';
             const car = {
@@ -58,6 +58,12 @@
             //assign to another variable by using ":".
             const{fuel : myFuel} = car;
             console.log("myFuel => ", myFuel)
+        </code>
+    </pre>
+    <h4>output</h4>
+    <pre class="prettyprint">
+        <code>
+            myFuel => 60
         </code>
     </pre>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
