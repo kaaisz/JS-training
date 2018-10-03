@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Destructuring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <h1>Understanding ES6</h1>
+    <h2>Destructuring</h2>
+    <h3>Pt.1 - Destructuring for Object</h3>
+    <p>Take out <code>fuel</code> from the object <code>car</code>, then assign to the <code>fuel</code> variable.</p>
+    <p>Surround with <strong>{ }</strong> when declare variables to use desructuring object.</p>
+    <div>
+        <p>take a data named "fuel" from "car", then assign it to fuel variable.</p>
+        <code>const { fuel } = car;</code>
+        
+        <p>same with below</p>
+        <code>const fuel = car.fuel;</code>
+        </code>
+    </div>
+    <h4>input</h4>
+    <pre class="code__structure prettyprint">
+        <code>
+            'use strict';
+            //object
+            const car = {
+                fuel : 60
+            };
+
+            //take a data named "fuel" from car object, then assign to variable.
+            const {fuel} = car;
+            console.log(fuel);//60
+        </code>
+    </pre>
+    <h4>output</h4>
+    <pre class="code__structure prettyprint">
+        <code>
+            60
+        </code>
+    </pre>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        ///Pt.1
+        'use strict';
+        const car = {
+            fuel : 60
+        };
+
+        const {fuel} = car;
+        console.log(fuel);
+
+        ///Pt.2
+    </script>
+</body>
+</html>
