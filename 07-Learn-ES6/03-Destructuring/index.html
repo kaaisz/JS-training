@@ -68,8 +68,36 @@
             </code>
         </pre>
         <h3>Pt.3 - Desructuring with Nested Object</h3>
+        <p>take a model which nested to car, then assign to variable which named "model".</p>
+        <div>
+            <p>If you'd like to destructuring from nested data, destructuring once more after <strong>:</strong> .</p>
+        </div>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                'use strict';
+
+                const nestedCar = {
+                    nestedFuel: 60,
+                    info: {
+                        model: "X-1976"//nested data
+                    }
+                };
+                //When destructing from "nested" data, destruct(add {}) once more after ":".
+                const { nestedFuel, info: {model} } = nestedCar;
+                console.log(nestedFuel);//60
+                console.log(model);//X-1976
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                60
+                X-1976
+            </code>
+        </pre>
     </main>
-    
+
     <footer>
         <ul>
             <li><a href="../01-Introduction/index.html">Introduction</a></li>
@@ -91,7 +119,18 @@
 
         ///Pt.2
         const{fuel : myFuel} = car;
-        console.log("myFuel => ", myFuel)
+        console.log("myFuel => ", myFuel);
+
+        ///Pt.3
+        const nestedCar = {
+            nestedFuel: 60,
+            info: {
+                model: "X-1976"
+            }
+        };
+        const {nestedFuel, info: {model}} = nestedCar;
+        console.log(nestedFuel);//60
+        console.log(model);//X-1976
     </script>
 </body>
 </html>
