@@ -125,6 +125,43 @@
             <code>
                 const model = car.model || "No name";</code>
         </pre>
+        <h3>Pt.5 - Destructuring in Array</h3>
+        <p>Let's pick up some data in the array from one by one, then take them into a variable.</p>
+        <p>To use formula of destructuring in array, Surround declaration of array by <strong>[]</strong>.<br>
+        <pre>
+            <code>
+                // discover each data one by one, then assign to variable
+                const [ one, two, three ] = array;
+                
+                // same as this one below
+                const one = array[0];
+                const two = array[1];
+                const three = array[2];</code>
+        </pre>
+        <p>You can also ignore some of the data in array like this.</p>
+        <pre>
+            <code>
+                const [one, ,three] = array;</code>
+        </pre>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                ///Pt.5
+                const array = [1, 2, 3];
+                
+                const [one, two, three] = array;
+                console.log(one);//1
+                console.log(two);//2
+                console.log(three);//3
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            1
+            2
+            3</code>
+        </pre>
     </main>
 
     <footer>
@@ -168,6 +205,14 @@
         const{defaultFuel, defaultModel = "No name"} = defaultCar;
         console.log(defaultFuel);//60
         console.log(defaultModel);//No name
+
+        ///Pt.5
+        const array = [1, 2, 3];
+
+        const [one, two, three] = array;
+        console.log(one);//1
+        console.log(two);//2
+        console.log(three);//3
     </script>
 </body>
 </html>
