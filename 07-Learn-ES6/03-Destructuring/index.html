@@ -146,7 +146,6 @@
         <h4>input</h4>
         <pre class="prettyprint">
             <code>
-                ///Pt.5
                 const array = [1, 2, 3];
                 
                 const [one, two, three] = array;
@@ -161,6 +160,36 @@
             1
             2
             3</code>
+        </pre>
+        <h3>Pt.6 - Set default variable in Array with destructuring</h3>
+        <p>Set default variable after <strong>=</strong> to apply default value in desructuring with array.</p>
+        <p>Default value is applied in a destructured assignment only if its value is <strong>undefined.</strong>, same with the case for object.</p>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                const arrayDefault = ["🍎", "🍊", "🍇"];
+                const [apple, orange, grape, peach = "🍑"] = arrayDefault;
+                console.log(apple);//🍎
+                console.log(orange);//🍊
+                console.log(grape);//🍇
+                console.log(peach);//🍑
+                console.log(arrayDefault[0]);//🍎
+                console.log(arrayDefault[1]);//🍊
+                console.log(arrayDefault[2]);//🍇
+                console.log(arrayDefault[3]);//undefined
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                🍎
+                🍊
+                🍇
+                🍑
+                🍎
+                🍊
+                🍇
+                undefined</code>
         </pre>
     </main>
 
@@ -213,6 +242,18 @@
         console.log(one);//1
         console.log(two);//2
         console.log(three);//3
+
+        ///Pt.6
+        const arrayDefault = ["🍎", "🍊", "🍇"];
+        const [apple, orange, grape, peach = "🍑"] = arrayDefault;
+        console.log(apple);//🍎
+        console.log(orange);//🍊
+        console.log(grape);//🍇
+        console.log(peach);//🍑
+        console.log(arrayDefault[0]);//🍎
+        console.log(arrayDefault[1]);//🍊
+        console.log(arrayDefault[2]);//🍇
+        console.log(arrayDefault[3]);//undefined
     </script>
 </body>
 </html>
