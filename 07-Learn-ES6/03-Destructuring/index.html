@@ -38,7 +38,7 @@
             </code>
         </pre>
         <h4>output</h4>
-        <pre class="code__structure prettyprint">
+        <pre class="code__structure">
             <code>
                 60
             </code>
@@ -62,7 +62,7 @@
             </code>
         </pre>
         <h4>output</h4>
-        <pre class="prettyprint">
+        <pre>
             <code>
                 myFuel => 60
             </code>
@@ -93,8 +93,37 @@
         <pre>
             <code>
                 60
-                X-1976
+                X-1976</code>
+        </pre>
+        <h3>Pt.4 - Set default variable in destructuring of object</h3>
+        <p>Set default variable after <strong>=</strong> to apply default value in destructuring of object.</p>
+        <p>Default value is applied in a destructured assignment only if its value is <strong>undefined.</strong><br>
+        Destructuring is much more secure than previous version thanks to be able to apply default value without any matter.</p>
+        <p style="font-size:12px;">*We used to use || to set default value before, however it was having some kind of risk like program can be identify
+        any falsy value as a default value, even if it was false, null or 0.</p>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const defaultCar = {
+                defaultFuel:60
+            };
+
+            const{defaultFuel, defaultModel = "No name"} = defaultCar;
+
+            console.log(defaultFuel);//60
+            console.log(defaultModel);//No name</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                60
+                No name
             </code>
+        </pre>
+        <h4>bad eg)</h4>
+        <pre>
+            <code>
+                const model = car.model || "No name";</code>
         </pre>
     </main>
 
@@ -131,6 +160,14 @@
         const {nestedFuel, info: {model}} = nestedCar;
         console.log(nestedFuel);//60
         console.log(model);//X-1976
+
+        ///Pt.4
+        const defaultCar = {
+            defaultFuel:60
+        };
+        const{defaultFuel, defaultModel = "No name"} = defaultCar;
+        console.log(defaultFuel);//60
+        console.log(defaultModel);//No name
     </script>
 </body>
 </html>
