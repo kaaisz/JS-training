@@ -12,7 +12,7 @@
     <main>
         <h1>Understanding ES6</h1>
         <h2>How to Pass Value in ES6</h2>
-        <h3>Pt.1 - Destructuring for Object</h3>
+        <h3>Pt.1 - Default parameter</h3>
         <p>Like as same with when you do destructuring, set default variable which you will assign, after <strong>=</strong> to apply default variable.</p>
         <p>*Default value is applied only in case of the value was <code>undefined</code>, same as destructuring.</p>
         <div>
@@ -40,7 +40,7 @@
                 Hello, Vancouver
                 Hello, Everyone</code>
         </pre>
-        <h3>Rest parameter</h3>
+        <h3>Pt.2 - Rest parameter</h3>
         <p>To being able to handle to variable length values, add <strong>...</strong> at the top of parameter.<br>
         *Rest parameter can apply to the last parameter.</p>
         <p>Make parameter y to being able to handle to variable length values.</p>
@@ -72,6 +72,61 @@
                 <code>arguments</code> is not an array.</li>
             </ul>
         </div>
+        <h3>Understanding Spread Operator</h3>
+        <p>By using Spread operator, array will expand in the place where the operator placed.<br>
+        To use this operator, put <strong>...</strong> at first in an array.</p>
+        <div>
+            <p>Structure of Spread operator is the same with the structure below.</p>
+            <pre class="prettyprint">
+                <code>
+                //example of Spread operator
+                array1.push(...array2);
+                
+                //same with this structure
+                array2.forEach((i) => {
+                    array1.push(i);
+                });
+                </code>
+            </pre>
+            <p>This is a kind of strong operator for making code shorten in case of invoking array, declare array and destructuring.<br>
+            Spread operator doesn't waste our time at all!<br>
+            This is the way of how to use Spread operator.</p>
+            <pre class="prettyprint">
+                <code>
+                const array = [3, 4, 5];
+
+                //invoke array
+                array2.push(...array);
+
+                //declare array
+                const newArray = [1, 2 ...array];//[1, 2, 3, 4, 5]
+
+                //destructuring
+                [x, ...y] = array;
+                console.log(x);//3
+                console.log(y);//4, 5
+                </code>
+            </pre>
+        </div>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const array1 = [1, 2, 3, 4];
+            const array2 = [10, 11, 12, 13, 14];
+            
+            //if without spread operator, you have to adjust array
+            // array1.push(array2);//[1, 2, 3, 4, [10, 11, 12, 13, 14]];
+            
+            ///apply Spread operator
+            array1.push(...array2);
+            console.log(JSON.stringify(array1));//[1, 2, 3, 4, 10, 11, 12, 13, 14]
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            [1, 2, 3, 4, 10, 11, 12, 13, 14]</code>
+        </pre>
     </main>
     <footer>
         <ul>
@@ -107,6 +162,17 @@
     add(1, 2, 3);//1 + 2 + 3 = 6
     add(1, 2, 3, 4, 5, 6);//1 + 2 + 3 + 4 + 5 + 6 = 21
     add(1, 2, 3, 4);//1 + 2 + 3 + 4 = 10
+
+    ///Pt.3
+    const array1 = [1, 2, 3, 4];
+    const array2 = [10, 11, 12, 13, 14];
+
+    // array1.push(array2);//[1, 2, 3, 4, [10, 11, 12, 13, 14]];
+    console.log(JSON.stringify(array1));
+
+    ///apply Spread operator
+    array1.push(...array2);
+    console.log(JSON.stringify(array1));//[1, 2, 3, 4, 10, 11, 12, 13, 14]
     </script>
 </body>
 </html>
