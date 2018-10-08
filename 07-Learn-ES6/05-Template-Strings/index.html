@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How to Pass Value in ES6 - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+
+<body>
+    <main>
+        <h1>Understanding ES6</h1>
+        <h2>Template strings</h2>
+        <h3>Pt.1 - How to show template literals</h3>
+        <p>Template literals defines by using backquote(<strong>` `</strong>)</p>
+        <span class="caption">*To escape backquote, use backslash(<strong>\</strong>) just before.</span>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const message = `Hello`;
+            const messageEsc = `Hello\`World`;
+            console.log(message);
+            console.log(messageEsc);</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            Hello
+            Hello`World</code>
+        </pre>
+        <p>Even in multi lines, it's so easy to define by using only backquote.<br>
+        previous was like this code below.</p>
+        <pre>
+            <code>const multiLines = Hello, From\nVancity to\nAll over the world.</code>
+        </pre>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const multiLines = `Hello, From
+            Vancity to
+            All over the world.`;
+            console.log(multilines);</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            Hello, From
+            Vancity to
+            All over the world.</code>
+        </pre>
+        <span class="caption">*this can be include tab or space when you want to see result on console.</span>
+        <h3>Pt.2 - Use placeholder in template strings</h3>
+        <p>In template stirngs, you can use <strong>${}</strong>as a placeholder.<br>
+        ${} works only inside of backquotes.</p>
+        <span class="caption">*placeholder means for the things temporarily keep the place to set proper data later.<br>
+            placeholder can not only refer variable, but also use JavaScript Syntax includes executing function.</span>
+        <pre class="prettyprint">
+            <code>
+            //formula
+            `1 + 1 is ${1 + 1}`
+            //execute function
+            `Hello ${getFullName(name)}`
+            </code>
+        </pre>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const name = "Everybody";
+            const messagePlaceholder = `Hello, ${name}`
+            console.log(messagePlaceholder);//Hello everybody
+            console.log(`1 + 1 is ${1 + 1}`);</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            Hello everybody
+            1 + 1 is 2
+            </code>
+        </pre>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../01-Introduction/index.html">Introduction</a></li>
+            <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+            <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
+            <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
+            <li>Template strings</li>
+            <li><a href="../06-Expanded-Object-Properties/index.html">Expanded Object Properties</a></li>
+            <li><a href="../07-Classes/index.html">Classes</a></li>
+            <li><a href="../08-Promises/index.html">Promises</a></li>
+            <li><a href="../09-New-APIs/index.html">New API</a></li>
+        </ul>
+        <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        'use strict';
+        ///Pt.1
+        const message = `Hello`;
+        const messageEsc = `Hello\`World`;
+        console.log(message);//Hello
+        console.log(messageEsc);//Hello`World
+
+        ///multi lines
+        const multilines = `Hello, From
+Vancity to 
+All over the world.`;
+        console.log(multilines);
+
+        ///Pt.2
+        const name = "Everybody";
+        const messagePlaceholder = `Hello, ${name}`
+        console.log(messagePlaceholder);//Hello everybody
+        console.log(`1 + 1 is ${1 + 1}`);//1 + 1 is 2
+    </script>
+</body>
+</html>
