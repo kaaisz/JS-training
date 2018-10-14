@@ -12,17 +12,144 @@
     <main>
         <h1>Understanding ES6</h1>
         <h2>Classes</h2>
-        <h3></h3>
-        <h4>input</h4>
-        <pre class="prettyprint">
-            <code>
-            </code>
-        </pre>
-        <h4>output</h4>
-        <pre>
-            <code>
-            </code>
-        </pre>
+        <div class="section">
+            <h3>Pt.1 - How to declare class and generate instance of it (on ES6)</h3>
+            <p>Declare class by using <code class="code__span">class</code> to define it.</p>
+            <p>Class of ES6 is a <strong>Syntax Sugar(糖衣構文)</strong> based on prototype inheritance.<br>
+            it's not relating inheritance like Java program but it can be shorten long, complecated syntax to short, easy syntax.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                //declare class
+                class Car{
+                    run(){
+                        console.log("not implemented yet.")
+                    }
+                }
+
+                //generate instance of class which declared
+                const car = new Car();
+
+                //output data
+                car.run()//not implemented yet
+                //car.run equals to const car(= class Car)'s run
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                not implemented yet.</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.2 - Constructor</h3>
+            <p>To define constructor, define <code class="code__span">constructor()</code> as a function</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                class CarForConstructor{
+                    constructor(fuel){//define function named constructor
+                        this.fuel = fuel;//you can refer
+                    }
+                
+                    run(distance){
+                        //variable which set on "this context" by constructor can refer by using this
+                        this.fuel = this.fuel - distance;
+                        console.log(`Distance car ran : ${distance}, Amount of fuel now : ${this.fuel}`);
+                        //△output which supposed to show
+                    }
+                }
+                
+                //generate instance with parameter - generate car which has 60 gallons of fuel
+                const carForConstructor = new CarForConstructor(60);
+                carForConstructor.run(5);//CarForConstructor's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                Distance car ran : 5, Amount of fuel remains : 55</code>
+            </pre>
+            <p>constructor function can define only once in a class.<br>if it'll have been made syntax error if make it twice or more.</p>
+        </div>
+        <div class="section">
+            <h3>Pt.3 - Inheritance</h3>
+            <p>Use <code class="code__span">extends</code> to inherit classes.</p>
+            <p>This is how to define subclass<code class="code__span">Truck</code> inherited by <code class="code__span">Car</code>.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                    //*details of this class is the same with Pt2*//
+                    class CarForConstructor{
+                        constructor(fuel){
+                            this.fuel = fuel;
+                        }
+                        run(distance){
+                            this.fuel = this.fuel - distance;
+                            console.log(`Distance car ran : ${distance}, Amount of fuel now : ${this.fuel}`);
+                        }
+                    }
+                    //*details of this class is the same with Pt2*//
+                    
+
+                    class Truck extends CarForConstructor{
+                        //this is a subclass of Car. Nothing is inside so far.
+                    }
+
+                    //generate instance(car) which has 60 gallons of fuels
+                    const carForInheritance = new CarForConstructor(60);
+
+                    //generate instance(truck) which has 100 gallons of fuels
+                    const truckForInheritance = new Truck(100);
+                    carForInheritance.run(5);//CarForinheritance's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+                    truckForInheritance.run(10);//TruckForInheritance's run(distance = 10) -> distance : 10, fuel : 100-10 = 90
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                    Distance car ran : 5, Amount of fuel remains : 55
+                    Distance car ran : 10, Amount of fuel remains : 90</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.4 - Overwrite function after inherited class</h3>
+            <p>You can Rewrite function of parent class by defining function which name is the same with parent class name.<p>
+            <p>This is how to rewrite <code class="code__span">run</code> function on subclass <code class="code__span">Truck</code>.</p>
+            <pre class="prettyprint">
+                <code>
+                //*details of this class is the same with Pt2*//
+                class CarForConstructor{
+                    constructor(fuel){
+                        this.fuel = fuel;
+                    }
+                    run(distance){
+                        this.fuel = this.fuel - distance;
+                        console.log(`Distance car ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+                    }
+                }
+
+
+                class TruckForOverwrite extends CarForConstructor{
+                    run(distance){
+                        //Because truck consumes fuels more than normal cars, define as consume fuels 2 times of cars.
+                        this.fuel = this.fuel - distance * 2;//normal car is "this.fuel = this.fuel - distance;"
+                        console.log(`Distance truck ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+                    }
+                }
+                const carForOverWrite = new CarForConstructor(60);
+                const truckForOverwrite = new TruckForOverwrite(60);
+                
+                carForOverWrite.run(5);//CarForinheritance's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+                truckForOverwrite.run(5);//TruckForInheritance's run(distance = 5) -> distance : 5, fuel : 60-10 = 50</code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                Distance car ran : 5, Amount of fuel remains : 55
+                Distance truck ran : 5, Amount of fuel remains : 50</code>
+            </pre>
+        </div>
     </main>
     <footer>
         <ul>
@@ -41,7 +168,66 @@
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
     <script>
         'use strict';
-        ///Pt.1
+        /////Pt.1
+        //declare class
+        class Car {
+            run() {
+                console.log("not implemented yet.")
+            }
+        }
+
+        //generate instance of class which declared
+        const car = new Car();
+
+        //output data
+        car.run()//not implemented yet
+        //car.run equals to const car(= class Car)'s run
+
+
+        /////Pt.2
+        class CarForConstructor{
+            constructor(fuel){//define function named constructor
+                this.fuel = fuel;//you can refer 
+            }
+
+            run(distance){
+                //variable which set on "this context" by constructor can refer by using this
+                this.fuel = this.fuel - distance;
+                console.log(`Distance car ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+                //△output which supposed to show
+            }
+        }
+
+        //generate instance with parameter - generate car which has 60 gallons of fuel
+        const carForConstructor = new CarForConstructor(60);
+        carForConstructor.run(5);//CarForConstructor's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+
+
+        /////Pt.3 - based on Pt.2
+        class Truck extends CarForConstructor{
+            //this is a subclass of Car. Nothing is inside so far.
+        }
+        //generate instance(car) which has 60 gallons of fuels
+        const carForInheritance = new CarForConstructor(60);
+        //generate instance(truck) which has 100 gallons of fuels
+        const truckForInheritance = new Truck(100);
+        carForInheritance.run(5);//CarForinheritance's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+        truckForInheritance.run(10);//TruckForInheritance's run(distance = 10) -> distance : 10, fuel : 100-10 = 90
+
+
+        /////Pt.4 - Based on Pt.2 & 3
+        class TruckForOverwrite extends CarForConstructor{
+            run(distance){
+                //Because truck consumes fuels more than normal cars, define as consume fuels 2 times of cars.
+                this.fuel = this.fuel - distance * 2;//normal car is "this.fuel = this.fuel - distance;"
+                console.log(`Distance truck ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+            }
+        }
+        const carForOverWrite = new CarForConstructor(60);
+        const truckForOverwrite = new TruckForOverwrite(60);
+
+        carForOverWrite.run(5);//CarForinheritance's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+        truckForOverwrite.run(5);//TruckForInheritance's run(distance = 5) -> distance : 5, fuel : 60-10 = 50
     </script>
 </body>
 </html>
