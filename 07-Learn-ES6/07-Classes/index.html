@@ -150,6 +150,79 @@
                 Distance truck ran : 5, Amount of fuel remains : 50</code>
             </pre>
         </div>
+        <div class="section">
+            <h3>Pt.5 - Super</h3>
+            <p>split to value on superclass is better to prevent duplication of logic by overwriting functions.<br>
+            use <code class="code__span">super</code> to invoke functions of parent class.</p>
+            <p>this is the difference between how to invoke constructor and function of superClass below:</p>
+            <pre class="prettyprint">
+                <code>
+                //invoke constructor
+                super():
+                //invoke function of parent class
+                super.run(60);</code>
+            </pre>
+            </p>
+            <p>Try passing the variable named <code class="code__span">economyRate</code> to constructor by defining on parent class.<br>
+            This would be work by setting variable and passing to parent class by subclass' constructor.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                class CarSuper{
+                    constructor(fuel, economyRate = 1){
+                        this.fuel = fuel;
+                        this.economyRate = economyRate;
+                    }
+                    run(distance){
+                        this.fuel = this.fuel - distance * this.economyRate;
+                        console.log(`Distance truck ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+                    }
+                }
+                class TruckSuper extends CarSuper{
+                    constructor(fuel){
+                        const economyRate = 2;
+                        super(fuel, economyRate);
+                    }
+                }
+
+                //generate instance for car and truck which has 60 gallons of fuel
+                const carSuper = new CarSuper(60);
+                const truckSuper = new TruckSuper(60);
+                //showing output
+                carSuper.run(5);//CarSuper's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+                truckSuper.run(5)//TruckSuper's run(distance = 5) -> distance : 5, fuel : 60-10 = 50
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                Distance truck ran : 5, Amount of fuel remains : 55
+                Distance truck ran : 5, Amount of fuel remains : 50</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.6 - Static method</h3>
+            <p>To defining static method, you can use <code class="code__span">static</code>.</p>
+            <p>Static method can invoke without generating instance, though you can't invoke if once you generate instance.<br>
+            Static method is often used when define utility function.</p>
+            <h4>input</h4>
+            <pre>
+                <code>
+                class CarStatic{
+                    //static can use without generating instance
+                    static model(){
+                        return "X-1976";
+                    }
+                }
+                console.log(CarStatic.model());//X-1976
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                X-1976</code>
+            </pre>
+        </div>
     </main>
     <footer>
         <ul>
@@ -228,6 +301,41 @@
 
         carForOverWrite.run(5);//CarForinheritance's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
         truckForOverwrite.run(5);//TruckForInheritance's run(distance = 5) -> distance : 5, fuel : 60-10 = 50
+
+
+        /////Pt.5
+        class CarSuper{
+            constructor(fuel, economyRate = 1){
+                this.fuel = fuel;
+                this.economyRate = economyRate;
+            }
+            run(distance){
+                this.fuel = this.fuel - distance * this.economyRate;
+                console.log(`Distance truck ran : ${distance}, Amount of fuel remains : ${this.fuel}`);
+            }
+        }
+        class TruckSuper extends CarSuper{
+            constructor(fuel){
+                const economyRate = 2;
+                super(fuel, economyRate);
+            }
+        }
+        //generate instance for car and truck which has 60 gallons of fuel
+        const carSuper = new CarSuper(60);
+        const truckSuper = new TruckSuper(60);
+        //showing output
+        carSuper.run(5);//CarSuper's run(distance = 5) -> distance : 5, fuel : 60-5 = 55
+        truckSuper.run(5)//TruckSuper's run(distance = 5) -> distance : 5, fuel : 60-10 = 50
+
+
+        /////Pt.6
+        class CarStatic{
+            //static can use without generating instance
+            static model(){
+                return "X-1976";
+            }
+        }
+        console.log(CarStatic.model());//X-1976
     </script>
 </body>
 </html>
