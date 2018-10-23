@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS-training</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        .list{
+            line-height: 1.6;
+        }
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            padding:0 3px;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            position: relative;
+            -webkit-transition-property: color;
+            transition-property: color;
+            -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+        }
+        a:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -webkit-transition-duration: .2s;
+            transition-duration: .2s;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+        a:hover, a:focus, a:active {
+            color: white;
+        }
+        a:hover:before, a:focus:before, a:active:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>JS Training</h1>
+        <div>
+            <p>This website is for listing what I learned until now especially about Javascript.</p>
+        </div>
+        <div>
+            <h2>Contents</h2>
+            <p>*contents are randomly ordered.</p>
+            <ul class="list">
+                <li><a href="01-JS-Omikuji/index.html">Omikuji</a></li>
+                <li><a href="02-5sec-Counter/index.html">5Sec counter</a></li>
+                <li><a href="03-Split-bill-Calc/index.html">Split bill Calc(割り勘電卓)</a></li>
+                <li><a href="04-Smooth-scroll-from-vanilla/index.html">Smooth scroll from vanilla</a></li>
+                <li><a href="05-Hamburger-menu-from-vanilla/index.html">Hamburger menu from vanilla</a></li>
+                <li><a href="07-Learn-ES6/01-introduction/index.html">Learn ES6</a></li>
+                <li><a href="08-Simple-Password-Generator/index.html">Simple Password Generator</a></li>
+                <li><a href="09-Character-Counter/index.html">Character counter</a></li>
+                <li><a href="10-Stopwatch/index.html">Stopwatch</a></li>
+                <li><a href="11-Tab-Menu-by-JS/index.html">Tab menu by JS</a></li>
+                <li><a href="12-Modal-Window-by-JS/index.html">Modal window by JS</a></li>
+                <li><a href="13-Simple-Popup-Window/index.html">Simple popup window</a></li>
+                <li><a href="14-Higher-or-Lower-game/index.html">Higher or lower Game</a></li>
+                <li><a href="16-React-JS-Todo-App-v2/index.html">Todo App by React.js</a></li>
+                <li><a href="17-Understanding-jQuery/01-1-intorduction/index.html">Learn jQuery</a></li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

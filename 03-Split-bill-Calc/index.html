@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Automatic Divided Calculator</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Split bill calc</h1>
+      <div class="description">割り勘(Wari-kan : Split bill) is the most popular way in Japan when we pay the bill for some drinks in a restaurant or bar. But
+      calculating this is so complicated sometimes depends on payment.<br>
+      this might be an instant solution for the situation if we faced in such cases.</div>
+      <div class="input-area">
+        <input type="text" id="price" placeholder="price">
+        <input type="text" id="num" placeholder="numbers">
+        <select id="unit">
+          <option value="10">10yen</option>
+          <option value="100" selected>100yen</option>
+          <option value="1000">1000yen</option>
+        </select>
+        <!-- add class "disabled" to protect from pushing btn if input was blank -->
+        <button id="button" class="disabled">Calc</button>
+      </div>
+      <div class="result-area">
+        <p id="result">Result will appear here</p>
+        <div id="reset" class="hidden">Calc again?</div>
+      </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
