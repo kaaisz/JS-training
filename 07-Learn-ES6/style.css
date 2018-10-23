@@ -12,6 +12,9 @@ body{
 main{
     margin:2rem;
 }
+ul,ol{
+    padding: 1em;
+}
 li{
     line-height: 1.5;
 }
