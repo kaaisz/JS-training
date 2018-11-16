@@ -19,56 +19,54 @@
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">See the Reference</a>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">See also</a>
             <p>
-                Promise is an action for setting temporarily the results on behalf of values what do not know at the moment.<br>
-                By using Promise to return value what will set in the future, It can return result of unsynchronized
-                process as same as synchlonized process.<br>
-                The Promise object returns the eventual completion (or failure) of an asynchronous(a-synchronous : 非同期) operation, and its resulting
-            value.<br>
-                Promise object can define following syntax.
+                Promiseとは、現時点で結果がわからない値に対して結果を仮決定させる処理のこと。<br>
+                未来のある時点で確定するであろう値をPromiseを使って仮で決定しておくことで、PHPなどの同期処理と同じように特定のコードが処理されるのを待ってから待ってから次のコードを実行できる。(*node.jsの処理は基本的に非同期処理のためPromiseを使わないとコールバックを延々と繰り返すことになる)<br>
+                Promiseはオブジェクトであり、次の構文で定義可能。
                 <pre class="prettyprint">
                 <code>
                 new Promise((resolve, reject)=>{
-                    //Processing of something
+                    //処理
                 });</code>
                 </pre>
             </p>
-            <p>Functions which is passed to promise has 2 function as parameters.
-                <ul>
-                    <li><strong>resolve</strong> - pass to next value when process has successfully finished.</li>
-                    <li><strong>reject</strong>- pass to next value when process has failed.</li>
+            <p>Promiseに使用されるコールバック関数は２つの関数をparameterにとる。
+                    <li><strong>resolve</strong> - 処理が<strong>成功したら</strong>結果を次の関数に渡す</li>
+                    <li><strong>reject</strong>- 処理が<strong>失敗したら</strong>結果を次の関数に渡す</li>
                 </ul>
-                <span class="caption">*resolve and reject are the basic example. normally we use these one.</span>
+                <span class="caption">*実際にはresolveとrejectは慣例として使われるもの</span>
             </p>
-            <p>When resolve or reject which inside of Promise has been invoked, then or catch handler will have been invoked depends on that results.
+            <p>Promise内の resolve や reject が実際に呼び出されると、結果に応じ then や catch ハンドラが呼び出される
                 <pre class="prettyprint">
                 <code>
                 const promise = new Promise((resolve, reject) => {
-                    //Processing of something
+                    //処理
                 });
                 Promise
                     .then((result) => {
-                        //Process in case of successfully finished
+                        //成功した時の処理
                     })
                     .catch((result) => {
-                        //Process in case of failed
+                        //失敗した時の処理
                     })
                 </code>
                 </pre>
             </p>
-            <p>Promise is an action for setting temporarily the results on behalf of values what do not know at the moment.<br>
-            By using Promise to return value what will set in the future, It can return result of unsynchronized
-            process as same as synchlonized process.</p>
-            <p>To understand Promises, Understanding each state and condition is important.<br>
-            Promise has following condition.</p>
+            <p>Promiseが持つ以下の状態と、その状態がどう変化するかについて理解することがPromiseの要。</p>
             <ul>
-                <li><strong>pending</strong> - Initial state with unclear result</li>
-                <li><strong>fulfilled</strong> - Means processing has successfully finished</li>
-                <li><strong>rejected</strong> - Means processing has failed</li>
+                <li><strong><code>pending</code></strong> - 初期状態。結果は未確定</li>
+                <li><strong><code>fulfilled</code></strong> - 処理が成功した状態(Promiseは値を1つ持つ)</li>
+                <li><strong><code>rejected</code></strong> - 処理が失敗した状態</li>
             </ul>
-            <p>The state of when defined Promise object itself is <code>Pending</code>.<br>
-                State will determine when resolve or reject has been invoked. then state will become either <code>fullfiled</code> or <code>rejected</code>.</p>
-            <p>Promise which state has determined will call then or catch depends on the results of state to next value.<br>
-            this is the structure of the instruction.</p>
+            <ol>
+                <li>Promiseは定義される時は<code>Pending</code>。</li>
+                <li>resolve や reject が呼び出された時に、
+                    <ul>
+                        <li>処理が成功していたら、<code>fulfilled</code></li>
+                        <li>処理が失敗していたら、<code>rejected</code></li>
+                    </ul>
+                </li>
+                <li>状態が確定したPromiseは結果に応じては結果に応じて<code>then</code>や<code>catch</code>ハンドラを呼び出す</li>
+            </ol>
             <img src="https://codeprep-prod.s3-ap-northeast-1.amazonaws.com/books/shliumlE87CNvzTuxH1lJlJmbGv-Cjo-Jm1A-623eRQ/es6/a4dc3fb8d19e8e90d3f14ea8be71418c027b0601/assets/images/images.001.png"/>
             <h4>input</h4>
             <pre class="prettyprint">
@@ -76,24 +74,16 @@
                 const promise = new Promise((resolve, reject) =>{
                     /* 
                         △
-                        resolve - pass result to next function in case of processing has successed
-                        reject - pass result to next function in case of processing has unsuccessed
-                        *normally resolve and reject is used as a name of function
+                        resolve - 処理が成功したら結果を次の関数に渡す
+                        reject - 処理が失敗したら結果を次の関数に渡す
                     */
-                //return result after 100ms
+                //処理が成功した場合の結果を100ms後に返す
                 setTimeout(() => {
                     resolve("one")
                     }, 100);
                 });
                 promise.then(data => {
-                    /*
-                        When resolve or reject has been invoked,
-                        then or catch handler will be invoke depends on the results.
-                
-                        then - if the result was success
-                        catch - if the result was unsuccess
-                    */
-                    //receive the data which passed by value on resolve
+                    //resolveの処理が実際に成功するとthenにそのデータが渡される
                     console.log(data);//one(in resolve)
                 });
                 </code>
@@ -105,10 +95,10 @@
             </pre>
         </div>
         <div class="section">
-            <h3>Chain for each process of Promise</h3>
-            <p>The process of Promise can chain by using <code>then</code>.<br>
-            when callback functions of <code>then</code> returns value, it will be wrapped by <strong>Promise.resolve</strong>. 
-            So that we can get the value by using <code>then</code>.</p>
+            <h3>Promiseのチェイン(連結)</h3>
+            <p>Promiseの処理は<code>then</code>を使用して連結させることができます。<br>
+                <code>then</code>のコールバック関数が値を返した場合、<strong>Promise.resolve</strong>で
+                ラップされるので、次の<code>then</code>でその値を取得することができます。</p>
             <h4>Input</h4>
             <pre class="prettyprint">
                 <code>
@@ -142,41 +132,12 @@
                 🍔🍟🥤 that's it!</code>
             </pre>
         </div>
+
         <div class="section">
-            <h3>Promise.resolve</h3>
-            <p>By using <code>Promise.resolve()</code>, we can create a Promise which state is fixed without generating a Promise object.</p>
-            <p>same with this below:</p>
-            <pre>
-                <code>
-                    const promise = new Promise((resolve, reject) => {
-                        resolve("You got a API response!");
-                    });</code>
-            </pre>
-            <h4>Input</h4>
-            <pre class="prettyprint">
-                <code>
-                const lunch = new Promise ((resolve, reject) => {
-                    setTimeout(()=>{
-                        resolve("🍔")
-                    }, 100)
-                });
-                lunch
-                    .then(data => {
-                    console.log(data);
-                
-                    // in case of paprameter in then() erase the value,
-                    // then() can be chain, thanks to it'll be automatically
-                    // wrapped by Promise.resolve.
-                    return `${data}🍟`;
-                })
-                .then(data => {
-                    console.log(data);
-                    return`${data}🥤`;
-                })
-                .then(data => {
-                    console.log(`${data} that's it!`)
-                })</code>
-            </pre>
+            <h3>参考資料</h3>
+            <ul>
+                <li><a href="https://techracho.bpsinc.jp/hachi8833/2017_11_16/48168">JavaScript: 5分でわかるPromiseの基礎（翻訳）</a></li>
+            </ul>
         </div>
     </main>
     <footer>
@@ -196,6 +157,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../../main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
     <script>
         'use strict';
         ///Pt.1
@@ -221,29 +184,6 @@
             //receive the data which passed by value on resolve
             console.log(data);//one(in resolve)
         });
-
-        ////Pt.2
-        const lunch = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve("🍔")
-            }, 100)
-        });
-        lunch
-            .then(data => {
-                console.log(data);
-
-                // in case of paprameter in then() erase the value,
-                // then() can be chain, thanks to it'll be automatically
-                // wrapped by Promise.resolve.
-                return `${data}🍟`;
-            })
-            .then(data => {
-                console.log(data);
-                return `${data}🥤`;
-            })
-            .then(data => {
-                console.log(`${data} that's it!`)
-            })
     </script>
 </body>
 </html>
