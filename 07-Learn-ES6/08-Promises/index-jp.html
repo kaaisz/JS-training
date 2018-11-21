@@ -70,28 +70,28 @@
             <img src="https://codeprep-prod.s3-ap-northeast-1.amazonaws.com/books/shliumlE87CNvzTuxH1lJlJmbGv-Cjo-Jm1A-623eRQ/es6/a4dc3fb8d19e8e90d3f14ea8be71418c027b0601/assets/images/images.001.png"/>
             <h4>input</h4>
             <pre class="prettyprint">
-                <code>
-                const promise = new Promise((resolve, reject) =>{
-                    /* 
-                        △
-                        resolve - 処理が成功したら結果を次の関数に渡す
-                        reject - 処理が失敗したら結果を次の関数に渡す
-                    */
-                //処理が成功した場合の結果を100ms後に返す
-                setTimeout(() => {
-                    resolve("one")
-                    }, 100);
-                });
-                promise.then(data => {
-                    //resolveの処理が実際に成功するとthenにそのデータが渡される
-                    console.log(data);//one(in resolve)
-                });
-                </code>
+            <code>
+            const promise = new Promise((resolve, reject) =>{
+                /* 
+                    △
+                    resolve - 処理が成功したら結果を次の関数に渡す
+                    reject - 処理が失敗したら結果を次の関数に渡す
+                */
+            //処理が成功した場合の結果を100ms後に返す
+            setTimeout(() => {
+                resolve("one")
+                }, 100);
+            });
+            promise.then(data => {
+                //resolveの処理が実際に成功するとthenにそのデータが渡される
+                console.log(data);//one(in resolve)
+            });
+            </code>
             </pre>
             <h4>output</h4>
             <pre>
-                <code>
-                one</code>
+            <code>
+            one</code>
             </pre>
         </div>
         <div class="section">
@@ -101,36 +101,60 @@
                 ラップされるので、次の<code>then</code>でその値を取得することができます。</p>
             <h4>Input</h4>
             <pre class="prettyprint">
-                <code>
-                const lunch = new Promise ((resolve, reject) => {
-                    setTimeout(()=>{
-                        resolve("🍔")
-                    }, 100)
-                });
-                lunch
-                    .then(data => {
-                    console.log(data);
-                
-                    // in case of paprameter in then() erase the value,
-                    // then() can be chain, thanks to it'll be automatically
-                    // wrapped by Promise.resolve.
-                    return `${data}🍟`;
-                })
+            <code>
+            const lunch = new Promise ((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve("🍔")
+                }, 100)
+            });
+            lunch
                 .then(data => {
-                    console.log(data);
-                    return`${data}🥤`;
-                })
-                .then(data => {
-                    console.log(`${data} that's it!`)
-                })</code>
+                console.log(data);
+            
+                // in case of paprameter in then() erase the value,
+                // then() can be chain, thanks to it'll be automatically
+                // wrapped by Promise.resolve.
+                return `${data}🍟`;
+            })
+            .then(data => {
+                console.log(data);
+                return`${data}🥤`;
+            })
+            .then(data => {
+                console.log(`${data} that's it!`)
+            })</code>
             </pre>
             <h4>Output</h4>
             <pre>
-                <code>
-                🍔
-                🍔🍟
-                🍔🍟🥤 that's it!</code>
+            <code>
+            🍔
+            🍔🍟
+            🍔🍟🥤 that's it!</code>
             </pre>
+        </div>
+        <div class="section">
+            <h3>Promise.resolve</h3>
+            <p><code>Promise.resolve()</code>を使うことで、Promiseオブジェクトを生成しなくても、状態が確定したPromiseを作成することができます。</p>
+            <pre>
+            <code>
+            // これと同じ
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
+            </pre>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseResolve = Promise.resolve("You got an API response!");
+            
+            promiseResolve
+            .then(data => {
+            console.log("success!", data)
+            });
+            </code></pre>
+            <h4>output</h4>
+            <pre></pre>
         </div>
 
         <div class="section">
@@ -184,6 +208,14 @@
             //receive the data which passed by value on resolve
             console.log(data);//one(in resolve)
         });
+
+        ///Pt.3
+        const promiseResolve = Promise.resolve("You got an API response!");
+
+        promiseResolve
+            .then(data => {
+                console.log("success!", data)
+            });
     </script>
 </body>
 </html>
