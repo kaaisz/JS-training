@@ -247,30 +247,53 @@
             </pre>
         </div>
         <div class="section">
-        <h3>Pt.6 - Promise.all</h3>
-        <p><code>Promise.all</code>is used for invoke <code>then</code> handler right after processing of Promise has been finished.</p>
-        <h4>input</h4>
-        <pre class="prettyprint">
-        <code>
-        const rabbit = new Promise((resolve, reject) => {
+            <h3>Pt.6 - Promise.all</h3>
+            <p><code>Promise.all</code>is used for invoke <code>then</code> handler right after processing of Promise has been finished.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const rabbit = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("time of rabbit : 100ms"), 100);
+            });
+            const turtle = new Promise((resolve, reject) => {
+                setTimeout(() => resolve("time of turtle : 300ms"), 300);
+            });
+            
+            Promise.all([rabbit, turtle]).then(result => {
+                const[timeForRabbit, timeForTurtle] = result;
+                console.log(timeForRabbit);
+                console.log(timeForTurtle);
+            });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            time of rabbit : 100ms
+            time of turtle : 300ms</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.7 - Promise.race</h3>
+            <p>If you want to invoke then handler when multiple processing of Promise has finished earliest among, use <code>Promise.race</code>.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const rabbit = new Promise((resolve, reject) => {
             setTimeout(() => resolve("time of rabbit : 100ms"), 100);
-        });
-        const turtle = new Promise((resolve, reject) => {
+            });
+            const turtle = new Promise((resolve, reject) => {
             setTimeout(() => resolve("time of turtle : 300ms"), 300);
-        });
-        
-        Promise.all([rabbit, turtle]).then(result => {
-            const[timeForRabbit, timeForTurtle] = result;
-            console.log(timeForRabbit);
-            console.log(timeForTurtle);
-        });
-        </code></pre>
-        <h4>output</h4>
-        <pre>
-        <code>
-        time of rabbit : 100ms
-        time of turtle : 300ms</code>
-        </pre>
+            });
+
+            Promise.race([rabbit, turtle]).then(result => {
+            console.log(result);///time of rabbit : 100ms
+            });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            time of rabbit : 100ms</code>
+            </pre>
         </div>
     </main>
     <footer>
@@ -362,6 +385,8 @@
                 .catch(error => {
                     console.log("failed at last!", error);
                 });
+
+            ////Pt6, 7
             const rabbit = new Promise((resolve, reject) => {
                 setTimeout(() => resolve("time of rabbit : 100ms"), 100);
             });
@@ -373,6 +398,10 @@
                 const[timeForRabbit, timeForTurtle] = result;
                 console.log(timeForRabbit);
                 console.log(timeForTurtle);
+            });
+
+            Promise.race([rabbit, turtle]).then(result => {
+                console.log(result);///time of rabbit : 100ms
             });
     </script>
 </body>
