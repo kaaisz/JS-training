@@ -56,3 +56,7 @@ body{
     user-select:none;/*to be not active even if user click here many times*/
     margin:0 auto;
 }
+
+.unmatched{
+    opacity:.6;
+}
