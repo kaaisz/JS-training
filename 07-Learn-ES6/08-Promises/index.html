@@ -15,7 +15,7 @@
         <h1>Understanding ES6</h1>
         <h2>Promises</h2>
         <div class="section">
-            <h3>Fundamentals of Promise</h3>
+            <h3>Pt.1 - Fundamentals of Promise</h3>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">See the Reference</a>
             <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">See also</a>
             <p>
@@ -72,110 +72,178 @@
             <img src="https://codeprep-prod.s3-ap-northeast-1.amazonaws.com/books/shliumlE87CNvzTuxH1lJlJmbGv-Cjo-Jm1A-623eRQ/es6/a4dc3fb8d19e8e90d3f14ea8be71418c027b0601/assets/images/images.001.png"/>
             <h4>input</h4>
             <pre class="prettyprint">
-                <code>
-                const promise = new Promise((resolve, reject) =>{
-                    /* 
-                        △
-                        resolve - pass result to next function in case of processing has successed
-                        reject - pass result to next function in case of processing has unsuccessed
-                        *normally resolve and reject is used as a name of function
-                    */
-                //return result after 100ms
-                setTimeout(() => {
-                    resolve("one")
-                    }, 100);
-                });
-                promise.then(data => {
-                    /*
-                        When resolve or reject has been invoked,
-                        then or catch handler will be invoke depends on the results.
-                
-                        then - if the result was success
-                        catch - if the result was unsuccess
-                    */
-                    //receive the data which passed by value on resolve
-                    console.log(data);//one(in resolve)
-                });
-                </code>
+            <code>
+            const promise = new Promise((resolve, reject) =>{
+                /* 
+                    △
+                    resolve - pass result to next function in case of processing has successed
+                    reject - pass result to next function in case of processing has unsuccessed
+                    *normally resolve and reject is used as a name of function
+                */
+            //return result after 100ms
+            setTimeout(() => {
+                resolve("one")
+                }, 100);
+            });
+            promise.then(data => {
+                /*
+                    When resolve or reject has been invoked,
+                    then or catch handler will be invoke depends on the results.
+            
+                    then - if the result was success
+                    catch - if the result was unsuccess
+                */
+                //receive the data which passed by value on resolve
+                console.log(data);//one(in resolve)
+            });
+            </code>
             </pre>
             <h4>output</h4>
             <pre>
-                <code>
-                one</code>
+            <code>
+            one</code>
             </pre>
         </div>
         <div class="section">
-            <h3>Chain for each process of Promise</h3>
+            <h3>Pt.2 - Chain for each process of Promise</h3>
             <p>The process of Promise can chain by using <code>then</code>.<br>
             when callback functions of <code>then</code> returns value, it will be wrapped by <strong>Promise.resolve</strong>. 
             So that we can get the value by using <code>then</code>.</p>
             <h4>Input</h4>
             <pre class="prettyprint">
-                <code>
-                const lunch = new Promise ((resolve, reject) => {
-                    setTimeout(()=>{
-                        resolve("🍔")
-                    }, 100)
-                });
-                lunch
-                    .then(data => {
-                    console.log(data);
-                
-                    // in case of paprameter in then() erase the value,
-                    // then() can be chain, thanks to it'll be automatically
-                    // wrapped by Promise.resolve.
-                    return `${data}🍟`;
-                })
+            <code>
+            const lunch = new Promise ((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve("🍔")
+                }, 100)
+            });
+            lunch
                 .then(data => {
-                    console.log(data);
-                    return`${data}🥤`;
-                })
-                .then(data => {
-                    console.log(`${data} that's it!`)
-                })</code>
+                console.log(data);
+            
+                // in case of paprameter in then() erase the value,
+                // then() can be chain, thanks to it'll be automatically
+                // wrapped by Promise.resolve.
+                return `${data}🍟`;
+            })
+            .then(data => {
+                console.log(data);
+                return`${data}🥤`;
+            })
+            .then(data => {
+                console.log(`${data} that's it!`)
+            })</code>
             </pre>
             <h4>Output</h4>
             <pre>
-                <code>
-                🍔
-                🍔🍟
-                🍔🍟🥤 that's it!</code>
+            <code>
+            🍔
+            🍔🍟
+            🍔🍟🥤 that's it!</code>
+            </pre>
+        </div>
+        
+        <div class="section">
+            <h3>Pt.3 - Promise.resolve</h3>
+            <p>By using <code>Promise.resolve()</code>, You can create Promise which state has already fixed even if without creating
+            Promise object.</p>
+            <pre>
+            <code>
+            // same with this below
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
+            </pre>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseResolve = Promise.resolve("You got an API response!");
+            
+            promiseResolve
+            .then(data => {
+            console.log("success!", data)
+            });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            success! You got an API response!</code>
             </pre>
         </div>
         <div class="section">
-            <h3>Promise.resolve</h3>
-            <p>By using <code>Promise.resolve()</code>, we can create a Promise which state is fixed without generating a Promise object.</p>
-            <p>same with this below:</p>
+            <h3>Pt.4 - Promise.reject</h3>
+            <p>By using <code>Promise.reject()</code>, You can create Promise which state has already fixed even if without creating Promise object.<br>(Failed case of Promise.resolve)</p>
             <pre>
-                <code>
-                    const promise = new Promise((resolve, reject) => {
-                        resolve("You got a API response!");
-                    });</code>
+            <code>
+            // same with this below
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
             </pre>
-            <h4>Input</h4>
+            <h4>input</h4>
             <pre class="prettyprint">
-                <code>
-                const lunch = new Promise ((resolve, reject) => {
-                    setTimeout(()=>{
-                        resolve("🍔")
-                    }, 100)
+            <code>
+            const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+            promiseReject
+                .then(data => {
+                console.log("Sucess!", data);
+                })
+            .catch(error => {
+                console.log("failed!", error);
                 });
-                lunch
-                    .then(data => {
-                    console.log(data);
-                
-                    // in case of paprameter in then() erase the value,
-                    // then() can be chain, thanks to it'll be automatically
-                    // wrapped by Promise.resolve.
-                    return `${data}🍟`;
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            failed! java.lang.NullPointerException</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.5 - Difference between Promise.catch and onRejected Handler</h3>
+            <p>You can set 2 functions for the callback functions of <code>then</code>.</p>
+            <ul>
+                <li>onFullFilled - Success Processing</li>
+                <li>onRejected - Failed Processing</li>
+            </ul>
+            <p><code>catch</code>and<code>onRejected</code>handler is the function which activates if Promise has rejected.</p>
+            <p><code>onRejected</code>handler is the process for Promise which placed right before the processing. Because it can't process out of case for <code>onFullFilled</code> process if it happens, processing of promise in out of case might be impossible.<br>
+            <code>catch</code>is the processing for then. So it's suggested that adding <code>catch</code> handler in last part of processing for Promise, as global handler for out of case.</p>
+            <pre>
+            <code>
+            promise
+            .then()
+            .then()
+            .then()
+            .catch(
+            // write processing for common out of cases
+            );</code>
+            </pre>
+            <span class="caption"></span>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+            promiseReject
+                .then(data => {
+                console.log("Sucess!", data);
+                }, error => {
+                console.log("failed!", error);
+                return error;
                 })
                 .then(data => {
-                    console.log(data);
-                    return`${data}🥤`;
+                console.log("successed at last!", data);
                 })
-                .then(data => {
-                    console.log(`${data} that's it!`)
-                })</code>
+                .catch(error => {
+                console.log("failed at last!", error);
+                });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            failed! java.lang.NullPointerException
+            successed at last! java.lang.NullPointerException</code>
             </pre>
         </div>
     </main>
@@ -185,7 +253,7 @@
             <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
             <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
             <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
-            <li><a href="../05-05-Template-Strings/index.html">Template Strings</a></li>
+            <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
             <li><a href="../06-Expanded-Object-Properties/index.html">Expanded Object Properties</a></li>
             <li><a href="../07-Classes/index.html">Classes</a></li>
             <li>Promises</li>
@@ -243,7 +311,33 @@
             })
             .then(data => {
                 console.log(`${data} that's it!`)
-            })
+            });
+
+        ///Pt.3
+            const promiseResolve = Promise.resolve("You got an API response!");
+
+            promiseResolve
+                .then(data => {
+                    console.log("success!", data)
+                });
+
+            ///Pt.4, 5
+            const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+            promiseReject
+                .then(data => {
+                    console.log("Sucess!", data);
+                }, error => {
+                    console.log("failed!", error);
+                    return error;
+                })
+                .then(data => {
+                    console.log("successed at last!", data);
+                })
+                .catch(error => {
+                    console.log("failed at last!", error);
+                });
+            
+        
     </script>
 </body>
 </html>

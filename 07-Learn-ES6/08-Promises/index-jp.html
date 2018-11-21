@@ -27,7 +27,7 @@
                 new Promise((resolve, reject)=>{
                     //処理
                 });</code>
-                </pre>
+                </pre>  
             </p>
             <p>Promiseに使用されるコールバック関数は２つの関数をparameterにとる。
                     <li><strong>resolve</strong> - 処理が<strong>成功したら</strong>結果を次の関数に渡す</li>
@@ -154,8 +154,41 @@
             });
             </code></pre>
             <h4>output</h4>
-            <pre></pre>
+            <pre>
+            <code>
+                success! You got an API response!</code>
+            </pre>
         </div>
+        <div class="section">
+            <h3>Promise.reject</h3>
+            <p><code>Promise.reject()</code>を使うことで、Promiseオブジェクトを生成しなくても、状態が確定したPromiseを作成することができます。<br>(Promise.resolveの失敗パターン)</p>
+            <pre>
+            <code>
+            // これと同じ
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
+            </pre>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+            promiseReject
+                .then(data => {
+                console.log("Sucess!", data);
+                })
+            .catch(error => {
+                console.log("failed!", error);
+                });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            failed! java.lang.NullPointerException</code>
+            </pre>
+        </div>
+        
 
         <div class="section">
             <h3>参考資料</h3>
@@ -170,7 +203,7 @@
             <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
             <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
             <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
-            <li><a href="../05-05-Template-Strings/index.html">Template Strings</a></li>
+            <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
             <li><a href="../06-Expanded-Object-Properties/index.html">Expanded Object Properties</a></li>
             <li><a href="../07-Classes/index.html">Classes</a></li>
             <li>Promises</li>
@@ -215,6 +248,16 @@
         promiseResolve
             .then(data => {
                 console.log("success!", data)
+            });
+
+        ///Pt.4
+        const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+        promiseReject
+            .then(data => {
+                console.log("Sucess!", data);
+            })
+            .catch(error => {
+                console.log("failed!", error);
             });
     </script>
 </body>
