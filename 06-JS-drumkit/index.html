@@ -9,7 +9,7 @@
 
 
   <div class="keys">
-    <div data-key="65" class="key"><!--Keyに対応するものの音をaudioから出す-->
+    <div data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
     </div>
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <audio data-key="65" src="sounds/clap.wav"></audio><!--kbdのKeyに対応するものの音を出す-->
+  <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
   <audio data-key="68" src="sounds/kick.wav"></audio>
   <audio data-key="70" src="sounds/openhat.wav"></audio>
@@ -58,14 +58,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  function removeTransition(e){
-    if(e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
 
-  function playsound(e){
-    const audio = document.querySelector(`audio`)
-  }
 </script>
 
 
