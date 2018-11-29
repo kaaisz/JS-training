@@ -15,7 +15,7 @@
     </ul>
   </form>
 <script>
-  // JSON file for store the datas
+  // JSON file for store the datas - incl. city, population, lat, long, rank, growth as an object
   const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
   //add empty array for put cities
@@ -29,6 +29,22 @@
   fetch(endpoint)
     .then(blob => blob.json())
     .then(data => cities.push(...data))//spread into a function is a function for spread into push of ES6
+
+  function findMatches(wordToMatch, cities){
+    return cities.filter(place => {
+      //here we need to figure out if the city or state matches what was searched
+      // here we wanna add parameter as the words which user input like below:
+      // return place.city.match(/wordToMatch/i)
+
+      // add regular expression as a constructor
+      const regex = new RegExp(wordToMatch, 'gi'); 
+      // we need to match either city or state
+      return place.city.match(regex) || place.state.match();
+    });
+  }
+
+  //here execute function (parameter as a keyword for searching)
+  // findMatches('Bos')
 </script>
   </body>
 </html>
