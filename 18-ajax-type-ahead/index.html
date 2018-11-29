@@ -39,9 +39,22 @@
       // add regular expression as a constructor
       const regex = new RegExp(wordToMatch, 'gi'); 
       // we need to match either city or state
-      return place.city.match(regex) || place.state.match();
+      return place.city.match(regex) || place.state.match()
     });
   }
+
+  //Add function for display result which matched the word
+  function displayMatches(){
+     console.log(this.value);
+  }
+
+  //pick the element to add event with function for matching
+  const searchInput = document.querySelector('.search');
+  // show the results nearby the words you typed
+  const suggestions = document.querySelector('.suggestions');
+
+  searchInput.addEventListener('change', displayMatches);
+  //it shows user input on console
 
   //here execute function (parameter as a keyword for searching)
   // findMatches('Bos')
