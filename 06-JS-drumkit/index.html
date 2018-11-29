@@ -60,7 +60,9 @@
 <script>
   // listening for keyup event
   window.addEventListener('keydown', function(event){
-    console.log(event);//KeyboardEvent object will appear
+    // DEBUG : to show keycode correspond to button
+    // console.log(event.keyCode);
+    const audio = document.querySelector('audio[data-key=65]');//use data attribute instead of addclass for each elem
   });
 </script>
 
