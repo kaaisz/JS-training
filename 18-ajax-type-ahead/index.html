@@ -53,8 +53,11 @@
   // show the results nearby the words you typed
   const suggestions = document.querySelector('.suggestions');
 
+  // it shows user input on console
   searchInput.addEventListener('change', displayMatches);
-  //it shows user input on console
+  // keyupされるたびにconsoleにログが記録される
+  // = Keyupのタイミングでマッチしたワードからsuggestionを探すことが可能
+  searchInput.addEventListener('keyup', displayMatches);
 
   //here execute function (parameter as a keyword for searching)
   // findMatches('Bos')
