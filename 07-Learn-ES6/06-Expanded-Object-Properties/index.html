@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How to Pass Value in ES6 - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <main>
+        <h1>Understanding ES6</h1>
+        <h2>Expand Object Properties - Based on template strings</h2>
+        <div class="section">
+            <h3>Pt.1 - Notation of how to be shorten properties or function</h3>
+            <p>"Expanded object property" is the new function of the way to omit <strong>property or function</strong> when define it.</p>
+            <p>1. This is how to define properties by using notation for omitting function.
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                const fuelProp = 100;
+                const modelProp = "X-1976";
+                
+                //if property is the same name, you can omit like below
+                const carProp = {
+                    fuelProp,
+                    modelProp
+                };
+                /*
+                above equals to below
+                const car = {
+                    fuelProp : fuelProp
+                    modelProp : modelProp
+                }
+                */
+                console.log(carProp.fuelProp);//100
+                console.log(carProp.modelProp);//X-1976
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                100
+                X-1976</code>
+            </pre>
+            <p>2. This is how defining function run by using notation for omitting function.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                const fuelFunction = 100;
+                const modelFunction = "X-1976";
+                
+                const carFunction = {
+                    fuelFunction,
+                    modelFunction,
+                    run() { // equals to run: function(){}
+                        console.log("run");
+                    }
+                };
+                /*
+                above equals to below
+                const carFunction = {
+                    fuelFunction,
+                    modelFunction,
+                    run: function(){
+                        console.log("run");
+                    }
+                };
+                */
+                console.log(carFunction.fuelFunction);//100
+                console.log(carFunction.modelFunction);//X-1976
+                carFunction.run();//run
+                </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                100
+                X-1976
+                run</code>
+            </pre>
+            <p>if function has any parameter, apply parameter like below:</p>
+            <pre class="prettyprint">
+                <code>
+                const car = {
+                    fuel,
+                    model,
+                    run(name){
+                        console.log(`run${name}`);
+                    }
+                }</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.2 - How to set dynamic property name</h3>
+            <p>"Expanded object property" can set dynamic property name by using <strong>[]</strong> in decraration of property.</p>
+            <p>Try setting dynamic property like the property, named <code class="code__span">customPropertyName</code>.</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                <code>
+                const fuelDynamic = 100;
+                const modelDynamic = "X-1976";
+                const customPropertyName = "shippedBy";
+                
+                const carDynamic = {
+                    fuelDynamic,
+                    modelDynamic,
+                    run(){
+                        console.log("run")
+                    },
+                    [customPropertyName]: "1977"
+                    /*
+                    Above equals to this below
+                        const carDynamic = {
+                            carDynamic [customPropertyName]: "1977"
+                        }
+                    */
+                };
+                console.log(carDynamic.fuelDynamic);//100
+                console.log(carDynamic.modelDynamic);//X-1976
+                console.log(carDynamic.shippedBy);//1977
+                carDynamic.run();//run</code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+                <code>
+                100
+                X-1976
+                1977
+                run</code>
+            </pre>
+            <ul>
+                <li>Before was required defining dynamic properties by using [] after once being store object to value.<br>
+                    Now defining dynamic properties can be possible to declare all at once by using template strings.</li>
+                <li>You can define dynamic properties more flexibly by using template strings and placeholder at the same time.
+                    <pre class="pre__sub">
+                        <code>
+                        const customPropertyName = "shippedBy";
+                        const car = {
+                            [`${customPropertyName}_dev`]: "1977" //property name is "shippedBy_dev"
+                        };</code>
+                    </pre>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../01-Introduction/index.html">Introduction</a></li>
+            <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+            <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
+            <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
+            <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
+            <li>Expanded Object Properties</li>
+            <li><a href="../07-Classes/index.html">Classes</a></li>
+            <li><a href="../08-Promises/index.html">Promises</a></li>
+            <li><a href="../09-New-APIs/index.html">New API</a></li>
+        </ul>
+        <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        'use strict';
+        ///Pt.1
+        //properties
+        const fuelProp = 100;
+        const modelProp = "X-1976";
+
+        const carProp = {
+            fuelProp,
+            modelProp
+        };
+        console.log(carProp.fuelProp);//100
+        console.log(carProp.modelProp);//X-1976
+
+        //function
+        const fuelFunction = 100;
+        const modelFunction = "X-1976";
+
+        const carFunction = {
+            fuelFunction,
+            modelFunction,
+            run() { // equals to function run()
+                console.log("run");
+            }
+        };
+        console.log(carFunction.fuelFunction);//100
+        console.log(carFunction.modelFunction);//X-1976
+        carFunction.run();//run
+
+        ///Pt.2
+        const fuelDynamic = 100;
+        const modelDynamic = "X-1976";
+        const customPropertyName = "shippedBy";
+
+        const carDynamic = {
+            fuelDynamic,
+            modelDynamic,
+            run(){
+                console.log("run")
+            },
+            [customPropertyName]: "1977"
+        };
+        console.log(carDynamic.fuelDynamic);//100
+        console.log(carDynamic.modelDynamic);//X-1976
+        console.log(carDynamic.shippedBy);//1977
+        carDynamic.run();//run
+    </script>
+</body>
+</html>

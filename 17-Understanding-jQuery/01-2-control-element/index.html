@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding jQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="../../logo-black.png">
+    <style>
+        .on{background:#fcc}
+    </style>
+</head>
+<body style="font-family: sans-serif;">
+    <h1>Understanding jQuery</h1>
+    <h2>Understanding how to edit / control element</h2>
+    <h3>Pt.1 - Add or edit attribute on id</h3>
+    <p id="hello">Hello</p>
+    <p id="world">World</p>
+    <p>The first id name of p element is "<span id="result"></span>".</p>
+    
+    <h3>Pt.2 - Add or edit attribute on div</h3>
+    <div><p id="hello">Hello</p></div>
+    <div><p id="world">World</p></div><span style="font-size:12px;">*▲ this is replaced by jQuery function</span>
+    <div><p id="world">World</p></div>
+
+    <h3>Pt.3 - How to count the number of elements</h3>
+    <p class="count">this is an element of class name "count"</p>
+    <p class="count">this is an element of class name "count"</p>
+    <p>this is NOT an element of class name "count"</p>
+    <p class="count">this is an element of class name "count"</p>
+    <p>The number of class name "count" is "<span id="result2"></span>".</p>
+
+    <h3>Pt.4 - Replace the word in element</h3>
+    <p>This is p element</p>
+    <p class="replace">This is p element</p>
+    <p class="replace">This is p element</p>
+    <p class="replace">This is p element</p>
+
+    <h3>Pt.5 - Add / Remove class "on" to add background color</h3>
+    <p id="hello-pt5-1">Element of id name "hello"</p>
+    <p id="hello-pt5-2">Element of id name "hello"</p>
+
+    <h3>Pt.6 - Add toggle class to switch condition of element</h3>
+    <span style="font-size:12px;">*default setting is adding class on "#hello-pt6-1"</span>
+    <p id="hello-pt6-1" class="on">Element of id name "hello"</p>
+    <p id="hello-pt6-2">Element of id name "hello"</p>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

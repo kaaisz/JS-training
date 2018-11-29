@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Promises - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <main>
+        <h1>Understanding ES6</h1>
+        <h2>Promises</h2>
+        <a href="index.html">See English Edition</a>
+        <div class="section">
+            <h3>Pt.1 - Fundamentals of Promise</h3>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">See the Reference</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">See also</a>
+            <p>
+                Promiseとは、現時点で結果がわからない値に対して結果を仮決定させる処理のこと。<br>
+                未来のある時点で確定するであろう値をPromiseを使って仮で決定しておくことで、PHPなどの同期処理と同じように特定のコードが処理されるのを待ってから待ってから次のコードを実行できる。(*node.jsの処理は基本的に非同期処理のためPromiseを使わないとコールバックを延々と繰り返すことになる)<br>
+                Promiseはオブジェクトであり、次の構文で定義可能。
+                <pre class="prettyprint">
+                <code>
+                new Promise((resolve, reject)=>{
+                    //処理
+                });</code>
+                </pre>  
+            </p>
+            <p>Promiseに使用されるコールバック関数は２つの関数をparameterにとる。
+                    <li><strong>resolve</strong> - 処理が<strong>成功したら</strong>結果を次の関数に渡す</li>
+                    <li><strong>reject</strong>- 処理が<strong>失敗したら</strong>結果を次の関数に渡す</li>
+                </ul>
+                <span class="caption">*実際にはresolveとrejectは慣例として使われるもの</span>
+            </p>
+            <p>Promise内の resolve や reject が実際に呼び出されると、結果に応じ then や catch ハンドラが呼び出される
+                <pre class="prettyprint">
+                <code>
+                const promise = new Promise((resolve, reject) => {
+                    //処理
+                });
+                Promise
+                    .then((result) => {
+                        //成功した時の処理
+                    })
+                    .catch((result) => {
+                        //失敗した時の処理
+                    })
+                </code>
+                </pre>
+            </p>
+            <p>Promiseが持つ以下の状態と、その状態がどう変化するかについて理解することがPromiseの要。</p>
+            <ul>
+                <li><strong><code>pending</code></strong> - 初期状態。結果は未確定</li>
+                <li><strong><code>fulfilled</code></strong> - 処理が成功した状態(Promiseは値を1つ持つ)</li>
+                <li><strong><code>rejected</code></strong> - 処理が失敗した状態</li>
+            </ul>
+            <ol>
+                <li>Promiseは定義される時は<code>Pending</code>。</li>
+                <li>resolve や reject が呼び出された時に、
+                    <ul>
+                        <li>処理が成功していたら、<code>fulfilled</code></li>
+                        <li>処理が失敗していたら、<code>rejected</code></li>
+                    </ul>
+                </li>
+                <li>状態が確定したPromiseは結果に応じては結果に応じて<code>then</code>や<code>catch</code>ハンドラを呼び出す</li>
+            </ol>
+            <img src="https://codeprep-prod.s3-ap-northeast-1.amazonaws.com/books/shliumlE87CNvzTuxH1lJlJmbGv-Cjo-Jm1A-623eRQ/es6/a4dc3fb8d19e8e90d3f14ea8be71418c027b0601/assets/images/images.001.png"/>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promise = new Promise((resolve, reject) =>{
+                /* 
+                    △
+                    resolve - 処理が成功したら結果を次の関数に渡す
+                    reject - 処理が失敗したら結果を次の関数に渡す
+                */
+            //処理が成功した場合の結果を100ms後に返す
+            setTimeout(() => {
+                resolve("one")
+                }, 100);
+            });
+            promise.then(data => {
+                //resolveの処理が実際に成功するとthenにそのデータが渡される
+                console.log(data);//one(in resolve)
+            });
+            </code>
+            </pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            one</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.2 - Promiseのチェイン(連結)</h3>
+            <p>Promiseの処理は<code>then</code>を使用して連結させることができます。<br>
+                <code>then</code>のコールバック関数が値を返した場合、<strong>Promise.resolve</strong>で
+                ラップされるので、次の<code>then</code>でその値を取得することができます。</p>
+            <h4>Input</h4>
+            <pre class="prettyprint">
+            <code>
+            const lunch = new Promise ((resolve, reject) => {
+                setTimeout(()=>{
+                    resolve("🍔")
+                }, 100)
+            });
+            lunch
+                .then(data => {
+                console.log(data);
+            
+                // in case of paprameter in then() erase the value,
+                // then() can be chain, thanks to it'll be automatically
+                // wrapped by Promise.resolve.
+                return `${data}🍟`;
+            })
+            .then(data => {
+                console.log(data);
+                return`${data}🥤`;
+            })
+            .then(data => {
+                console.log(`${data} that's it!`)
+            })</code>
+            </pre>
+            <h4>Output</h4>
+            <pre>
+            <code>
+            🍔
+            🍔🍟
+            🍔🍟🥤 that's it!</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.3 - Promise.resolve</h3>
+            <p><code>Promise.resolve()</code>を使うことで、Promiseオブジェクトを生成しなくても、状態が確定したPromiseを作成することができます。</p>
+            <pre>
+            <code>
+            // これと同じ
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
+            </pre>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseResolve = Promise.resolve("You got an API response!");
+            
+            promiseResolve
+            .then(data => {
+            console.log("success!", data)
+            });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+                success! You got an API response!</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.4 - Promise.reject</h3>
+            <p><code>Promise.reject()</code>を使うことで、Promiseオブジェクトを生成しなくても、状態が確定したPromiseを作成することができます。<br>(Promise.resolveの失敗パターン)</p>
+            <pre>
+            <code>
+            // これと同じ
+            const promise = new Promise((resolve, reject) => {
+            resolve("You got a API response!!");
+            });
+            </code>
+            </pre>
+            <h4>input</h4>
+            <pre class="prettyprint">
+            <code>
+            const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+            promiseReject
+                .then(data => {
+                console.log("Sucess!", data);
+                })
+            .catch(error => {
+                console.log("failed!", error);
+                });
+            </code></pre>
+            <h4>output</h4>
+            <pre>
+            <code>
+            failed! java.lang.NullPointerException</code>
+            </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.5 - Promise.catch と onRejected Handlerの違い</h3>
+            <p><code>then</code>のコールバック関数には2つの関数が設定可能。</p>
+            <ul>
+                <li>onFullFilled - 処理が成功した場合</li>
+                <li>onRejected - 処理が失敗した場合</li>
+            </ul>
+            <p><code>catch</code>と<code>onRejected</code>ハンドラはともにPromiseがRejectedした場合に動作するコールバック関数です。</p>
+            <p><code>onRejected</code>ハンドラはその直前のPromiseに対する処理であり、同じthenの<code>onFullFilled</code>で発生した例外を処理できません。
+                <br>そのためPromise例外処理が不十分に終わる可能性がある。<br>   
+                それに対し、<code>catch</code>はそれより以前のthenに対する処理のため、 一連のPromise処理の最後に<code>catch</code>ハンドラを加えてグローバルな例外ハンドラとするのがよいでしょう。</p>
+            <pre>
+                    <code>
+                    promise
+                    .then()
+                    .then()
+                    .then()
+                    .catch(
+                    // ここに共通的な例外処理を書く
+                    );</code>
+                    </pre>
+            <span class="caption"></span>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                    <code>
+                    const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+                    promiseReject
+                        .then(data => {
+                        console.log("Sucess!", data);
+                        }, error => {
+                        console.log("failed!", error);
+                        return error;
+                        })
+                        .then(data => {
+                        console.log("successed at last!", data);
+                        })
+                        .catch(error => {
+                        console.log("failed at last!", error);
+                        });
+                    </code></pre>
+            <h4>output</h4>
+            <pre>
+                    <code>
+                    failed! java.lang.NullPointerException
+                    successed at last! java.lang.NullPointerException</code>
+                    </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.6 - Promise.all</h3>
+            <p><code>Promise.all</code>は複数の処理の結果を待ってから<code>then</code>ハンドラを呼び出すために使われます。</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                    <code>
+                    const rabbit = new Promise((resolve, reject) => {
+                        setTimeout(() => resolve("time of rabbit : 100ms"), 100);
+                    });
+                    const turtle = new Promise((resolve, reject) => {
+                        setTimeout(() => resolve("time of turtle : 300ms"), 300);
+                    });
+                    
+                    Promise.all([rabbit, turtle]).then(result => {
+                        //両方の結果が配列で返される
+                        const[timeForRabbit, timeForTurtle] = result;
+                        console.log(timeForRabbit);
+                        console.log(timeForTurtle);
+                    });
+                    </code></pre>
+            <h4>output</h4>
+            <pre>
+                    <code>
+                    time of rabbit : 100ms
+                    time of turtle : 300ms</code>
+                    </pre>
+        </div>
+        <div class="section">
+            <h3>Pt.7 - Promise.race</h3>
+            <p>複数のPromise処理の中で最も早く終わったタイミングに<code>then</code>ハンドラを呼び出すには、<code>Promise.race</code>を使います。</p>
+            <h4>input</h4>
+            <pre class="prettyprint">
+                    <code>
+                    const rabbit = new Promise((resolve, reject) => {
+                    setTimeout(() => resolve("time of rabbit : 100ms"), 100);
+                    });
+                    const turtle = new Promise((resolve, reject) => {
+                    setTimeout(() => resolve("time of turtle : 300ms"), 300);
+                    });
+        
+                    Promise.race([rabbit, turtle]).then(result => {
+                    console.log(result);///time of rabbit : 100ms
+                    });
+                    </code></pre>
+            <h4>output</h4>
+            <pre>
+                    <code>
+                    time of rabbit : 100ms</code>
+                    </pre>
+        </div>
+        
+
+        <div class="section">
+            <h3>参考資料</h3>
+            <ul>
+                <li><a href="https://techracho.bpsinc.jp/hachi8833/2017_11_16/48168">JavaScript: 5分でわかるPromiseの基礎（翻訳）</a></li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../01-Introduction/index.html">Introduction</a></li>
+            <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+            <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
+            <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
+            <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
+            <li><a href="../06-Expanded-Object-Properties/index.html">Expanded Object Properties</a></li>
+            <li><a href="../07-Classes/index.html">Classes</a></li>
+            <li>Promises</li>
+            <li><a href="../09-New-APIs/index.html">New API</a></li>
+        </ul>
+        <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        'use strict';
+        ///Pt.1
+        const promise = new Promise((resolve, reject) =>{
+            /*  △
+                resolve - pass result to next function in case of processing has successed
+                reject - pass result to next function in case of processing has unsuccessed
+                *normally resolve and reject is used as a name of function
+            */
+            //return result after 100ms
+            setTimeout(() => {
+                resolve("one")
+            }, 100);
+        });
+        promise.then(data => {
+            /*
+                When resolve or reject has been invoked, 
+                then or catch handler will be invoke depends on the results.
+                
+                then - if the result was success
+                catch - if the result was unsuccess
+            */
+            //receive the data which passed by value on resolve
+            console.log(data);//one(in resolve)
+        });
+
+        ///Pt.3
+        const promiseResolve = Promise.resolve("You got an API response!");
+
+        promiseResolve
+            .then(data => {
+                console.log("success!", data)
+            });
+
+        ///Pt.4
+        const promiseReject = Promise.reject("java.lang.NullPointerException");//failed example
+        promiseReject
+            .then(data => {
+                console.log("Sucess!", data);
+            })
+            .catch(error => {
+                console.log("failed!", error);
+            });
+    </script>
+</body>
+</html>

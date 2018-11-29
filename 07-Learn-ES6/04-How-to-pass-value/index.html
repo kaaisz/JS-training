@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How to Pass Value in ES6 - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <main>
+        <h1>Understanding ES6</h1>
+        <h2>How to Pass Value in ES6</h2>
+        <h3>Pt.1 - Default parameter</h3>
+        <p>Like as same with when you do destructuring, set default variable which you will assign, after <strong>=</strong> to apply default variable.</p>
+        <p>*Default value is applied only in case of the value was <code>undefined</code>, same as destructuring.</p>
+        <div>
+            <p>take a data named "fuel" from "car", then assign it to fuel variable.</p>
+            <code>const { fuel } = car;</code>
+    
+            <p>same with below</p>
+            <code>const fuel = car.fuel;</code>
+            </code>
+        </div>
+        <h4>input</h4>
+        <pre class="code__structure prettyprint">
+            <code>
+                function greeting(name = "everyone"){
+                console.log("Hello, " + name);
+                }
+                greeting("Tokyo");//Hello, Tokyo
+                greeting("Vancouver");//Hello, Vancouver
+                greeting();//Hello, Everyone</code>
+        </pre>
+        <h4>output</h4>
+        <pre class="code__structure">
+            <code>
+                Hello, Tokyo
+                Hello, Vancouver
+                Hello, Everyone</code>
+        </pre>
+        <h3>Pt.2 - Rest parameter</h3>
+        <p>To being able to handle to variable length values, add <strong>...</strong> at the top of parameter.<br>
+        *Rest parameter can apply to the last parameter.</p>
+        <p>Make parameter y to being able to handle to variable length values.</p>
+        <h4>input</h4>
+        <pre class="code__structure prettyprint">
+            <code>
+            function add(x, ...y){
+            let result = x;
+            //add number as many as y which given
+            y.forEach(number => {
+            result = result + number;
+            });
+            console.log(result);
+            }</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                1
+                6
+                21
+                10</code>
+        </pre>
+        <div>
+            <p>This is the reason why we need to use Rest parameter instead of <code>arguments</code>.</p>
+            <ul>
+                <li>Rest parameter includes <span class="underline">value which is left</span>. <code>arguments</code> includes all parameters.</code></li>
+                <li>Because Rest paramater is an array, be able to use method directly like <code>map</code> and <code>sort</code>.<br>
+                <code>arguments</code> is not an array.</li>
+            </ul>
+        </div>
+        <h3>Understanding Spread Operator</h3>
+        <p>By using Spread operator, array will expand in the place where the operator placed.<br>
+        To use this operator, put <strong>...</strong> at first in an array.</p>
+        <div>
+            <p>Structure of Spread operator is the same with the structure below.</p>
+            <pre class="prettyprint">
+                <code>
+                //example of Spread operator
+                array1.push(...array2);
+                
+                //same with this structure
+                array2.forEach((i) => {
+                    array1.push(i);
+                });
+                </code>
+            </pre>
+            <p>This is a kind of strong operator for making code shorten in case of invoking array, declare array and destructuring.<br>
+            Spread operator doesn't waste our time at all!<br>
+            This is the way of how to use Spread operator.</p>
+            <pre class="prettyprint">
+                <code>
+                const array = [3, 4, 5];
+
+                //invoke array
+                array2.push(...array);
+
+                //declare array
+                const newArray = [1, 2 ...array];//[1, 2, 3, 4, 5]
+
+                //destructuring
+                [x, ...y] = array;
+                console.log(x);//3
+                console.log(y);//4, 5
+                </code>
+            </pre>
+        </div>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const array1 = [1, 2, 3, 4];
+            const array2 = [10, 11, 12, 13, 14];
+            
+            //if without spread operator, you have to adjust array
+            // array1.push(array2);//[1, 2, 3, 4, [10, 11, 12, 13, 14]];
+            
+            ///apply Spread operator
+            array1.push(...array2);
+            console.log(JSON.stringify(array1));//[1, 2, 3, 4, 10, 11, 12, 13, 14]
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            [1, 2, 3, 4, 10, 11, 12, 13, 14]</code>
+        </pre>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../01-Introduction/index.html">Introduction</a></li>
+            <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+            <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
+            <li>How to Pass Value in ES6</li>
+            <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
+            <li><a href="../06-Expanded-Object-Properties/index.html">Expanded Object Properties</a></li>
+            <li><a href="../07-Classes/index.html">Classes</a></li>
+            <li><a href="../08-Promises/index.html">Promises</a></li>
+            <li><a href="../09-New-APIs/index.html">New API</a></li>
+        </ul>
+    <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+    'use strict';
+    ///Pt.1 - default parameter
+    function greeting(name = "everyone"){
+        console.log("Hello, " + name);
+    }
+    greeting("Tokyo");//Hello, Tokyo
+    greeting("Vancouver");//Hello, Vancouver
+    greeting();//Hello, Everyone
+
+    ///Pt.2
+    function add(x, ...y){
+        let result = x;
+        //add number as many as y which given
+        y.forEach(number => {
+            result = result + number;
+        });
+        console.log(result);
+    }
+    //you can actually add numbers of times as many as you'd like to.
+    add(1);//1
+    add(1, 2, 3);//1 + 2 + 3 = 6
+    add(1, 2, 3, 4, 5, 6);//1 + 2 + 3 + 4 + 5 + 6 = 21
+    add(1, 2, 3, 4);//1 + 2 + 3 + 4 = 10
+
+    ///Pt.3
+    const array1 = [1, 2, 3, 4];
+    const array2 = [10, 11, 12, 13, 14];
+
+    // array1.push(array2);//[1, 2, 3, 4, [10, 11, 12, 13, 14]];
+    console.log(JSON.stringify(array1));
+
+    ///apply Spread operator
+    array1.push(...array2);
+    console.log(JSON.stringify(array1));//[1, 2, 3, 4, 10, 11, 12, 13, 14]
+    </script>
+</body>
+</html>

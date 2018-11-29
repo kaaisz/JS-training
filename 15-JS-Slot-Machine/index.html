@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Slot Machine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+<body>
+    <div class="slot">
+        <div class="panel">
+            <img src="img/seven.png" width="90" height="110" />
+            <!-- 何番目のパネルを止めるかをデータ属性を使って保持しておく(属性名:index) -->
+            <div class="stop" data-index="0">STOP</div>
+        </div>
+        <div class="panel">
+            <img src="img/seven.png" width="90" height="110" />
+            <div class="stop" data-index="1">STOP</div>
+        </div>
+        <div class="panel">
+            <img src="img/seven.png" width="90" height="110" />
+            <div class="stop" data-index="2">STOP</div>
+        </div>
+    </div>
+    <div id="spin">SPIN?</div>
+    <script src="script.js"></script>
+</body>
+</html>

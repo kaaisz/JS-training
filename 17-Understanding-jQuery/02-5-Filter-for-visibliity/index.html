@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding Selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+
+<body>
+    <h1>Understanding jQuery</h1>
+    <h2>Filter for visibility</h2>
+    <p>This is the common HTML + CSS for Pt1 and 2.</p>
+    <div class="container">
+        <label>
+            Visible
+            <span>Visible</span>
+        </label>
+        <label>
+            Invisible(display:none;)
+            <span class="none">Invisible</span>
+        </label>
+        <label>
+            Invisible(visibility:hidden;)
+            <span class="hidden">Invisible</span>
+        </label>
+        <label>
+            Invisible(opacity:0;)
+            <span class="hidden">Invisible</span>
+        </label>
+        <label>
+            Visible
+            <span>Visible</span>
+        </label>
+    </div>
+
+    <h3>Pt.1 - Specify visible element</h3>
+    <p>Use <strong>:visible</strong> to specify visible element.</p>
+    <p>If the element is matching with the condition of css below, it identifies to be "visible" even it is visually hidden.</p>
+    <ul>
+        <li>visibility: hidden</li>
+        <li>opacity: 0</li>
+    </ul>
+    <p>For example, in this case, despite 2 of background-color has changed, the element actually has caught is 4.<br>
+    this cause bugs which difficult to find out.</p>
+    <p data-height="350" data-theme-id="0" data-slug-hash="KxOzrd" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="KxOzrd" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/KxOzrd/">KxOzrd</a> by
+        suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <h3>Pt.2 - Specify hidden element</h3>
+    <p>Use <strong>:hidden</strong> to specify hidden element.</p>
+    <p data-height="350" data-theme-id="0" data-slug-hash="vzoGMV" data-default-tab="js,result" data-user="suzydp"
+        data-pen-title="Specify hidden element" class="codepen">See the Pen <a href="https://codepen.io/suzydp/pen/vzoGMV/">Specify
+            hidden element</a> by suzydp (<a href="https://codepen.io/suzydp">@suzydp</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Destructuring - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <main>
+        <h1>Understanding ES6</h1>
+        <h2>Destructuring</h2>
+        <h3>Pt.1 - Destructuring for Object</h3>
+        <p>Take out <code>fuel</code> from the object <code>car</code>, then assign to the <code>fuel</code> variable.</p>
+        <p>Surround with <strong>{ }</strong> when declare variables to use desructuring object.</p>
+        <div>
+            <p>take a data named "fuel" from "car", then assign it to fuel variable.</p>
+            <code>const { fuel } = car;</code>
+            
+            <p>same with below</p>
+            <code>const fuel = car.fuel;</code>
+            </code>
+        </div>
+        <h4>input</h4>
+        <pre class="code__structure prettyprint">
+            <code>
+                'use strict';
+                //object
+                const car = {
+                    fuel : 60
+                };
+
+                //take a data named "fuel" from car object, then assign to variable.
+                const {fuel} = car;
+                console.log(fuel);//60
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre class="code__structure">
+            <code>
+                60
+            </code>
+        </pre>
+        <h3>Pt.2 - If you'd like to use different name when destructuring</h3>
+        <p>take a data named "fuel" from car object, then assign it to myFuel variable.</p>
+        <div>
+            <p>When you'd like to assign to another variable in destructuring, set variable name to assign after <strong>:</strong> .</p>
+        </div>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                'use strict';
+                const car = {
+                fuel : 60
+                };
+
+                //assign to another variable by using ":".
+                const{fuel : myFuel} = car;
+                console.log("myFuel => ", myFuel)
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                myFuel => 60
+            </code>
+        </pre>
+        <h3>Pt.3 - Desructuring with Nested Object</h3>
+        <p>take a model which nested to car, then assign to variable which named "model".</p>
+        <div>
+            <p>If you'd like to destructuring from nested data, destructuring once more after <strong>:</strong> .</p>
+        </div>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                'use strict';
+
+                const nestedCar = {
+                    nestedFuel: 60,
+                    info: {
+                        model: "X-1976"//nested data
+                    }
+                };
+                //When destructing from "nested" data, destruct(add {}) once more after ":".
+                const { nestedFuel, info: {model} } = nestedCar;
+                console.log(nestedFuel);//60
+                console.log(model);//X-1976
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                60
+                X-1976</code>
+        </pre>
+        <h3>Pt.4 - Set default variable in destructuring of object</h3>
+        <p>Set default variable after <strong>=</strong> to apply default value in destructuring of object.</p>
+        <p>Default value is applied in a destructured assignment only if its value is <strong>undefined.</strong><br>
+        Destructuring is much more secure than previous version thanks to be able to apply default value without any matter.</p>
+        <p style="font-size:12px;">*We used to use || to set default value before, however it was having some kind of risk like program can be identify
+        any falsy value as a default value, even if it was false, null or 0.</p>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+            const defaultCar = {
+                defaultFuel:60
+            };
+
+            const{defaultFuel, defaultModel = "No name"} = defaultCar;
+
+            console.log(defaultFuel);//60
+            console.log(defaultModel);//No name</code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                60
+                No name
+            </code>
+        </pre>
+        <h4>bad eg)</h4>
+        <pre>
+            <code>
+                const model = car.model || "No name";</code>
+        </pre>
+        <h3>Pt.5 - Destructuring in Array</h3>
+        <p>Let's pick up some data in the array from one by one, then take them into a variable.</p>
+        <p>To use formula of destructuring in array, Surround declaration of array by <strong>[]</strong>.<br>
+        <pre>
+            <code>
+                // discover each data one by one, then assign to variable
+                const [ one, two, three ] = array;
+                
+                // same as this one below
+                const one = array[0];
+                const two = array[1];
+                const three = array[2];</code>
+        </pre>
+        <p>You can also ignore some of the data in array like this.</p>
+        <pre>
+            <code>
+                const [one, ,three] = array;</code>
+        </pre>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                const array = [1, 2, 3];
+                
+                const [one, two, three] = array;
+                console.log(one);//1
+                console.log(two);//2
+                console.log(three);//3
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+            1
+            2
+            3</code>
+        </pre>
+        <h3>Pt.6 - Set default variable in Array with destructuring</h3>
+        <p>Set default variable after <strong>=</strong> to apply default value in desructuring with array.</p>
+        <p>Default value is applied in a destructured assignment only if its value is <strong>undefined.</strong>, same with the case for object.</p>
+        <h4>input</h4>
+        <pre class="prettyprint">
+            <code>
+                const arrayDefault = ["🍎", "🍊", "🍇"];
+                const [apple, orange, grape, peach = "🍑"] = arrayDefault;
+                console.log(apple);//🍎
+                console.log(orange);//🍊
+                console.log(grape);//🍇
+                console.log(peach);//🍑
+                console.log(arrayDefault[0]);//🍎
+                console.log(arrayDefault[1]);//🍊
+                console.log(arrayDefault[2]);//🍇
+                console.log(arrayDefault[3]);//undefined
+            </code>
+        </pre>
+        <h4>output</h4>
+        <pre>
+            <code>
+                🍎
+                🍊
+                🍇
+                🍑
+                🍎
+                🍊
+                🍇
+                undefined</code>
+        </pre>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="../01-Introduction/index.html">Introduction</a></li>
+            <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+            <li>Destructuring</li>
+            <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
+            <li><a href="../05-05-Template-Strings/index.html">Template Strings</a></li>
+            <li><a href="../06-Expanded Object Properties/index.html">Expanded Object Properties</a></li>
+            <li><a href="../07-Classes/index.html">Classes</a></li>
+            <li><a href="../08-Promises/index.html">Promises</a></li>
+            <li><a href="../09-New-APIs/index.html">New API</a></li>
+        </ul>
+        <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>
+        ///Pt.1
+        'use strict';
+        const car = {
+            fuel : 60
+        };
+
+        const {fuel} = car;
+        console.log(fuel);
+
+        ///Pt.2
+        const{fuel : myFuel} = car;
+        console.log("myFuel => ", myFuel);
+
+        ///Pt.3
+        const nestedCar = {
+            nestedFuel: 60,
+            info: {
+                model: "X-1976"
+            }
+        };
+        const {nestedFuel, info: {model}} = nestedCar;
+        console.log(nestedFuel);//60
+        console.log(model);//X-1976
+
+        ///Pt.4
+        const defaultCar = {
+            defaultFuel:60
+        };
+        const{defaultFuel, defaultModel = "No name"} = defaultCar;
+        console.log(defaultFuel);//60
+        console.log(defaultModel);//No name
+
+        ///Pt.5
+        const array = [1, 2, 3];
+
+        const [one, two, three] = array;
+        console.log(one);//1
+        console.log(two);//2
+        console.log(three);//3
+
+        ///Pt.6
+        const arrayDefault = ["🍎", "🍊", "🍇"];
+        const [apple, orange, grape, peach = "🍑"] = arrayDefault;
+        console.log(apple);//🍎
+        console.log(orange);//🍊
+        console.log(grape);//🍇
+        console.log(peach);//🍑
+        console.log(arrayDefault[0]);//🍎
+        console.log(arrayDefault[1]);//🍊
+        console.log(arrayDefault[2]);//🍇
+        console.log(arrayDefault[3]);//undefined
+    </script>
+</body>
+</html>

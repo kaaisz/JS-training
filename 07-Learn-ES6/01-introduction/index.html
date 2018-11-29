@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Introduction - Learn ES6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="shortcut icon" href="../../logo-black.png">
+  </head>
+  <body>
+    <main>
+      <h1>Understanding ES6</h1>
+      <h2>Introduction of ES6</h2>
+      <h3>What is ES6</h3>
+      <ul>
+        <li>ECMAScript 2015, also well known as ES6 is a standard specification published in 2015.<br>
+          *see the link below to check availablity for each browser.</li>
+        <li>There are some of way to use function if your browser does not support. these are the example.
+          <ol>
+            <li>Use transpile - convert from the formula written by ES6 to the other formula which can be active on the
+              browser.<br>
+              <a href="https://babeljs.io/"><strong>Babel</strong></a> is most popular example.</li>
+            <li>Use Polyfill library - Polyfill library is the library which supplements missing functions on your browser.<br>
+              By loading this in advance, polyfill library will be replaced instead of unimplemented functions.<br>
+              this is the most popular example: <a href="https://github.com/zloirock/core-js">core-js</a>
+            </li>
+          </ol>
+        </li>
+      </ul>
+      <h3>let</h3>
+      <p>let is a <strong>reassign-able variable</strong>.</p>
+      <h4>Example</h4>
+      <h5>Input</h5>
+      <pre>
+            <code class="prettyprint">
+              let message = "Hello ES6";
+              console.log(message);
+              message = "Goodbye ES5";//overwriting "Hello ES6"
+              console.log(message);
+            </code>
+          </pre>
+      <h5>Output(on console)</h5>
+      <pre>
+            <code>
+              Hello ES6
+              Goodbye ES5
+            </code>
+          </pre>
+      <h3>const</h3>
+      <p>const is a <strong>not reassign-able variable</strong>.<br>
+        *const is not a property but read-only reference. Therefore, object can be changed.</p>
+      <h4>Example</h4>
+      <h5>Input</h5>
+      <pre>
+            <code class="prettyprint">
+              const message2 = "Hello ES6";
+              console.log(message2);
+              message2 = "Goodbye ES5";
+              console.log(message2);//uncaught typeerror will shown
+            </code>
+          </pre>
+      <h5>Output(on console)</h5>
+      <pre>
+            <code>
+              Hello ES6
+              Uncaught ReferenceError: message is not defined
+            </code>
+          </pre>
+      <h3>The scope of const</h3>
+      <p>Scope of Let and Const is calling as "Blocked scope" generally.
+        Blocked scope is surrounded by <strong>{ }</strong>.<br>
+      </p>
+      <p>On the other hand, the block of var is called "function scope".<br>
+        <strong>let and const is much more secure than var.</strong> If the declaration of let or const has already
+        duplicated, this kind of error will appear below.</p>
+      <code>Duplicate declaration "name"</code></code></p>
+      <h5>Input</h5>
+      <pre>
+            <code class="prettyprint">
+              const name = "SZDP Design";
+              if (true){
+              //ここはブロック内なのでnameは別物
+                const name = "Old SZDP Design";
+                console.log("-----if block-----");
+                console.log(name);//Old SZDP Design
+                console.log("------------------")
+              }
+              console.log(name);//SZDP Design
+            </code>
+          </pre>
+      <h5>Output(on console)</h5>
+      <pre>
+            <code>
+              -----if block-----
+              Old SZDP Design
+              ------------------
+              SZDP Design
+            </code>
+          </pre>
+      <h3>Caution of using const</h3>
+      <p>const is not a property but read-only reference. Therefore, object can be changed.<br>
+        if you want to freeze specified object, use<code>object.freeze</code></p>
+      <h5>Input</h5>
+      <pre>
+            <code class="prettyprint">
+              const project = {
+                name: "SZDP v2018.09"
+              }
+              console.log(project.name);//SZDP v2018.09
+              //you can change name of object property
+              project.name = "SZDP v2018.10";
+              console.log(project.name);//SZDP v2018.10
+              //but object's own reference can't change
+              project = {
+                name: "SZDP v2019"
+              }
+              console.log(project.name);//Uncaught TypeError: Assignment to constant variable.
+            </code>
+          </pre>
+      <h5>Output(on console)</h5>
+      <pre>
+            <code>
+              SZDP v2018.09
+              SZDP v2018.10
+              Uncaught TypeError: Assignment to constant variable.
+            </code>
+          </pre>
+    </main>
+    <footer>
+      <ul>
+        <li>Introduction</li>
+        <li><a href="../02-Arrow-function/index.html">Arrow funciton</a></li>
+        <li><a href="../03-Destructuring/index.html">Destructuring</a></li>
+        <li><a href="../04-How-to-pass-value/index.html">How to Pass Value in ES6</a></li>
+        <li><a href="../05-Template-Strings/index.html">Template Strings</a></li>
+        <li><a href="../06-Expanded Object Properties/index.html">Expanded Object Properties</a></li>
+        <li><a href="../07-Classes/index.html">Classes</a></li>
+        <li><a href="../08-Promises/index.html">Promises</a></li>
+        <li><a href="../09-New-APIs/index.html">New API</a></li>
+      </ul>
+      <p class="copyright">&copy;SZDP / Kaai Suzuki</p>
+    </footer>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script type="text/javascript">
+    "use strict";
+      /////////let - reassign-able variable
+      let message = "Hello ES6";
+      console.log(message);
+      message = "Goodbye ES5";//overwriting "Hello ES6"
+      console.log(message);
+      /////////const - not reassign-able variable
+      // const  message2 = "Hello ES6";
+      // console.log(message2);
+      // message2 = "Goodbye ES5";
+      // console.log(message2);//uncaught typeerror will shown
+
+      /////////scope of const and let
+      //Scope of Let and Const is calling as "Blocked scope" generally.
+      //Blocked scope is surrounded by {}
+      const name = "SZDP Design";
+      if (true) {
+        //ここはブロック内なのでnameは別物
+        const name = "Old SZDP Design";
+        console.log("-----if block-----");
+        console.log(name);//Old SZDP Design
+        console.log("------------------")
+      }
+      console.log(name);//SZDP Design
+
+      //same eg by using var
+      //Scope of Var is calling as funtioned scope
+      var myName = "This is Mr.A"
+      function Hello() {
+        var myName = "This is Mr.B"
+        if (true) {
+          //This myName is the same with myName in same function
+          var myName = "This is Mr.C"
+        }
+        console.log(myName);
+      }
+      Hello();//This is Mr.C
+      console.log(myName);//This is Mr.A
+      //ConstやLetの変数宣言が同じスコープで重複した場合はDuplicate declaration "name"と知らせてくれる
+      //=varにはその機能がないのでletやconstの方が汎用性、安全性に富む
+
+      /////////cantion for when you'll use const
+      //const makes not itself property but 
+      const project = {
+        name: "SZDP v2018.09"
+      }
+      console.log(project.name);//SZDP v2018.09
+      //you can change name of object property
+      project.name = "SZDP v2018.10";
+      console.log(project.name);//SZDP v2018.10
+      //but object's own reference can't change
+      project = {
+        name: "SZDP v2019"
+      }
+      console.log(project.name);//Uncaught TypeError: Assignment to constant variable.
+      
+      //use object.freeze() if you want to unchangable whole object
+      // project = {
+      //   name: "SZDP v2018.09"
+      // }
+      // Object.freeze(project);
+      </script>
+  </body>
+</html>

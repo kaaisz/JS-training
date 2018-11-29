@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Simple Popup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <style>
+        body{
+            font-family: sans-serif;
+            width:100vw;
+            height:100vh;
+            margin:0;
+            padding: 0;
+            background: rgb(2,0,36);
+            background: linear-gradient(25deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            text-align: center;
+        }
+        .container{
+            margin:40vh auto;
+        }
+        h1{
+            color:#fff;
+            opacity: .6;
+        }
+        #box{
+            background: #fff;
+            border:1px solid #fff;
+            box-shadow: 0px 0px 10px #333;
+            display:none;
+            padding: 10px;
+            position: relative;
+            margin:auto;
+            text-align: center;
+            width:300px;
+            top:-6vh;
+        }
+        #box > #close{
+            background: #eee;
+            color:#333;
+            cursor:pointer;
+            height:30px;
+            line-height:30px;
+            margin:0;
+            position: absolute;
+            right:1px;
+            top:1px;
+            width:30px;
+        }
+
+        #box > #close:hover{
+            background: #f9f9f9;
+            color:#999;
+        }
+
+        #btn{
+            background:#00d1aa;
+            border:none;
+            color:#fff;
+            font-size: 15px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        #btn:hover{
+            background:#00bd99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Super Simple Popup Window</h1>
+        <input type="button" id="btn" value="Push me" />
+        <div id="box">
+            <p id="close">×</p>
+            <h2>Hello. This is the popup.</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores error in aperiam itaque voluptatibus quo iste vitae praesentium? Autem rerum hic veniam amet ipsa eius voluptatibus quis alias molestiae voluptatem!</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+    window.onload = function(){
+        'use strict';
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+        var close = document.getElementById('close');
+        var boxstyle = box.style;//to editing style = document.getElementById("test").style
+
+        btn.onclick = function(){
+            if(boxstyle.display === 'block'){//if display(as property of boxstyle):block;
+                boxstyle.display = 'none';//change to display:none;
+            }else{
+                boxstyle.display = 'block'
+            }
+        };
+        
+        close.onclick = function(){
+            boxstyle.display = 'none';
+        }
+    }
+    </script>
+</body>
+</html>

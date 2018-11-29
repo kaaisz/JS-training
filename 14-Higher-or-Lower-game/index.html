@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Higher or Lower game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body{
+            background:#aaa;
+            font-family:sans-serif;
+            text-align: center;
+        }
+        h1{
+            color:#fff;
+            font-size: 25px;
+            margin:0 0 10px;
+        }
+        .box{
+            background:#333;
+            margin:0 auto;
+            padding: 20px 20px 30px;
+            width:500px;
+        }
+        #num{
+            color:#fff;
+            font-size:55px;
+            height:70px;
+            line-height:70px;
+            margin:0 auto;
+        }
+        .btn{
+            background: #eee;
+            border:none;
+            cursor:pointer;
+            width:150px;
+            padding:10px 0;
+        }
+        #lower{
+            background:#ccf;
+        }
+        #lower:hover{
+            background:#eef;
+        }
+        #higher{
+            background:#fcc;
+        }
+        #higher:hover{
+            background:#fee;
+        }
+        p{
+            color:#fff;
+            font-size:13px;
+            margin:0;
+            text-align:center;
+        }
+        #end{color:#f00;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Higher or Lower</h1>
+        <p>SCORE: <span id="score">0</span></p>
+        <p id="end"></p>
+        <p id="num">50</p><!--dummy-->
+        <div class="btns">
+            <input type="button" value="LOWER" class="btn" id="lower">
+            <input type="button" value="HIGHER" class="btn" id="higher">
+        </div>
+    </div>
+    <script type="text/javascript">
+    window.onload = function(){
+        'use strict';
+        var lower = document.getElementById("lower");
+        var higher = document.getElementById("higher");
+        var score = document.getElementById("score");
+        var num = document.getElementById("num");
+        var end = document.getElementById("end");
+        var gameover = false;
+
+        //define "start" function
+        function start(choice){
+            if(gameover === false){
+                if(check(choice)===true){
+                    score.innerHTML = parseInt(score.innerHTML) + 1;
+                    //the number got from innerHTML is String = need to change Integer by using parseInt.
+                }else{
+                    end.innerHTML = "GAME OVER";
+                    gameover = true;
+                }
+            }
+        }
+
+        //define "check" function
+        function check(choice){
+            var current_value = parseInt(num.innerHTML);
+            num.innerHTML = get_random_values();
+            var next_value = parseInt(num.innerHTML);
+
+            if(choice==="lower"){//if lower button has been pushed
+                return(next_value < current_value) ? true : false;
+            }else{
+                return(current_value < next_value) ? true : false;
+            }
+        }
+
+        //define "get_random_values" function - to call random integer from 1 to 100
+        function get_random_values(){
+            var current_value = parseInt(num.innerHTML);
+            var next_value = Math.floor(Math.random() * 100);//add math floor to make it double to Integer
+            return (current_value === next_value) ? get_random_values() : next_value;
+        }
+
+        lower.onclick = function(){
+            start("lower");
+        };
+        higher.onclick = function(){
+            start("higher")
+        }
+    }
+    </script>
+</body>
+</html>

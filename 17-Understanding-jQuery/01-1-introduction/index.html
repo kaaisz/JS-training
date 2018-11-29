@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding jQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body style="font-family: sans-serif;">
+    <div class="content__wrap">
+        <h1>Understanding jQuery</h1>
+        <h2>1 - Introduction</h2>
+        <h3>Pt.1 - How to declare / write jQuery at start</h3>
+        <p>There are mulitple choice to how to declare(invoke) jQuery at start.<br>You also have to add CDN or JS file for jQuery to activate.</p>
+        <p>Pattern 1</p>
+        <pre>
+            <code class="prettyprint">
+                jQuery(document).ready(function(){
+                    //write code here
+                });
+            </code>
+        </pre>
+        <p>Pattern 2</p>
+        <pre>
+            <code class="prettyprint">
+                $(function(){
+                //write code here
+                });
+            </code>
+        </pre>
+        <p>Pattern 3</p>
+        <pre>
+            <code class="prettyprint">
+                (function($){
+                    //write code here
+                });
+            </code>
+        </pre>
+        <h3>Pt.2 - Understainding difference between Javascript and jQuery</h3>
+        <p>The code for jQuery is shorter than Vanilla.js</p>
+        <p>Vanilla.js(JavaScript)</p>
+        <pre>
+            <code class="prettyprint">
+                var hello = document.getElementById("hello");
+                hello.style.backgroundColor="#9f9";
+            </code>
+        </pre>
+        <p>jQuery</p>
+        <pre>
+            <code class="prettyprint">
+                var hello = $("#hello");
+                hello.css("backgroundColor", "#9f9");
+            </code>
+        </pre>
+        <p>result is the same like this results below:</p>
+        <p id="hello">Hello!</p>
+        <h3>Pt.3 - Understanding how to choose class name by using jQuery</h3>
+        <p>As you did above the code, you can also choose class like using "getElementsByClassName"</p>
+        <pre>
+            <code class="prettyprint">
+                var elem = $(".elems");
+                    elem.each(function(){
+                    $(this).css("backgroundColor", "#0bf");
+                });
+            </code>
+        </pre>
+        <p>result : </p>
+        <p class="elems">Element 1</p>
+        <p class="elems">Element 2</p>
+        <p class="elems">Element 3</p>
+        <h3>Pt.4 - Understanding how to choose tag name by using jQuery</h3>
+        <p>Also you can choose tag like using "getElementsByTagName"</p>
+        <pre>
+            <code class="prettyprint">
+                //also you can choose tag like using "getElementsByTagName"
+                var elem2 = $("span");
+                elem2.each(function(){
+                $(this).css("backgroundColor", "#F80");
+                });
+            </code>
+        </pre>
+        <p>result :</p>
+        <span>This is a span tag</span>
+        <span>This is a span tag</span>
+        <h3>Pt.5 - Understanding how to choose child class of tag name by using jQuery</h3>
+        <p>So, now as we did, you can also choose child class name by using jQuery.</p>
+        <pre>
+            <code class="prettyprint">
+                var elem3 = $(".content__wrap li:first");//equals li:first-child
+                elem3.css("backgroundColor", "#f0f");
+                
+                var elem4 = $(".content__wrap li:eq(1)");//equals li:nth-child(2) *numbers of eq starts from "0(0, 1, 2)".
+                elem4.css("backgroundColor", "#e8e");
+                
+                var elem5 = $(".content__wrap li:last");//equals li:last-child
+                elem5.css("backgroundColor", "#b5d");
+            </code>
+        </pre>
+        <p>result :</p>
+        <ul>
+            <li>1st subject of list</li>
+            <li>2nd subject of list</li>
+            <li>3rd subject of list</li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

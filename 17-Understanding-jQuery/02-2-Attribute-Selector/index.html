@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Understanding Selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="shortcut icon" href="../../logo-black.png">
+</head>
+<body>
+    <h1>Understanding jQuery</h1>
+    <h2>Attribute Selector</h2>
+    <h4>Common HTML for this part</h4>
+    <pre>
+        <code>
+        < div data-name="Steve Reich" data-age="81" >1. Steve Reich - 81< /div>
+        < div data-name="Ryuichi Sakamoto" data-age="66" >2. Ryuichi Sakamoto - 31< /div>
+        < div data-name="Brian Eno" data-age="70" >3. Brian Eno - 70< /div>
+        < div data-name="Steve Roach" data-age="63" >4. Steve Roach - 63< /div>
+        < div data-name="Alva Noto" data-age="53" >5. Alva Noto - 53< /div>
+        < div data-name="Aphex Twin" data-age="47" >6. Aphex Twin - 47< /div>
+        </code>
+    </pre>
+    <h3>Pt.1 - Get element by using attribute name</h3>
+    <p>Specify an attribute name inside of <strong>[]</strong> to choose element by specifying an attribute name.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        ////Pt1 - Get element by using attribute name
+        let $selectedAttrName= [];
+        
+        //write selector here
+        $selectedAttrName = $("[data-name]");
+        
+        //Add css to element which matched as ".bingo-AttrName"(color will change to red)
+        $selectedAttrName.each(function(index){
+            $(this).addClass("bingo-AttrName");
+        });
+        $(".count-AttrName").text($selectedAttrName.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>*The color before is Yellow.The element color which has specified attribute will change.</p>
+    <p>Numbers of element which has been selected : <span class="count-AttrName"></span></p>
+    <div data-name="Steve Reich">1. Steve Reich - 81</div>
+    <div data-name="Ryuichi Sakamoto">2. Ryuichi Sakamoto - 31</div>
+    <div data-name="Brian Eno">3. Brian Eno - 70</div>
+    <div data-name="Steve Roach">4. Steve Roach - 63</div>
+    <div data-name="Alva Noto">5. Alva Noto - 53</a></div>
+    <div data-name="Aphex Twin">6. Aphex Twin - 47</a></div>
+
+    <h3>Pt.2 - Get element which is matching with specified attribute name</h3>
+    <p>Use [] with specified attribute name. attribute name inside of [] should be surround by ''.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        let $selectedSpecifiedAttrName = [];
+        
+        //write selector here
+        $selectedSpecifiedAttrName = $("[data-age=81]");
+        
+        //Add css to element which matched as ".bingo-SpecifiedAttrName"(color will change to red)
+        $selectedSpecifiedAttrName.each(function (index) {
+            $(this).addClass("bingo-SpecifiedAttrName");
+        });
+        $(".count-SpecifiedAttrName").text($selectedSpecifiedAttrName.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>*The color before is Yellow.The element color which has specified attribute will change.</p>
+    <p>Numbers of element which has been selected : <span class="count-SpecifiedAttrName"></span></p>
+    <div data-age="81">1. Steve Reich - 81</div>
+    <div data-age="66">2. Ryuichi Sakamoto - 31</div>
+    <div data-age="70">3. Brian Eno - 70</div>
+    <div data-age="63">4. Steve Roach - 63</div>
+    <div data-age="53">5. Alva Noto - 53</a></div>
+    <div data-age="47">6. Aphex Twin - 47</a></div>
+
+    <h3>Pt.3 - Get element which isn't matching with specified attribute name</h3>
+    <p>Use <strong>!=</strong> with specified attribute name. attribute name inside of [] should be surround by ' '.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        let $selectedNotSpecifiedAttrName = [];
+        
+        //write selector here
+        $selectedNotSpecifiedAttrName = $("[data-japanese!='Miso Ramen']");
+        
+        //Add css to element which matched as ".bingo-NotSpecifiedAttrName"(color will change to red)
+        $selectedNotSpecifiedAttrName.each(function (index) {
+            $(this).addClass("bingo-NotSpecifiedAttrName");
+        });
+        $(".count-NotSpecifiedAttrName").text($selectedNotSpecifiedAttrName.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>Numbers of element which has been selected : <strong><span class="count-NotSpecifiedAttrName"></span></strong></p>
+    <p><strong>The color below won't be changed because all of the other element which isn't selected will be change in this case.</strong></p>
+    <div data-japanese="Miso Ramen">Miso Ramen</div>
+    <div data-japanese="Tonkotsu Ramen">Tonkotsu Ramen</div>
+    <div data-japanese="Shoyu Ramen">Shoyu Ramen</div>
+    <div data-japanese="Shio Ramen">Shio Ramen</div>
+    <div data-japanese="Jah-Jah Noodle">Jah-Jah Noodle</a></div>
+    <div data-japanese="Abura soba">Abura soba</a></div>
+
+    <h3>Pt.4 - Get element which starts with attribute name of a specified keyword</h3>
+    <p>Use <strong>^=</strong> with specified attribute name. attribute name inside of [] should be surround by ' '.</p>
+    <p>*If you want to get element which ends with a specified keyword, use <strong>$=</strong> instead of ^=.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        ////Pt4 - Get element which is matching with specified keyword of attribute name
+        let $selectedSpecifiedKeyWordAttr = [];
+        
+        $selectedSpecifiedKeyWordAttr = $("[data-fruit ^= 'P']");
+        
+        $selectedSpecifiedKeyWordAttr.each(function (index) {
+            $(this).addClass("bingo-SpecifiedAttrName");
+        });
+        $(".count-SpecifiedKeyWordAttr").text($selectedSpecifiedKeyWordAttr.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>Numbers of element which has been selected : <strong><span class="count-SpecifiedKeyWordAttr"></span></strong></p>
+    <div data-fruit="Strawberry">Strawberry</div>
+    <div data-fruit="Dragon Fruit">Dragon Fruit</div>
+    <div data-fruit="Passion Fruit">Passion Fruit</div>
+    <div data-fruit="Banana">Banana</div>
+    <div data-fruit="Pineapple">Pineapple</a></div>
+    <div data-fruit="Blueberry">Blueberry</a></div>
+
+    <h3>Pt.5 - Get element which includes a specified keyword in attribute name</h3>
+    <p>Use <strong>*=</strong> with specified attribute name. attribute name inside of [] should be surround by ' '.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        let $selectedAttrKeyWordIncl = [];
+        
+        $selectedAttrKeyWordIncl = $("[data-curry *= 'e']");
+        
+        $selectedAttrKeyWordIncl.each(function (index) {
+            $(this).addClass("bingo-SpecifiedAttrName");
+        });
+        $(".count-selectedAttrKeyWordIncl").text($selectedAttrKeyWordIncl.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>Numbers of element which has been selected : <strong><span class="count-selectedAttrKeyWordIncl"></span></strong></p>
+    <div data-curry="Indian curry">Indian curry</div>
+    <div data-curry="Vegetable curry">Vegetable curry</div>
+    <div data-curry="Chicken curry">Chicken curry</div>
+    <div data-curry="Keema curry">Keema curry</div>
+    <div data-curry="Green curry">Green curry</a></div>
+    <div data-curry="Dry curry">Dry curry</a></div>
+
+    <h3>Pt.6 - Specify multiple attribute to get element</h3>
+    <p>Use <strong>*=</strong> with specified attribute name. attribute name inside of [] should be surround by ' '.</p>
+    <h4>JS</h4>
+    <pre>
+        <code class="prettyprint">
+        let $selectedAttrKeyWord = [];
+        
+        $selectedAttrKeyWord = $("[data-city='Vancouver'][Province='BC']");
+        
+        $selectedAttrKeyWord.each(function (index) {
+            $(this).addClass("bingo-SpecifiedAttrName");
+        });
+        $(".count-selectedAttrKeyWord").text($selectedAttrKeyWord.length);
+        </code>
+    </pre>
+    <h4>Result : </h4>
+    <p>Numbers of element which has been selected : <strong><span class="count-selectedAttrKeyWord"></span></strong></p>
+    <div data-city="Vancouver" Province="WA">Vancouver</div>
+    <div data-city="Montreal" Province="QC">Montreal</div>
+    <div data-city="Detroit" Province="MI">Detroit</div>
+    <div data-city="Vancouver" Province="BC">Vancouver</div>
+    <div data-city="Los Angeles" Province="CA">Los Angeles</a></div>
+    <div data-city="Manhattan" Province="NY">Manhattan</a></div>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
