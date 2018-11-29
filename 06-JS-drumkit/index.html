@@ -68,7 +68,8 @@
     const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
     console.log(audio); //tag data above will appear
 
-    if(!audio) return; //if there is no audio, immideately stop the function from running all together
+    if(!audio) return; //if there is no audio, immediately stop the function from running all together
+    audio.currentTime = 0;// rewind to the start immediately
     audio.play();
   });
 </script>
