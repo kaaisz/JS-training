@@ -19,10 +19,16 @@
   const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
   //add empty array for put cities
+  // let cities = [];
+  // fetch(endpoint)
+  //   .then(blob => blob.json())//rensponce will back to here
+  //   .then(data => cities = data)//1000 data of arrays will appear when typed "cities"
+
+  //same data with above will store here
   const cities = [];
   fetch(endpoint)
-    .then(blob => blob.json())//rensponce will back to here
-    .then(data => console.log(data))//1000 objected place data will appear
+    .then(blob => blob.json())
+    .then(data => cities.push(...data))//spread into a function is a function for spread into push of ES6
 </script>
   </body>
 </html>
