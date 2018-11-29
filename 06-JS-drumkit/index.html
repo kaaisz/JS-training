@@ -81,10 +81,17 @@
     key.classList.add('playing');
   });
 
+  //transfromをさせてからclassをremoveしてイベントを終了させるためのfunction
+  //ボタンを押すたびにtransitionが終わるまで "playing" classが追加される
   function removeTransition(event){
-    console.log(event);
+    // console.log(event);
     //transition event object will appear when it is typed
     //inside : TransitionEvent {isTrusted: true, propertyName: "border-left-color", elapsedTime: 0.07, pseudoElement: "", type: "transitionend", …}
+
+    if(event.propertyName !== 'transform') return;// skip it if it's not a transform
+    // console.log(event.propertyName);//transform will appear - sign of transform ends
+    // console.log(this);
+    this.classList.remove('playing');
   }
 
   const keys = document.querySelectorAll('.key');
