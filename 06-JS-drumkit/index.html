@@ -74,9 +74,13 @@
     if(!audio) return; //if there is no audio, immediately stop the function from running all together
     audio.currentTime = 0;// rewind to the start immediately
     audio.play();
-    
     // DEBUG - like(<div data-key="65" class="key">...</div>)
-    console.log(key);
+    // console.log(key);
+    
+    // add class by using classList - same with key.addClass/removeClass('playing') on jQuery
+    key.classList.add('playing');
+    key.classList.remove('playing');
+    key.classList.toggle('playing');
   });
 </script>
 
