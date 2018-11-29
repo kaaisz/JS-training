@@ -79,9 +79,21 @@
     
     // add class by using classList - same with key.addClass/removeClass('playing') on jQuery
     key.classList.add('playing');
-    key.classList.remove('playing');
-    key.classList.toggle('playing');
   });
+
+  function removeTransition(event){
+    console.log(event);
+    //transition event object will appear when it is typed
+    //inside : TransitionEvent {isTrusted: true, propertyName: "border-left-color", elapsedTime: 0.07, pseudoElement: "", type: "transitionend", …}
+  }
+
+  const keys = document.querySelectorAll('.key');
+  //nodelist which contains all keycode of drums will appear on console when you added code above
+  //length is 9 - same with quantity of event for drums
+
+  //each key gets an event listener added to it which is transition end. 
+  //then when transition ends, will remove it.(removetransition() is placed above)
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition))
 </script>
 
 
