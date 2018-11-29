@@ -58,49 +58,33 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  // listening for keyup event
-  window.addEventListener('keydown', function(event){
-    // DEBUG : to show keycode correspond to button
-    // console.log(event.keyCode);
-
+  function playSound(event){
     // use data attribute instead of addclass for each elem
     // add ${event} instead of each keyCode with use ES6
     const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
     const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
 
-    // DEBUG : tag data above will appear - like (<audio data-key="65" src="sounds/clap.wav"></audio>)
-    // console.log(audio);
-
     if(!audio) return; //if there is no audio, immediately stop the function from running all together
     audio.currentTime = 0;// rewind to the start immediately
     audio.play();
-    // DEBUG - like(<div data-key="65" class="key">...</div>)
-    // console.log(key);
     
     // add class by using classList - same with key.addClass/removeClass('playing') on jQuery
     key.classList.add('playing');
-  });
+  }
 
   //transfromをさせてからclassをremoveしてイベントを終了させるためのfunction
   //ボタンを押すたびにtransitionが終わるまで "playing" classが追加される
   function removeTransition(event){
-    // console.log(event);
-    //transition event object will appear when it is typed
-    //inside : TransitionEvent {isTrusted: true, propertyName: "border-left-color", elapsedTime: 0.07, pseudoElement: "", type: "transitionend", …}
-
     if(event.propertyName !== 'transform') return;// skip it if it's not a transform
-    // console.log(event.propertyName);//transform will appear - sign of transform ends
-    // console.log(this);
     this.classList.remove('playing');
   }
 
   const keys = document.querySelectorAll('.key');
-  //nodelist which contains all keycode of drums will appear on console when you added code above
-  //length is 9 - same with quantity of event for drums
-
   //each key gets an event listener added to it which is transition end. 
   //then when transition ends, will remove it.(removetransition() is placed above)
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // listening for keyup event
+  window.addEventListener('keydown', playSound);
 </script>
 
 
