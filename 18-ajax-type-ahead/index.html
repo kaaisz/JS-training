@@ -20,8 +20,7 @@
 
   //add empty array for put cities
   const cities = [];
-  const prom = fetch(endpoint);
-  console.log(prom);//Now you can see inside of Promise {<pending>state}
+  fetch(endpoint).then(blob => console.log(blob))//rensponce will back to here
 </script>
   </body>
 </html>
