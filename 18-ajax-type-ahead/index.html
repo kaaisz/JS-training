@@ -20,7 +20,9 @@
 
   //add empty array for put cities
   const cities = [];
-  fetch(endpoint).then(blob => console.log(blob))//rensponce will back to here
+  fetch(endpoint)
+    .then(blob => blob.json())//rensponce will back to here
+    .then(data => console.log(data))//1000 objected place data will appear
 </script>
   </body>
 </html>
