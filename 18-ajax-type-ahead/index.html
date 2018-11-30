@@ -54,10 +54,11 @@
       const regex = new RegExp(this.value, 'gi');
       //正規表現を用いて入力した箇所にマッチした場所にclassを追加する = replaceする
       const cityname = place.city.replace(regex, `<span class="hl">${this.value}</span>`); 
+      const statename = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
 
       return ` 
       <li>
-        <span class="name">${cityname}, ${place.state}</span>
+        <span class="name">${cityname}, ${statename}</span>
         <span class="population">${place.population}</span>
       </li>
       `;
