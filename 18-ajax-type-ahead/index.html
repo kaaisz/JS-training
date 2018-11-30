@@ -45,9 +45,18 @@
 
   //Add function for display result which matched the word
   function displayMatches(){
-     console.log(this.value);
+    //  console.log(this.value);
      const matchArray = findMatches(this.value, cities);
-     console.log(matchArray);
+    //  console.log(matchArray);
+    const html = matchArray.map(place => {
+      return `
+      <li>
+        <span class="name">${place.city}, ${place.state}</span>
+        <span class="population">${place.population}</span>
+      </li>
+      `;
+    }).join('');//add join('') to return from array to string
+    suggestions.innerHTML = html;
   }
 
   //pick the element to add event with function for matching
