@@ -43,6 +43,11 @@
     });
   }
 
+  //Add function to add comma on int number
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   //Add function for display result which matched the word
   function displayMatches(){
     //  console.log(this.value);
@@ -55,11 +60,11 @@
       //正規表現を用いて入力した箇所にマッチした場所にclassを追加する = replaceする
       const cityname = place.city.replace(regex, `<span class="hl">${this.value}</span>`); 
       const statename = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
-
+      // in population part, add function with parameter(place.population) to add comma
       return ` 
       <li>
         <span class="name">${cityname}, ${statename}</span>
-        <span class="population">${place.population}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
       </li>
       `;
     }).join('');//add join('') to return from array to string
