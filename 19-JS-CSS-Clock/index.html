@@ -74,9 +74,12 @@
   
   <script>
     const setDate = () =>{
-      console.log('Hi');
+      // Add constructor to invoke date
+      const now = new Date();
+      const seconds = now.getSeconds();
+      console.log(seconds);
     }
-    //you can see 'Hi' in console every 1000ms = 1sec
+    //you can see the changes every 1000ms = 1sec
     setInterval(setDate, 1000);
   </script>
 </body>
