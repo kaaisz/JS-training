@@ -73,13 +73,21 @@
   </style>
   
   <script>
+    // to handle .second-hand on html
+    const secondHand = document.querySelector('.second-hand');
+
     const setDate = () =>{
       // Add constructor to invoke date
       const now = new Date();
       const seconds = now.getSeconds();
+      // convert seconds to degrees to move the second hand
+      const secondsDegrees = ((seconds / 60) * 360);
+      // convert secondsDegrees to actual degrees on browser
+      // style - rotate will change every seconds
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
       console.log(seconds);
     }
-    //you can see the changes every 1000ms = 1sec
+    //you can see seconds of current times every 1000ms = 1sec
     setInterval(setDate, 1000);
   </script>
 </body>
