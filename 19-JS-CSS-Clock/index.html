@@ -81,7 +81,8 @@
       const now = new Date();
       const seconds = now.getSeconds();
       // convert seconds to degrees to move the second hand
-      const secondsDegrees = ((seconds / 60) * 360);
+      // we need to add 90deg because defined 90deg as an initialised position above.
+      const secondsDegrees = ((seconds / 60) * 360) + 90;
       // convert secondsDegrees to actual degrees on browser
       // style - rotate will change every seconds
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
