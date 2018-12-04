@@ -58,7 +58,17 @@
   const nav = document.querySelector('#main');
   const topOfNav = nav.offsetTop;
   function fixNav(){
-    console.log(topOfNav, window.scrollY);//現在のNavのtop位置がどこにあるか
+    // console.log(topOfNav, window.scrollY);//現在のNavのtop位置がどこにあるか、どこまでスクロールしたか
+    // scrollYの数値がtopOfNavの数値(位置)を超えたら、クラスをつけたり外したりする
+    if (window.scrollY >= topOfNav){
+      // paddingがscrollを飛び越えてしまうので、padding分の高さを足す
+      document.body.style.paddingTop = nav.offsetHeight + 'px';// you can see the value of this offsetTop on console.
+      document.body.classList.add('fixed-nav');
+    }else{
+      // scrollがwindowYを越える時は、、padding分の高さをなくす
+      document.body.style.paddingTop = 0;
+      document.body.classList.remove('fixed-nav');
+    }
   }
 
   // When scroll has activate, fixnav() will also activate
