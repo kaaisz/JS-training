@@ -54,8 +54,15 @@
   </div>
 
 <script>
+  // Grab the navs
+  const nav = document.querySelector('#main');
+  const topOfNav = nav.offsetTop;
+  function fixNav(){
+    console.log(topOfNav, window.scrollY);//現在のNavのtop位置がどこにあるか
+  }
 
+  // When scroll has activate, fixnav() will also activate
+  window.addEventListener('scroll', fixNav);
 </script>
-
 </body>
 </html>
