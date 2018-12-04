@@ -65,7 +65,7 @@
       document.body.style.paddingTop = nav.offsetHeight + 'px';// you can see the value of this offsetTop on console.
       document.body.classList.add('fixed-nav');
     }else{
-      // scrollがwindowYを越える時は、、padding分の高さをなくす
+      // scrollがwindowYを越える時は、上とは逆にpadding分の高さをなくす
       document.body.style.paddingTop = 0;
       document.body.classList.remove('fixed-nav');
     }
