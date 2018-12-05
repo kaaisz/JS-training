@@ -57,6 +57,9 @@
           //activate checkResults()
           console.log('count at last : ' + stopCount);
           checkResults();
+
+          // Remove class to activate SPIN? button again, when all the stop button has been pushed
+          spin.className = '';
         }
       });
     }
