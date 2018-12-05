@@ -9,7 +9,7 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-name="hello" data-cool="🍰">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -72,7 +72,9 @@
       // console.log(this.value);
       //value will change by sliding left, right or move around
 
-      const suffix = this.dataset;
+      const suffix = this.dataset.sizing || '';//data-sizingがない場合の措置も入れておかないとundefinedが表示されてしまう
+      console.log(suffix);
+
       console.log(this.dataset);
       // mousemoveすると、data-に入っている値 = DOMStringMap{sizing: "px", ...}を見ることができる
       // = dataset is an object
