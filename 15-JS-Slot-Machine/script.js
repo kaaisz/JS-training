@@ -46,7 +46,10 @@
 
         //incriment stop counter by 1
         stopCount++;
-        console.log('count : '+ stopCount);
+        // console.log('count : '+ stopCount);
+        // deactivate stop button when it has been pushed - クラスを元に戻す
+        this.className='stop inactive';
+
         //if all the stop button has been clicked
         if(stopCount === panels.length){
           //reset stop counter
