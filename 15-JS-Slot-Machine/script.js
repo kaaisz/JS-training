@@ -84,6 +84,8 @@
 
   //Add spin events
   spin.addEventListener('click', function () {
+    // inactive を classNameとして、「SPINが押された時に」STOPボタンが押されるまでinactiveを外しておく
+    this.className = 'inactive';
     //processing switch images for all panels
     //until panels ends, 
     for (let i = 0; i < panels.length; i++) {
@@ -92,6 +94,8 @@
       //パネルの画像が全て入れ替わったらunmatchedを外す
       //unmatchedがついていたのは、img = panels[0]の最初の子要素 = panels[].children[0]
       panels[i].children[0].className = '';
+      // SPIN?ボタンが押された時に .inactive だけを外す = panels[0]の2番目の子要素 = panels[].children[1]
+      panels[i].children[1].className = 'stop';
     }
   });
 })();
