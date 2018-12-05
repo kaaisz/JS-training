@@ -46,7 +46,10 @@
 
         //incriment stop counter by 1
         stopCount++;
-        console.log('count : '+ stopCount);
+        // console.log('count : '+ stopCount);
+        // deactivate stop button when it has been pushed - クラスを元に戻す
+        this.className='stop inactive';
+
         //if all the stop button has been clicked
         if(stopCount === panels.length){
           //reset stop counter
@@ -54,6 +57,9 @@
           //activate checkResults()
           console.log('count at last : ' + stopCount);
           checkResults();
+
+          // Remove class to activate SPIN? button again, when all the stop button has been pushed
+          spin.className = '';
         }
       });
     }
@@ -84,6 +90,15 @@
 
   //Add spin events
   spin.addEventListener('click', function () {
+    // if .inactive class has already added, process of SPIN? will disable.
+    // inactiveクラスが含まれているかを調べるために、-1というフラグを立てる
+    // inactiveクラスが含まれていたら(いない場合は === -1)何も返さずに処理を止める(return;とする)
+    if (this.className.indexOf('inactive') !== -1){
+      return;
+    }
+
+    // inactive を classNameとして、「SPINが押された時に」STOPボタンが押されるまでinactiveを外しておく
+    this.className = 'inactive';
     //processing switch images for all panels
     //until panels ends, 
     for (let i = 0; i < panels.length; i++) {
@@ -92,6 +107,8 @@
       //パネルの画像が全て入れ替わったらunmatchedを外す
       //unmatchedがついていたのは、img = panels[0]の最初の子要素 = panels[].children[0]
       panels[i].children[0].className = '';
+      // SPIN?ボタンが押された時に .inactive だけを外す = panels[0]の2番目の子要素 = panels[].children[1]
+      panels[i].children[1].className = 'stop';
     }
   });
 })();
