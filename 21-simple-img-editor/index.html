@@ -63,6 +63,17 @@
   </style>
 
   <script>
+    // initialise all control units defined as <input>
+    const inputs = document.querySelectorAll('.controls input');
+    // you can confirm details of querySelector by putting the code above on console.
+    // * this is "NodeList", not "Array"
+
+    function handleUpdate(){
+      console.log(this.value);//value will change by sliding left, right or move around
+    }   
+    
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    // inputs.forEach(input = () => input.addEventListener ('change', handleUpdate) と同義
   </script>
 
 </body>
