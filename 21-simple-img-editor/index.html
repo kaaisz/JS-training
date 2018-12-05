@@ -72,12 +72,13 @@
       // console.log(this.value);
       //value will change by sliding left, right or move around
 
+      //define suffix to add as variable onto HTML later
       const suffix = this.dataset.sizing || '';//data-sizingがない場合の措置も入れておかないとundefinedが表示されてしまう
-      console.log(suffix);
-
-      console.log(this.dataset);
-      // mousemoveすると、data-に入っている値 = DOMStringMap{sizing: "px", ...}を見ることができる
-      // = dataset is an object
+      // this.valueにthis.nameのattributeを仕込んでDocument内でStyleとして渡す
+      // *この時にsuffixがつかないとうまくstyleとして渡らないので、+ suffixとして渡す
+      // debug
+      // console.log(this.name);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }   
     
     // value of inputs will change by sliding left, right or move around
