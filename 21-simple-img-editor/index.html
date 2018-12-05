@@ -72,8 +72,11 @@
       console.log(this.value);//value will change by sliding left, right or move around
     }   
     
+    // value of inputs will change by sliding left, right or move around
+    // *inputs.forEach(input = () => input.addEventListener ('change', handleUpdate) と同義
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    // inputs.forEach(input = () => input.addEventListener ('change', handleUpdate) と同義
+    // also we'd like it to change by moving trigger much more immediately 
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
