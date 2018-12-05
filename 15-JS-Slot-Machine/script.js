@@ -90,6 +90,13 @@
 
   //Add spin events
   spin.addEventListener('click', function () {
+    // if .inactive class has already added, process of SPIN? will disable.
+    // inactiveクラスが含まれているかを調べるために、-1というフラグを立てる
+    // inactiveクラスが含まれていたら(いない場合は === -1)何も返さずに処理を止める(return;とする)
+    if (this.className.indexOf('inactive') !== -1){
+      return;
+    }
+
     // inactive を classNameとして、「SPINが押された時に」STOPボタンが押されるまでinactiveを外しておく
     this.className = 'inactive';
     //processing switch images for all panels
