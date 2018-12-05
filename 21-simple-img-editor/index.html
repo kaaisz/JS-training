@@ -21,6 +21,24 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    /* default values */
+    :root{
+      --base: #ffc600;
+      --spacing: 30px;
+      --blur:10px;
+    }
+
+    img{
+      /*normally it's '$' on Sass*/
+      padding:var(--spacing);/*padding is based on --spacing*/
+      background:var(--base);/*background is based on --base*/
+      filter: blur(var(--blur));/*blur() is based on --blur*/
+    }
+
+    /* also add highlight on 'JS' character */
+    .hl{
+      color:var(--base);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
