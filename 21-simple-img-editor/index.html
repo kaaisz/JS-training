@@ -9,7 +9,7 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-name="hello" data-cool="🍰">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -69,7 +69,13 @@
     // * this is "NodeList", not "Array"
 
     function handleUpdate(){
-      console.log(this.value);//value will change by sliding left, right or move around
+      // console.log(this.value);
+      //value will change by sliding left, right or move around
+
+      const suffix = this.dataset;
+      console.log(this.dataset);
+      // mousemoveすると、data-に入っている値 = DOMStringMap{sizing: "px", ...}を見ることができる
+      // = dataset is an object
     }   
     
     // value of inputs will change by sliding left, right or move around
