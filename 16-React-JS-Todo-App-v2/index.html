@@ -89,7 +89,11 @@
 					</h1>
 				);
 			}
+			
 
+			// // // // // // // // // // // //
+			////    Todoitem component     ////
+			// // // // // // // // // // // //
 			const TodoItem = (props) => {
 				return(
 					<li key = {props.todo.id}>
@@ -108,7 +112,10 @@
 					</li>
 				);
 			}
-
+			
+			// // // // // // // // // // // //
+			////    Todolist component     ////
+			// // // // // // // // // // // //
 			const TodoList = (props) => {
 				const todos = props.todos.map(todo => {
 					return(
@@ -126,7 +133,11 @@
 					</ul>
 				);
 			}
+			
 
+			// // // // // // // // // // // //
+			////     Todoform component    ////
+			// // // // // // // // // // // //
 			const TodoForm = (props) => {
 				return(
 					<form onSubmit={props.addTodo}>
@@ -140,6 +151,10 @@
 				return new Date().getTime().toString(36) + '-' + Math.random().toString(36);
 			}
 
+
+			// // // // // // // // // // // //
+			////       App component       ////
+			// // // // // // // // // // // //
 			class App extends React.Component{
 					constructor(){
 						super();
