@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>character diagnosis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <!-- 表示用の領域を作り、stageという名前をつける 
+  stage内で違う画面がスライドするようにさせるために、横長のcards - 移動させるための領域を作成 
+    stage - 現在の画面    
+  ┏━━━━━━━┓━━━━━━━━━━━┏━━━━━━━┓
+  ┃       ┃           ┃       ┃
+  ┃ check ┃   cards   ┃ retry ┃
+  ┗━━━━━━━┛━━━━━━━━━━━┗━━━━━━━┛
+              cardsがスライドする
+  -->
+  <div class="stage">
+    <div id="cards">
+      <div class="card">check</div>
+      <div class="card">retry</div>
+    </div>
+  </div>  
+</body>
+</html>
