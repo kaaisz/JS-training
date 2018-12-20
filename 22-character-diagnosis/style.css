@@ -11,11 +11,33 @@ body{
     width: 100px;
     height: 100px;
     border: 2px solid #fff;
+    /* はみ出た部分を非表示 */
+    overflow:hidden;
 }
 
 /* to scroll both */
 #cards{
     width:300px;/* トータルのcardsの長さ */
     height:100px;
-    background: cornflowerblue
+    background: cornflowerblue;
+    /* #cards.moveのアニメーション */
+    transition:.8s;
+}
+
+.card{
+    width:100px;
+    height:100px;
+    background:#fff;
+    float:left;
+}
+
+/* カードの間の余白 */
+.card + .card{
+    margin-left:100px;
+}
+
+/* slide elements */
+#cards.move{
+    /* 左方向にX軸に寄せる */
+    transform:translate(-200px, 0);
 }
