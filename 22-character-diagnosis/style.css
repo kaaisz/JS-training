@@ -80,3 +80,10 @@ h1{
 img{
     height: 100%;
 }
+
+#result-name,
+#result-message,
+#result-job,
+#result-type {
+    font-weight: bold;
+}
