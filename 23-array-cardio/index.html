@@ -52,13 +52,24 @@
     //     return -1;
     //   }
     // });
-    
+
     // below is the way to shorthand
     const ordered = inventors.sort((personA, personB) => personA.year > personB.year ? 1 : -1);
     console.table(ordered);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    // let totalYears = 0;
+    // for(let i = 0; i < inventors.length; i++) {
+    //   totalYears += inventors[i].year
+    // }
+    // console.log(totalYears);
+
+    // doing similar things above
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0)
+    console.log(totalYears);
 
     // 5. Sort the inventors by years lived
 
