@@ -40,7 +40,7 @@
     // Array.prototype.map() - map will return new array with additional condition which you specified
     // (like a factory machine, stamp or something manufactured)
     // 2. Give us an array of the inventors' first and last names
-    const fullNames = inventors.map(inventor => inventor.first + ' ' + inventor.last);
+    const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
     console.log(fullNames);
 
     // Array.prototype.sort()
