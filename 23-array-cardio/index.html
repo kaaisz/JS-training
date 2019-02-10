@@ -114,7 +114,7 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const alphabetical = people.sort(function(lastOne, nextOne) {
+    const alphabetical = people.sort((lastOne, nextOne) => {
       // const [parts] = lastOne.split(', '); // we'd like to separate by comma and space into each array
       const [lastOfA, firstOfA] = lastOne.split(', ');
       const [lastOfB, firstOfB] = nextOne.split(', ');
