@@ -89,21 +89,40 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
     const category = document.querySelector(".mw-category");
-    // you can call query selector on any exsisting DOM element = it doesn't have to document all the time
-    // but needs to return as an array in this case to convert from nodelist, like below
-    // (querySelector returns nodeList)
+    /*
+      you can call query selector on any exsisting DOM element = it doesn't have to document all the time
+      but needs to return as an array in this case to convert from nodelist, like below
+      (querySelector returns nodeList) 
+    */
     // const links = Array.from(category.querySelectorAll("a"));
-    // also you can write with spread operator
-    const links = [...category.querySelectorAll("a")];
+    /*
+      also you can write with spread operator
+    */
+    // const links = [...category.querySelectorAll("a")];
 
-    // because we're looking for the word which is including 'de', needs to map array with 
-    const findDE = links
-      .map(link => link.textContent)
-      .filter(streetName => streetName.includes('de')); // because wanna only return string including 'de'
+    /* 
+      because we're looking for the word which is including 'de', needs to map array with 
+    */
+    // const findDE = links
+    //   .map(link => link.textContent)
+      /* 
+        filter with includes,
+        because wanna only return string including 'de' 
+      */
+      // .filter(streetName => streetName.includes('de')); 
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alphabetical = people.sort(function(lastOne, nextOne) {
+      // const [parts] = lastOne.split(', '); // we'd like to separate by comma and space into each array
+      const [lastOfA, firstOfA] = lastOne.split(', ');
+      const [lastOfB, firstOfB] = nextOne.split(', ');
+      // to sort by last name
+      return lastOfA > lastOfB ? 1 : -1;
+    });
+    console.log(alphabetical);
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
