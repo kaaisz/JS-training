@@ -30,11 +30,12 @@ p {
 
 .page1,
 .page2 {
+  height: 100vh;
   padding: 120px;
+  position: absolute; /* it works for animating with transform */
 }
 
 .page1 {
-  height: 100vh;
   background: rgb(120, 70, 145);
 }
 
@@ -54,3 +55,16 @@ header a {
   border-bottom: 3px solid #fff;
 }
 
+.slide-in {
+  animation: slide-in 0.5s ease forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
