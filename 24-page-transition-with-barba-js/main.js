@@ -23,7 +23,15 @@ var FadeTransition = Barba.BaseTransition.extend({
   },
 
   fadeIn: function() {
-    this.newContainer.classList.add("slide-in");
+    this.newContainer.classList.add('slide-in');
+
+    let that = this;
+
+    this.newContainer.addEventListener('animationend', function(){
+      // run the following things when the animation ends
+      that.newContainer.classList.remove('slide-in');
+      that.done();
+    });
   }
 });
 
