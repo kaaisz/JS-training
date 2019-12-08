@@ -4,13 +4,14 @@
 	-moz-box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	-webkit-font-smoothing: antialiased;
 }
 
 html,
 body {
 	height: 100%;
 	width: 100%;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Crimson Text', serif;
 	background: black;
 	text-decoration: none;
 }
@@ -44,6 +45,10 @@ header {
 	left: 10%;
 	bottom: 10%;
 	color: rgba(255, 255, 255, 0.7);
+	font-size: 108px;
+	font-weight: 500;
+	letter-spacing: -0.5px;
+	line-height: 1.125;
 }
 
 nav {
@@ -90,7 +95,7 @@ nav {
 .nav-menu {
 	display: flex;
 	justify-content: space-around;
-	align-items: center;
+	align-items: flex-start;
 	width: 100%;
 }
 
