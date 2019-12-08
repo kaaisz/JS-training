@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>GSAP Scroll Animation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="style.css">
+<title>GSAP Scroll Animation</title>
 </head>
 <body>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineLite.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
+<header>
+	<nav>
+	<div class="nav-closed">
+		<h3 class="nav-title">La Pomme</h3>
+		<ul class="nav-links">
+		<li class="nav-button">Our Menu</li>
+		<li class="nav-button">About us</li>
+		<li class="nav-button">Reserve</li>
+		</ul>
+	</div>
+	<div class="nav-open">
+		<div class="nav-menu">
+			<h2>Our Menu</h2>
+			<ul>
+				<li class="nav-category">Lunch</li>
+				<li class="nav-category">Dinner</li>
+				<li class="nav-category">Desserts</li>
+				<li class="nav-category">Kids</li>
+			</ul>
+		</div>
+		<div class="nav-images">
+			<img src="./img/broccoli-delicious-diet-1580466.jpg" alt="">
+			<img src="./img/cake-celebration-color-1070896.jpg" alt="">
+		</div>
+	</div>
+	</nav>
+	<img src="./img/bowl-cream-delicious-880473.jpg" alt="" class="cover">
+	<div class="cover-overlay"></div>
+	<h1 class="cover-heading">Cuisine Experiment</h1>
+</header>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
 </body>
 </html>
