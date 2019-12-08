@@ -40,5 +40,12 @@ tl.to('.cover', 1, {
 
 navButton.addEventListener('click', () => {
   // start the animation set above
-  tl.play();
+  // tl.play();
+  toggleTween(tl);
 });
+
+function toggleTween(tween) {
+  // tween.play = tl.play();
+  // play-reverse
+  tween.reversed() ? tween.play() : tween.reverse(); 
+}
