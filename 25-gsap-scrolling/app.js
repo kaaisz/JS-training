@@ -16,7 +16,27 @@ tl.to('.cover', 1, {
 .to('nav', 1, {
   height: '100%',
   ease: Power2.easeOut
-})
+  // code below made this element move .5s faster
+}, '-= 0.5')
+.fromTo(
+  '.nav-open', 
+  0.5, 
+  {
+    // 1st animation 
+    opacity: 0,
+    x: 50,
+    ease: Power2.easeOut
+  }, 
+  {
+    // 2nd animation 
+    opacity: 1,
+    x: 0,
+    onComplete: function() {
+      navOpen.style.pointerEvents = 'auto';
+      console.log('done');
+    }
+  }
+);
 
 navButton.addEventListener('click', () => {
   // start the animation set above
