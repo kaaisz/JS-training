@@ -38,7 +38,13 @@ tl.to('.cover', 1, {
   }
 );
 
-navButton.addEventListener('click', () => {
+navButton.addEventListener('click', (e) => {
+  // disable all the animation if another animation is already active
+  if(tl.isActive()) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    return false;
+  }
   // start the animation set above
   // tl.play();
   toggleTween(tl);
