@@ -60,6 +60,10 @@ nav {
 	overflow: hidden;
 }
 
+.nav-button {
+	cursor: pointer;
+}
+
 .nav-closed {
 	display: flex;
 	justify-content: space-around;
