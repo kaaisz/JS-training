@@ -8,7 +8,7 @@ const navOpen = document.querySelector('.nav-open');
 // });
 
 // set timelinemax
-const tl = new TimelineLite({ paused: true })
+const tl = new TimelineLite({ paused: true, reversed: true })
 tl.to('.cover', 1, {
   width: '60%',
   ease: Power2.easeOut
