@@ -7,21 +7,21 @@
 		el: '#app',
 		data: {
 			newItem: '',
-			// todos: [
-			// 	{
-			// 		title: '🥕 2 Carrots',
-			// 		isDone: false,
-			// 	},
-			// 	{
-			// 		title: '🥚 6 packed egg',
-			// 		isDone: false,
-			// 	},
-			// 	{
-			// 		title: '🥦 1 Broccolis',
-			// 		isDone: true
-			// 	}
-			// ]
-			todos: [],
+			todos: [
+				{
+					title: '🥕 2 Carrots',
+					isDone: false,
+				},
+				{
+					title: '🥚 6 packed egg',
+					isDone: false,
+				},
+				{
+					title: '🥦 1 Broccolis',
+					isDone: true
+				}
+			]
+			// todos: [],
 		},
 		methods: {
 			addItem: function() {
@@ -39,6 +39,14 @@
 					// get rid of 1 item which specified as i
 					this.todos.splice(i, 1);
 				}
+			}
+		},
+		computed: {
+			remaining: function() {
+				var items = this.todos.filter(function(todo) {
+					return !todo.isDone;
+				});
+				return items.length;
 			}
 		}
 	});

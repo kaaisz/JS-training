@@ -11,12 +11,8 @@
 	<!-- output apply here with main.js -->
 	<div id="app">
 		<div class="container">
-			<h1>My Todos</h1>
+			<h1>My Todos<span class="info">({{ remaining }}/{{ todos.length }})</span></h1>
 			<ul v-if="todos.length">
-				<!-- <li>{{ todos[0] }}</li>
-				<li>{{ todos[1] }}</li>
-				<li>{{ todos[2] }}</li> -->
-				<!-- need to specify index to delete specific data -->
 				<li v-for="(todo, index) in todos">
 					<input type="checkbox" v-model="todo.isDone">
 					<span :class="{done: todo.isDone}">{{ todo.title }}</span>
