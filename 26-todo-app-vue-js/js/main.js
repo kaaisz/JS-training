@@ -6,7 +6,11 @@
 	var vm = new Vue({
 		el: '#app',
 		data: {
-			name: 'John',
+			todos: [
+				'🥕 2 Carrots',
+				'🥚 6 packed egg',
+				'🥦 1 Broccolis'
+			]
 		}
 	});
 })();

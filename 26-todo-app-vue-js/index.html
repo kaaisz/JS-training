@@ -10,11 +10,19 @@
 <body>
 	<!-- output apply here with main.js -->
 	<div id="app">
-		<!-- 2-way binding - from UI to Data -->
-		<!-- inside {{ }} can write javascript -->
-		<p>Hello, {{ name.toUpperCase() }}</p>
-		<!-- 2-way binding - from data to UI -->
-		<p><input type="text" v-model="name"/></p>
+		<div class="container">
+			<h1>My Todos</h1>
+			<ul>
+				<!-- <li>{{ todos[0] }}</li>
+				<li>{{ todos[1] }}</li>
+				<li>{{ todos[2] }}</li> -->
+				<li v-for="todo in todos">{{ todo }}</li>
+			</ul>
+			<form>
+				<input type="text" value="" />
+				<input type="submit" value="Add"/>
+			</form>
+		</div>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
