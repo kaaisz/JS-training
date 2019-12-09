@@ -16,7 +16,12 @@
 				<!-- <li>{{ todos[0] }}</li>
 				<li>{{ todos[1] }}</li>
 				<li>{{ todos[2] }}</li> -->
-				<li v-for="todo in todos">{{ todo }}</li>
+				<!-- need to specify index to delete specific data -->
+				<li v-for="(todo, index) in todos">
+					{{ todo }}
+					<!-- pass index data when delete item triggered -->
+					<span @click="deleteItem(index)" class="cmd">[×]</span>
+				</li>
 			</ul>
 			<!-- v-on - to bind with specific function -->
 			<form @submit.prevent="addItem">

@@ -18,6 +18,12 @@
 				this.todos.push(this.newItem);
 				// reset state
 				this.newItem = '';
+			},
+			deleteItem: function(i) {
+				if(confirm('are you sure?')) {
+					// get rid of 1 item which specified as i
+					this.todos.splice(i, 1);
+				}
 			}
 		}
 	});
