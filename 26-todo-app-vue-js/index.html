@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Todo App with Vue.js</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- output apply here with main.js -->
+	<div id="app">
+		<!-- 2-way binding - from UI to Data -->
+		<!-- inside {{ }} can write javascript -->
+		<p>Hello, {{ name.toUpperCase() }}</p>
+		<!-- 2-way binding - from data to UI -->
+		<p><input type="text" v-model="name"/></p>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<!-- apply vue.js app here -->
+	<script src="js/main.js"></script>
+</body>
+</html>
