@@ -18,8 +18,9 @@
 				<li>{{ todos[2] }}</li> -->
 				<li v-for="todo in todos">{{ todo }}</li>
 			</ul>
-			<form>
-				<input type="text" value="" />
+			<!-- v-on - to bind with specific function -->
+			<form v-on:submit="addItem">
+				<input type="text" v-model="newItem" />
 				<input type="submit" value="Add"/>
 			</form>
 		</div>
