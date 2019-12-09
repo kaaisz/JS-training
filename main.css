@@ -40,6 +40,31 @@ header li{
 main{
     padding: 2rem;
 }
+
+.container,
+.container-col {
+    display: flex;
+}
+
+.container-col {
+    width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .container,
+    .container-col {
+        flex-direction: column;
+    }
+
+    .container-col {
+        width: 100%;
+    }
+
+    .list {
+        margin: 0 auto 1rem;
+    }
+}
+
 footer{
     padding: 2rem;
     background: #333;
