@@ -18,7 +18,8 @@
 				<li>{{ todos[2] }}</li> -->
 				<!-- need to specify index to delete specific data -->
 				<li v-for="(todo, index) in todos">
-					{{ todo }}
+					<input type="checkbox" v-model="todo.isDone">
+					<span :class="{done: todo.isDone}">{{ todo.title }}</span>
 					<!-- pass index data when delete item triggered -->
 					<span @click="deleteItem(index)" class="cmd">[×]</span>
 				</li>

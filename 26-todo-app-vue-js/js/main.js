@@ -8,14 +8,28 @@
 		data: {
 			newItem: '',
 			todos: [
-				'🥕 2 Carrots',
-				'🥚 6 packed egg',
-				'🥦 1 Broccolis'
+				{
+					title: '🥕 2 Carrots',
+					isDone: false,
+				},
+				{
+					title: '🥚 6 packed egg',
+					isDone: false,
+				},
+				{
+					title: '🥦 1 Broccolis',
+					isDone: true
+				}
 			]
 		},
 		methods: {
 			addItem: function() {
-				this.todos.push(this.newItem);
+				// define item as objects
+				var item = {
+					title: this.newItem,
+					isDone: false
+				}
+				this.todos.push(item);
 				// reset state
 				this.newItem = '';
 			},
