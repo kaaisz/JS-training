@@ -12,7 +12,7 @@
 	<div id="app">
 		<div class="container">
 			<h1>My Todos</h1>
-			<ul>
+			<ul v-if="todos.length">
 				<!-- <li>{{ todos[0] }}</li>
 				<li>{{ todos[1] }}</li>
 				<li>{{ todos[2] }}</li> -->
@@ -23,8 +23,10 @@
 					<!-- pass index data when delete item triggered -->
 					<span @click="deleteItem(index)" class="cmd">[×]</span>
 				</li>
-				<!-- Apply below if todo is nothing -->
-				<li v-show="!todos.length">Nothing todo!</li>
+			</ul>
+			<!-- Apply below if todo is nothing -->
+			<ul v-else>
+				<li>Nothing todo!</li>
 			</ul>
 			<form @submit.prevent="addItem">
 				<input type="text" v-model="newItem" />
