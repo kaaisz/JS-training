@@ -24,10 +24,18 @@
 			// todos: [],
 		},
 		watch: {
-			todos: function () {
-				localStorage.setItem('todos', JSON.stringify(this.todos));
-				alert('Data Saved');
+			todos: {
+				// enable deep watcher to watch state
+				handler: function() {
+					localStorage.setItem('todos', JSON.stringify(this.todos));
+					// you can watch localstorage files in developer tools local storage
+				},
+				deep: true
 			}
+		},
+		mounted: function() {
+			// fetch json data from local storage with JSON.parse
+			this.todos = JSON.parse(localStorage.getItem('todos')) || [];
 		},
 		methods: {
 			addItem: function() {
