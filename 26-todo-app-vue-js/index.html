@@ -23,8 +23,9 @@
 					<!-- pass index data when delete item triggered -->
 					<span @click="deleteItem(index)" class="cmd">[×]</span>
 				</li>
+				<!-- Apply below if todo is nothing -->
+				<li v-show="!todos.length">Nothing todo!</li>
 			</ul>
-			<!-- v-on - to bind with specific function -->
 			<form @submit.prevent="addItem">
 				<input type="text" v-model="newItem" />
 				<input type="submit" value="Add"/>

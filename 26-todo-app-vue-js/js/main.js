@@ -7,20 +7,21 @@
 		el: '#app',
 		data: {
 			newItem: '',
-			todos: [
-				{
-					title: '🥕 2 Carrots',
-					isDone: false,
-				},
-				{
-					title: '🥚 6 packed egg',
-					isDone: false,
-				},
-				{
-					title: '🥦 1 Broccolis',
-					isDone: true
-				}
-			]
+			// todos: [
+			// 	{
+			// 		title: '🥕 2 Carrots',
+			// 		isDone: false,
+			// 	},
+			// 	{
+			// 		title: '🥚 6 packed egg',
+			// 		isDone: false,
+			// 	},
+			// 	{
+			// 		title: '🥦 1 Broccolis',
+			// 		isDone: true
+			// 	}
+			// ]
+			todos: [],
 		},
 		methods: {
 			addItem: function() {
