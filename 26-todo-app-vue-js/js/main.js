@@ -23,6 +23,12 @@
 			]
 			// todos: [],
 		},
+		watch: {
+			todos: function () {
+				localStorage.setItem('todos', JSON.stringify(this.todos));
+				alert('Data Saved');
+			}
+		},
 		methods: {
 			addItem: function() {
 				// define item as objects
