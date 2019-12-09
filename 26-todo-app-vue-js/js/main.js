@@ -39,6 +39,17 @@
 					// get rid of 1 item which specified as i
 					this.todos.splice(i, 1);
 				}
+			},
+			purge: function() {
+				// if confirm is not proceeded, nothing is gonna change
+				if(!confirm('Do you want to delete all finishing task?')) {
+					return;
+				}
+				// Delete everything
+				// assign todos which haven't finished
+				this.todos = this.todos.filter(function(todo) {
+					return !todo.isDone;
+				});
 			}
 		},
 		computed: {
