@@ -14,9 +14,10 @@
 			]
 		},
 		methods: {
-			addItem: function(e) {
-				e.preventDefault();
+			addItem: function() {
 				this.todos.push(this.newItem);
+				// reset state
+				this.newItem = '';
 			}
 		}
 	});

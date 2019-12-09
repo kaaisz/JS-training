@@ -19,7 +19,7 @@
 				<li v-for="todo in todos">{{ todo }}</li>
 			</ul>
 			<!-- v-on - to bind with specific function -->
-			<form v-on:submit="addItem">
+			<form @submit.prevent="addItem">
 				<input type="text" v-model="newItem" />
 				<input type="submit" value="Add"/>
 			</form>
