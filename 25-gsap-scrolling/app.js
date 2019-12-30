@@ -66,9 +66,10 @@ const tl2 = new TimelineMax({onUpdate: updatePercentage});
 const controller = new ScrollMagic.Controller();
 
 // set original start point
-tl2.from("blockquote", 1, {x: 200, opacity: 0.25})
-tl2.from(".main__img_restaurant", 1, {x: -200, opacity: 0});
-tl2.from(".main__img_chef", 1, {x: 200, opacity: 0});
+tl2.from("blockquote", 1, {x: 200, opacity: 0.25});
+tl2.from("span", 1, {width: 0}, "=-.5");
+tl2.from(".main__img_restaurant", 1, {x: -200, opacity: 0}, "=-1");
+tl2.from(".main__img_chef", 1, {x: 200, opacity: 0}, "=-.7");
 
 const scene = new ScrollMagic.Scene({
 	triggerElement: ".main",

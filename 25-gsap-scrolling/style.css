@@ -16,6 +16,11 @@ body {
 	text-decoration: none;
 }
 
+body {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 header {
 	height: 100vh;
 	position: relative;
@@ -26,13 +31,13 @@ header {
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 }
 
 .cover-overlay {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	right: 0;
 	height: 100%;
@@ -159,12 +164,15 @@ blockquote > span {
 .main__img_chef {
 	width: 40%;
 	right: 0;
-	top: 20%;
-	height: auto;
+	top: 8%;
+	height: 80%;
+	object-fit: cover;
 }
 
 .main__img_restaurant {
-	width: 25%;
+	width: 28%;
 	right: 32%;
-	top: 50%;
+	top: 45%;
+	height: 50%;
+	object-fit: cover;
 }
