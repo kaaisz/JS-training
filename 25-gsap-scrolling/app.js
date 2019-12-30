@@ -61,3 +61,25 @@ function toggleTween(tween) {
   // play-reverse
   tween.reversed() ? tween.play() : tween.reverse(); 
 }
+
+const tl2 = new TimelineMax({onUpdate: updatePercentage});
+const controller = new ScrollMagic.Controller();
+
+// set original start point
+tl2.from("blockquote", 1, {x: 200, opacity: 0.25})
+tl2.from(".main__img_restaurant", 1, {x: -200, opacity: 0});
+tl2.from(".main__img_chef", 1, {x: 200, opacity: 0});
+
+const scene = new ScrollMagic.Scene({
+	triggerElement: ".main",
+	triggerHook: "onLeave",
+	duration: '100%'
+})
+	.setPin(".main")
+	.setTween(tl2)
+	.addTo(controller);
+
+function updatePercentage() {
+	tl2.progress();
+	console.log(tl2.progress());
+}
