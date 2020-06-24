@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite scroll</title>
+    <style>
+        html {
+            font-size: 20px;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        }
+        body {
+            /* padding-bottom: 200px; */
+            margin: 0;
+        }
+        header {
+            margin: 1rem 3rem 3rem 3rem;
+        }
+        header h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            font-weight: 300;
+            color: #999;
+        }
+        header h2,
+        header a {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            font-weight: 300;
+            color: #999;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 1rem;
+            width: 80vw;
+            margin: 3rem 3rem;
+            grid-template-rows: auto;
+        }
+        main figure {
+        }
+        main figcaption {
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        main img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+        footer {
+            background-color: #aaa;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 300;
+            padding: 1rem 3rem 3rem 3rem;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Infinite Scroll / Lazy Load</h1>
+        <h2>tutorials from Steve Griffith <a href="https://www.youtube.com/watch?v=1EeVzn02grw&t=225s">YouTube channel</a></h2>
+    </header>
+    <main>
+        <!-- images will be loaded here with figure and figcaption -->
+    </main>
+    <footer>
+        <p>&copy; SZDP Kaai Suzuki</p>
+    </footer>
+    <script>
+        const URL = "https://gist.githubusercontent.com/prof3ssorSt3v3/1944e7ba7ffb62fe771c51764f7977a4/raw/c58a342ab149fbbb9bb19c94e278d64702833270/infinite.json";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let options = {
+                root: null, // DOM which wants to specify as root
+                rootMargins: "0px",
+                // where wants to trigger - identify with the same as css margin. 
+                // this is no margin = looking at the entire viewport
+                threshold: 0.5 // trigger timing - 0.5 = 50% = if 50% of footer is showing up
+            };
+
+            // init observer
+            const observer = new IntersectionObserver(handleIntersect, options);
+            // check if the footer is observed
+            observer.observe(document.querySelector("footer"));
+            // load initial amount of data
+            getData();
+        });
+
+        function handleIntersect(entries) {
+            // if the footer is intersecting, show console.warn
+            if(entries[0].isIntersecting) {
+                console.warn("something is intersecting with the viewport");
+                // call fetch code
+                getData();
+            }
+        }
+
+        function getData() {
+            let main = document.querySelector("main");
+            console.log('fetch some JSON data');
+            fetch(URL)
+            .then(res => res.json()) // extract json data
+            .then(data => { //image ofject as data
+                // loop data.items[].img, and data.items[].name while data is there
+                data.items.forEach(item => {
+                    let figure = document.createElement('figure');
+                    let figcaption = document.createElement('figucaption');
+                    let img = document.createElement('img');
+
+                    // insert data into each attributes
+                    img.src = item.img;
+                    img.alt = item.name;
+                    figcaption.textContent = item.name;
+
+                    // insert data into each elements created
+                    figure.appendChild(img);
+                    figure.appendChild(figcaption);
+
+                    // lastly insert all the data into main element
+                    main.appendChild(figure);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
