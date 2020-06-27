@@ -22,7 +22,7 @@ ul {
 .bg {
     position: absolute;
     left: 0%;
-    width: 100%; /* init width */
+    width: 0; /* init width */
     height: 100%;
     background: #dadec7;
     z-index: -1;
@@ -91,9 +91,9 @@ ul {
     width: 350px;
     filter: brightness(120%);
 
-    /* opacity: 0;
+    opacity: 0;
     animation: image-appear 0.0001s linear forwards;
-    animation-delay: 2.2s; */
+    animation-delay: 2.2s;
 }
 
 .img-wrapper02 {
@@ -110,9 +110,9 @@ ul {
     width: 800px;
     filter: brightness(120%);
 
-    /* opacity: 0;
+    opacity: 0;
     animation: image-appear 0.0001s linear forwards;
-    animation-delay: 2.4s; */
+    animation-delay: 2.4s;
 }
 
 @keyframes image-appear {
@@ -130,7 +130,7 @@ ul {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* init width */
+    width: 0; /* init width */
     height: 100%;
     background: #cad39c;
 
