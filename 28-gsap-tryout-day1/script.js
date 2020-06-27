@@ -74,3 +74,24 @@ TweenMax.from (".desc p", 1.5, {
     y: 20,
     ease: Expo.easeInOut
 })
+
+TweenMax.from (".scrolldown", 1.5, {
+    delay: 2.7,
+    opacity: 0,
+    y: 200,
+    ease: Expo.easeInOut
+})
+
+TweenMax.from (".bottomnav", 1.5, {
+    delay: 3.2,
+    opacity: 0,
+    y: 30,
+    ease: Expo.easeInOut
+})
+
+TweenMax.from (".bottomnav .next", 1.5, {
+    delay: 3.5,
+    opacity: 0,
+    x: -20,
+    ease: Expo.easeInOut
+})
