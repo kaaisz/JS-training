@@ -168,7 +168,7 @@ ul {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
+    width: 1024px;
 }
 
 .text h1 {
@@ -176,15 +176,15 @@ ul {
     font-family: 'Playfair Display', serif;
     font-weight: lighter;
     letter-spacing: 5px;
-    /* position: relative; */
-    /* overflow: hidden; */
-    /* height: 150px; */
-    /* width: 100%; */
+    position: relative;
+    overflow: hidden;
+    height: 150px;
+    width: 100%;
 }
 
-/* .text h1 .hide {
+.text h1 .hide {
     position: absolute;
-} */
+}
 
 .text p {
     font-size: 40px;
@@ -193,15 +193,15 @@ ul {
     letter-spacing: 5px;
     font-weight: lighter;
 
-    /* position: relative; */
-    /* overflow: hidden; */
-    /* height: 50px; */
-    /* width: 100%; */
+    position: relative;
+    overflow: hidden;
+    height: 50px;
+    width: 100%;
 }
 
-/* .text p .hide {
+.text p .hide {
     position: absolute;
-} */
+}
 
 
 .desc {
