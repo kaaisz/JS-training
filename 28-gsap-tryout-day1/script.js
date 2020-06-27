@@ -59,3 +59,18 @@ TweenMax.from (".text p .hide", 1.5, {
     y: "100%",
     ease: Expo.easeInOut
 });
+
+// desc delay
+TweenMax.staggerFrom (".desc ul li", 1.5, {
+    delay: 2,
+    opacity: 0,
+    y: 20,
+    ease: Expo.easeInOut
+}, 0.1)
+
+TweenMax.from (".desc p", 1.5, {
+    delay: 2.3,
+    opacity: 0,
+    y: 20,
+    ease: Expo.easeInOut
+})

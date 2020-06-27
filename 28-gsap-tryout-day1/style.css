@@ -109,6 +109,8 @@ ul {
     height: 100vh;
     width: 800px;
     filter: brightness(120%);
+    z-index: -1;
+    position: relative;
 
     opacity: 0;
     animation: image-appear 0.0001s linear forwards;
