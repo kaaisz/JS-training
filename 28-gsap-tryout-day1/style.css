@@ -63,7 +63,7 @@ ul {
 
 .media {
     position: absolute;
-    top: 350px;
+    top: 35%;
     right: -90px;
     transform: rotate(-90deg);
     z-index: 1;
@@ -306,4 +306,120 @@ ul {
     background-size: cover;
     height: 200px;
     width: 300px;
+}
+
+@media (max-width: 940px) {
+    body {
+        background: #dadec7;
+        overflow: auto;
+    }
+
+    .navbar {
+        height: 60px;
+        padding: 0 20px;
+    }
+
+    .navbar .title {
+        margin-right: 24px;
+    }
+
+    .navbar .categories ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar .categories ul li {
+        padding: 0 16px 0 0;
+    }
+
+    .navbar .menu {
+        margin-right: 20px;
+    }
+
+    .media {
+        right: -115px;
+    }
+
+    .img-wrapper01 {
+        position: absolute;
+        top: 60px;
+        left: 64px;
+    }
+
+    .img-wrapper01 .img01 {
+        background: url('./images/image02.jpg');
+        background-position: 50%;
+        background-size: cover;
+        width: calc(100vw - 64px);
+    }
+
+    .img-wrapper02 {
+        position: relative;
+        left: 0;
+    }
+
+    .img-wrapper02 .img02 {
+        background: url('./images/image01.jpg');
+        background-position: 50%;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .main {
+        height: 100vh;
+    }
+
+    .text {
+        width: calc(100% - 32px);
+        margin: 0 32px;
+        left: 45%;
+    }
+
+    .text h1 {
+        font-size: 48px;
+        height: 130px;
+    }
+
+    .text p {
+        font-size: 14px;
+        height: 20px;
+        margin-bottom: 40px;
+    }
+
+    .desc {
+        position: initial;
+        flex-direction: column;
+        width: calc(100% - 64px);
+        max-width: 320px;
+        margin: auto auto 48px;
+    }
+
+    .desc ul {
+        display: flex;
+        justify-content: space-evenly;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .desc p {
+        width: 100%;
+    }
+
+    .scrolldown {
+        bottom: 94px;
+        left: -76px;
+    }
+
+    .scrolldown::before {
+        width: 56px;
+    }
+
+    .bottomnav {
+        position: initial;
+        margin-top: 48px;
+    }
+
+    .bottomnav .nav {
+        justify-content: flex-end;
+    }
 }
