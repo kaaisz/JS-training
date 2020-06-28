@@ -61,6 +61,10 @@ a:hover {
     padding: 50px 0;
 }
 
+.swiper-wrapper {
+    transition-delay: .35s;
+}
+
 .swiper-slide {
     width: 640px;
     height: 400px;
@@ -111,25 +115,40 @@ a:hover {
     position: absolute;
     bottom: -35px;
     right: 8px;
+    /* width: 100px;
+    height: 100px;
+    overflow: hidden; */
     z-index: 1;
 }
 
 .slide-number p {
     font-size: 60px;
     opacity: .25;
+    position: relative;
 }
+
+/* .slide-number p span {
+    position: absolute;
+} */
 
 .slide-text {
     position: absolute;
     bottom: 20px;
     left: 20px;
+    /* width: 200px;
+    height: 100px; */
     z-index: 1;
 }
 
 .slide-text h4 {
     font-size: 20px;
     font-weight: lighter;
+    position: relative;
 }
+
+/* .slide-text h4 span {
+    position: absolute;
+} */
 
 .footer {
     position: absolute;
