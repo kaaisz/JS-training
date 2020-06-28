@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'EB Garamond', 'Times New Roman', Times, serif;
+    background: #fcfcfc;
+    color: #1a1a1a;
+}
+
+h1 {
+    font-weight: 400;
+}
+
+a {
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+a:hover {
+    color: #777;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 32px;
+}
+
+.navbar .menu ion-icon {
+    padding-right: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-right: 24px;
+}
+
+.navbar ul li:last-of-type {
+    margin-right: 0;
+}
+
+.swiper-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+.swiper-slide {
+    width: 800px;
+    height: 500px;
+}
+.swiper-slide:nth-child(1) .slide-img {
+    background-image: url('./img/img01.jpg');
+}
+.swiper-slide:nth-child(2) .slide-img {
+    background-image: url('./img/img02.jpg');
+}
+.swiper-slide:nth-child(3) .slide-img {
+    background-image: url('./img/img03.jpg');
+}
+.swiper-slide:nth-child(4) .slide-img {
+    background-image: url('./img/img04.jpg');
+}
+.swiper-slide:nth-child(5) .slide-img {
+    background-image: url('./img/img05.jpg');
+}
+.swiper-slide:nth-child(6) .slide-img {
+    background-image: url('./img/img06.jpg');
+}
+
+.slide-img {
+    background-position: 50%;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
