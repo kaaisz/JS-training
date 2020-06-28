@@ -62,9 +62,10 @@ a:hover {
 }
 
 .swiper-slide {
-    width: 800px;
-    height: 500px;
+    width: 640px;
+    height: 400px;
 }
+
 .swiper-slide:nth-child(1) .slide-img {
     background-image: url('img/img1.jpg');
 }
@@ -128,4 +129,37 @@ a:hover {
 .slide-text h4 {
     font-size: 20px;
     font-weight: lighter;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 32px;
+}
+
+.footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.footer .scroll p::after {
+    content: '';
+    display: inline-block;
+    border: 1px solid #1a1a1a;
+    width: 60px;
+    margin: 0 0 0 10px;
+    transform: translateY(-4px);
+}
+
+.copyright {
+    margin-bottom: 20px;
+}
+
+.copyright p {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
 }
