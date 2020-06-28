@@ -113,11 +113,11 @@ a:hover {
 
 .slide-number {
     position: absolute;
-    bottom: -35px;
+    bottom: -56px;
     right: 8px;
-    /* width: 100px;
+    width: 100px;
     height: 100px;
-    overflow: hidden; */
+    overflow: hidden;
     z-index: 1;
 }
 
@@ -127,17 +127,18 @@ a:hover {
     position: relative;
 }
 
-/* .slide-number p span {
+.slide-number p span {
     position: absolute;
-} */
+}
 
 .slide-text {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    /* width: 200px;
-    height: 100px; */
+    width: 200px;
+    height: 32px;
     z-index: 1;
+    overflow: hidden;
 }
 
 .slide-text h4 {
@@ -146,9 +147,9 @@ a:hover {
     position: relative;
 }
 
-/* .slide-text h4 span {
+.slide-text h4 span {
     position: absolute;
-} */
+}
 
 .footer {
     position: absolute;
