@@ -26,25 +26,9 @@
         ease: Circ.easeInOut
     })
 
-    const mq = window.matchMedia('max-width: 767px');
+    const mq = window.matchMedia('(max-width: 767px)');
 
     if(mq.matches) {
-        TweenMax.to ('.left', 2, {
-            delay: .8,
-            width: '60%',
-            ease: Power2.easeInOut
-        })
-        TweenMax.to ('.right', 2, {
-            delay: .6,
-            width: '40%',
-            ease: Power2.easeInOut
-        })
-        TweenMax.to ('.anna', 2, {
-            delay: 1.5,
-            width: '800px',
-            ease: Power2.easeInOut
-        })
-    } else {
         TweenMax.to ('.left', 2, {
             delay: .8,
             width: '80%',
@@ -58,6 +42,22 @@
         TweenMax.to ('.anna', 2, {
             delay: 1.5,
             width: '100vw',
+            ease: Power2.easeInOut
+        })
+    } else {
+        TweenMax.to ('.left', 2, {
+            delay: .8,
+            width: '60%',
+            ease: Power2.easeInOut
+        })
+        TweenMax.to ('.right', 2, {
+            delay: .6,
+            width: '40%',
+            ease: Power2.easeInOut
+        })
+        TweenMax.to ('.anna', 2, {
+            delay: 1.5,
+            width: '800px',
             ease: Power2.easeInOut
         })
     }
