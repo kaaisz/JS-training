@@ -38,14 +38,14 @@ ul li {
 
 .left {
     background: #efe3de;
-    left: 0%; /* init width to expand with GSAP later */
-    width: 60%;
+    left: 0%;
+    width: 0%; /* init width to expand with GSAP later */
 }
 
 .right {
     background: #887d79;
-    right: 0%; /* init width to expand with GSAP later */
-    width: 40%;
+    right: 0%;
+    width: 100%; /* init width to expand with GSAP later */
 }
 
 .nav ul {
