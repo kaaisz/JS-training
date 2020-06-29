@@ -19,6 +19,11 @@
         x: 1000,
         ease: Circ.easeInOut
     })
+    TweenMax.to ('.anna', 2, {
+        delay: 1.5,
+        width: '800px',
+        ease: Power2.easeInOut
+    })
     // animate each bottom menu with foreach loop
     TweenMax.staggerFrom ('.bottomnav ul li', 2, {
         delay: 1,

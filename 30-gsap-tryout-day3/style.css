@@ -9,7 +9,7 @@ body {
     font-size: 14px;
     width: 100%;
     height: 100%;
-    overflow-x: hidden; /* prevent horizontal scrolling */
+    overflow: hidden; /* prevent horizontal scrolling */
 }
 
 h1, h2 {
@@ -78,17 +78,21 @@ ul li {
 .nav .menu {
     flex: 1;
     color: #121212;
+    cursor: pointer;
 }
 .nav .collection {
     flex: 1;
     color: #121212;
+    cursor: pointer;
 }
 .nav .explore {
     flex: 4;
     color: #121212;
+    cursor: pointer;
 }
 .nav .search {
     flex: 3;
+    cursor: pointer;
 }
 
 .img-wrapper {
@@ -101,7 +105,7 @@ ul li {
     background-image: url('./img/img1.jpg');
     background-size: cover;
     background-position: 50%;
-    width: 800px;
+    width: 0;
     height: 480px;
 }
 
@@ -154,14 +158,31 @@ ul li {
 .bottomnav {
     position: absolute;
     bottom: 80px;
-    right: 100px;
+    right: 80px;
 }
 
 .bottomnav ul li {
+    width: max-content;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 12px;
+    letter-spacing: 10px;
     margin-top: 20px;
+    line-height: 2;
+    cursor: pointer;
+}
+
+.bottomnav ul li::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width .5s ease-in-out;
+}
+
+.bottomnav ul li:hover::after {
+    width: 95%;
+    transition: width .5s ease-in-out;
 }
 
 .name {
