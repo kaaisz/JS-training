@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intersection observer</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: sans-serif;
+        }
+        li {
+            list-style-type: none;
+        }
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .section:nth-child(1) {
+            background: #fcc;
+        }
+        .section:nth-child(2) {
+            background: #ffc;
+        }
+        .section:nth-child(3) {
+            background: #fcf;
+        }
+        .section:nth-child(4) {
+            background: #cff;
+        }
+        .section:nth-child(5) {
+            background: #ccf;
+        }
+
+        .nav-fixed {
+            display: flex;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 20px;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            margin: auto;
+            height: 100vh;
+        }
+        .nav-fixed li {
+        margin: 6px 0;
+        }
+        .nav-fixed a {
+            display: block;
+            transition: background-color 0.5s;
+            border: 2px solid #000;
+            border-radius: 50%;
+            background-color: #000;
+            width: 8px;
+            height: 8px;
+            outline: none;
+        }
+        .nav-fixed a.active {
+            background-color: #fff;
+        }
+
+        .fadeInUp {
+            position: relative;
+            bottom: -50px;
+            opacity: 0;
+            transition: bottom 1s, opacity 1s;
+        }
+        .fadeInUp.show {
+            bottom: 0;
+            opacity: 1;
+        }
+
+        .inRight {
+            position: relative;
+            right: -100px;
+            opacity: 0;
+            transition: right 1s, opacity 1s;
+        }
+        .inRight.show {
+            right: 0;
+            opacity: 1;
+        }
+        .bgChange {
+            transition: background-color 2s;
+            transition-delay: 1s;
+        }
+        .bgChange.show {
+            background-color: green;
+        }
+        .across {
+            overflow: hidden;
+            position: relative;
+        }
+        .across:before {
+            content: "";
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: blue;
+            opacity: 0;
+            transition: left 1s, opacity 1s;
+            transition-delay: 1s;
+        }
+        .across.show:before {
+            left: 100%;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <section id="section1" class="js-section section">
+            <h1 class="lazy fadeInUp">
+                Intersection Observer Scroll Animation
+            </h1>
+        </section>
+        <section id="section2" class="js-section section">
+            <img class="lazy inRight" src="https://hsmt-web.com/wp/wp-content/themes/hsmt-web/images/apple.png" alt="An Apple">
+        </section>
+        <section id="section3" class="js-section section lazy bgChange">
+            <p>Change background</p>
+        </section>
+        <section id="section4" class="js-section section lazy across">
+            <p>Change background</p>
+        </section>
+        <ul id="indexList" class="nav-fixed">
+            <li>
+                <a href="#section1"></a>
+            </li>
+            <li>
+                <a href="#section2"></a>
+            </li>
+            <li>
+                <a href="#section3"></a>
+            </li>
+            <li>
+                <a href="#section4"></a>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.9.0/intersection-observer.js"></script>
+    <script>
+        /**
+         * Specify Intersection Observer
+        */
+        const boxes = document.querySelectorAll(".lazy");
+        const boxesArray = Array.prototype.slice.call(boxes, 0);
+        const options = {
+            root: null,
+            rootMargin: "0px 50%",
+            threshold: 0
+        };
+        let observer = new IntersectionObserver(doWhenIntersect, options);
+        boxesArray.forEach(function(box) {
+            observer.observe(box);
+        })
+        
+        // function to invoke when intersect
+        // @param entries
+        function doWhenIntersect(entries) {
+            console.log(entries);
+            const entriesArray = Array.prototype.slice.call(entries, 0);
+            entriesArray.forEach(function(entry) {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }
+
+        /**
+         * Obesrve section (and bind pagination)
+        */
+        // code here
+    </script>
+</body>
+</html>
