@@ -180,7 +180,45 @@
         /**
          * Obesrve section (and bind pagination)
         */
-        // code here
+        const nodeList = document.querySelectorAll(".js-section");
+        const node = Array.prototype.slice.call(nodeList, 0);
+        const options1 = {
+            root: null, // set viewport - body as a root element
+            rootMargin: "-50% 0px", // set centre of viewport
+            threshold: 0
+        };
+        let observer1 = new IntersectionObserver(doWhenIntersect1, options1);
+        // debug
+        console.log(doWhenIntersect1);
+
+        // Observe each sections
+        node.forEach(function(section) {
+            observer1.observe(section);
+        });
+
+        // function to invoke when intersect
+        // @param entries
+        function doWhenIntersect1(entries) {
+            console.log(entries);
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    activateIndex(entry.target);
+                }
+            });
+        }
+
+        // function to change pagination color
+        // @param elem
+        function activateIndex(elem) {
+            const currentActiveIndex = document.querySelector("#indexList .active");
+
+            if(currentActiveIndex !== null) {
+                currentActiveIndex.classList.remove("active");
+            }
+
+            let newActiveIndex = document.querySelector("#indexList a[href='#" + elem.id + "']");
+            newActiveIndex.classList.add("active");
+        }
     </script>
 </body>
 </html>
