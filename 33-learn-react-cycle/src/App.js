@@ -6,11 +6,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      meaningOfLife: 47
+      // meaningOfLife: 47 + 1 (which is defined in index.js)
+      meaningOfLife: 47 + this.props.increment
     }
-
-    // you can use props here if props was passed as a parameter
-    this.props = props
   }
 
   handleClick = () => {
