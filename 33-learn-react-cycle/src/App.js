@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       meaningOfLife: 47
     }
+
+    // you can use props here if props was passed as a parameter
+    this.props = props
   }
 
   handleClick = () => {
