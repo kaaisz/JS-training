@@ -38,25 +38,29 @@ class App extends React.Component {
           </button>
 
           <h2>Lifecycle Method</h2>
-          <button
-            onClick={() => 
-              this.setState(state => ({
-                showChild: !state.showChild
-              }))
-            }
-          >
-            Toggle Lifecycles
-          </button>
-          <button
-            onClick={() => 
-              this.setState(state => ({
-                text: state.text + '_hello'
-              }))
-            }
-          >
-            Update Text
-          </button>
-          {this.state.showChild ? <Lifecycles text={this.state.text} /> : null}
+          <div className="lifecycle-container">
+            <button
+              onClick={() => 
+                this.setState(state => ({
+                  // switch boolean
+                  showChild: !state.showChild
+                }))
+              }
+            >
+              Toggle Lifecycles
+            </button>
+            <button
+              onClick={() => 
+                this.setState(state => ({
+                  text: state.text + '_hello'
+                }))
+              }
+            >
+              Update Text
+            </button>
+            {this.state.showChild ? <Lifecycles text={this.state.text} /> : null}
+            <p>Toggle lifecycle switch componentWillUnmount() and render the text.</p>
+          </div>
         </header>
       </div>
     );
