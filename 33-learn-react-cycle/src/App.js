@@ -10,6 +10,14 @@ class App extends React.Component {
     }
   }
 
+  handleClick = () => {
+    // this is asyncronous setState
+    this.setState({meaningOfLife: this.state.meaningOfLife + 1}, 
+      // callback - this makes console log below sync
+      () => console.log(this.state.meaningOfLife)
+    )
+  }
+
   render() {
     return (
       <div className="App">
@@ -19,6 +27,7 @@ class App extends React.Component {
             {this.state.meaningOfLife}
           </p>
           <button
+            onClick={this.handleClick}
           >
             Update State
           </button>
