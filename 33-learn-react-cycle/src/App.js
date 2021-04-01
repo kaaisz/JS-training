@@ -13,7 +13,7 @@ class App extends React.Component {
   handleClick = () => {
     // this is asyncronous setState
     this.setState((prevState, prevProps) => {
-      return {meaningOfLife: prevState.meaningOfLife + 1}
+      return {meaningOfLife: prevState.meaningOfLife + this.props.increment}
     }, 
       // callback - this makes console log below sync
       () => console.log(this.state.meaningOfLife)
