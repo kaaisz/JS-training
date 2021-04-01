@@ -3,18 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // meaningOfLife: 47 + 1 (which is defined in index.js)
-      meaningOfLife: 47 + this.props.increment
-    }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     // meaningOfLife: 47 + 1 (which is defined in index.js)
+  //     meaningOfLife: 47 + this.props.increment
+  //   }
+  // }
+  
+  // now you can shorten if you only have state initially
+  state = {
+    meaningOfLife: 47
   }
 
   handleClick = () => {
     // this is asyncronous setState
     this.setState((prevState, prevProps) => {
-      return {meaningOfLife: prevState.meaningOfLife + prevProps.increment}
+      // return {meaningOfLife: prevState.meaningOfLife + prevProps.increment}
+      return {meaningOfLife: prevState.meaningOfLife + 1}
     }, 
       // callback - this makes console log below sync
       () => console.log(this.state.meaningOfLife)
