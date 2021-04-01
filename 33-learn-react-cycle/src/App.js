@@ -1,19 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Lifecycles from './lifecycles.component';
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     // meaningOfLife: 47 + 1 (which is defined in index.js)
-  //     meaningOfLife: 47 + this.props.increment
-  //   }
-  // }
-  
-  // now you can shorten if you only have state initially
   state = {
-    meaningOfLife: 47
+    meaningOfLife: 47,
+
+    showChild: true,
+    text: ''
   }
 
   handleClick = () => {
@@ -32,6 +27,7 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <h2>Updating State</h2>
           <p>
             {this.state.meaningOfLife}
           </p>
@@ -40,6 +36,27 @@ class App extends React.Component {
           >
             Update State
           </button>
+
+          <h2>Lifecycle Method</h2>
+          <button
+            onClick={() => 
+              this.setState(state => ({
+                showChild: !state.showChild
+              }))
+            }
+          >
+            Toggle Lifecycles
+          </button>
+          <button
+            onClick={() => 
+              this.setState(state => ({
+                text: state.text + '_hello'
+              }))
+            }
+          >
+            Update Text
+          </button>
+          {this.state.showChild ? <Lifecycles text={this.state.text} /> : null}
         </header>
       </div>
     );
